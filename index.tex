@@ -5,7 +5,17 @@
 
 % Short headings should be running head and authors last names
 
-\ShortHeadings{Learning with Mixtures of Trees}{Meil\u{a} and Jordan}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%                                   %%%%%%%
+%%%%%%% GAEL: YEAH THIS IS STILL HORRIBLE %%%%%%%
+%%%%%%%                                   %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% THERE IS STILL NO MESSAGE WHY WE ARE BETTER !!!
+
+
+\ShortHeadings{Scikit-learn: machine learning in Python}{Meil\u{a} and Jordan}
 \firstpageno{1}
 
 
@@ -24,7 +34,7 @@
        University of California\\
        Berkeley, CA 94720-1776, USA}
 
-\editor{Leslie Pack Kaelbling}
+\editor{?}
 
 
 \maketitle
@@ -40,9 +50,63 @@ algorithms in the tightly-knit world of scientific Python packages
 
 
 \section{Introduction}
+In the past years python has experienced a huge increase as the
+language of choice for scientific computing. It's interactive nature,
+it's openness and the maturation of some of its numerical libraries
+(numpy, scipy) have all contributed to its success.
 
-Python is good for you
+Because of this, libraries that are too domain specific to be included
+within the general-purpose scipy libraries are distributed in the form
+of scikits. In this paper, we present one of such packages:
+scikit-learn, a library for machine learning.
 
-\section{Code design}
+%% this is just the same lame thing everyone says
+When building this library, we wanted it to be fast, simple ...
+
+
+
+\begin{center}
+%% \caption{Overview of existing machine learning libraries}
+
+% it would be nicer with checkbox images
+
+\begin{tabular}{c c c c c c c}
+\hline\hline %inserts double horizontal lines 
+implements & SKL & PyML & pybrain & PyMVPA &  MDP & shogun \\ [0.5ex]
+\hline
+svm        & Yes & ?   & ?       &  ?     & ?    & ? \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\section{Technology}
+
+We based our developement around the technologies numpy and
+cython. Numpy arrays are the choice for representing data. It is easy
+to convert/load numpy arrays from virtually any existing format: .mat,
+csv, gzip, etc.
+
+Cython is used to speedup some algorithms (CD, SGD) and to interface C
+code (talk about libsvm).
+
+\section{Code by implementation, not by inheritance}
+
+To have a uniform API, we adopt simple conventions and limit to a
+minimum the number of methods an object has to implement. However, we
+do not enforce inheritance, any object implementing these methods is
+an estimator.
+
+
+Estimators with .fit(), .predict()
+
+
+\section{Community}
+
+Examples, contributions, github.
+
+
+
+
 
 \end{document}

@@ -1,7 +1,7 @@
 \documentclass[twoside,11pt]{article} 
 \usepackage{jmlr2e} 
-
-\jmlrheading{1}{2000}{1-48}{4/00}{10/00}{Marina Meil\u{a} and Michael I. Jordan}
+\usepackage{hyperref}
+\jmlrheading{1}{2011}{1-48}{4/00}{10/00}{Pedregosa, Varoquaux et al.}
 
 % Short headings should be running head and authors last names
 
@@ -12,10 +12,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%% THERE IS STILL NO MESSAGE WHY WE ARE BETTER !!!
 
-
-\ShortHeadings{Scikit-learn: machine learning in Python}{Meil\u{a} and Jordan}
+\ShortHeadings{Scikit-learn: machine learning in Python}{Pedregosa, Varoquaux et al.}
 \firstpageno{1}
 
 
@@ -24,15 +22,21 @@
 \title{Scikit-learn: machine learning in Python}
 
 
-\author{\name Marina Meil\u{a} \email mmp@stat.washington.edu \\
+\author{\name Fabian Pedregosa \email fabian.pedregosa@inria.fr \\
+        \name Gael Varoquaux \email gael.varoquaux@normalesup.org  \\
+        \name Alexandre Gramfort \email TODO (INRIA?)\\
+        \name Vincent Michel  \email TODO \\
        \addr Department of Statistics\\
        University of Washington\\
        Seattle, WA 98195-4322, USA
        \AND
-       \name Michael I.\ Jordan \email jordan@cs.berkeley.edu \\
+       \name Olivier Grisel \email jordan@cs.berkeley.edu \\
        \addr Division of Computer Science and Department of Statistics\\
        University of California\\
        Berkeley, CA 94720-1776, USA}
+
+
+ %% David Cournapeau ?
 
 \editor{?}
 
@@ -40,29 +44,49 @@
 \maketitle
 
 \begin{abstract}
-scikits.learn is a Python module integrating classic machine learning
-algorithms in the tightly-knit world of scientific Python packages
-(numpy, scipy, matplotlib).
+This paper describes scikits.learn, a Python module integrating
+various machine learning algorithms under a common interface. It
+offers a wide range of methods such as Support Vector Machines, linear
+models (l1 and l2), logistic regression, gaussian mixture models and
+more.
+
+We have succesfully used this software to real-world problems, some of
+them can be seen in the web page.
+
+scikits.learn is licensed under the simplified BSD license,
+encouraging its use in both free and commercial settings. Soruce code
+and documentation can be downloaded from
+\url{http://scikit-learn.sourceforge.net}.
+
 \end{abstract}
 
-\keywords{Python, machine learning}
+\keywords{Python, open source software, support vector machines,
+  lasso, elastic net.}
 
 
 
 \section{Introduction}
-In the past years python has experienced a huge increase as the
-language of choice for scientific computing. It's interactive nature,
-it's openness and the maturation of some of its numerical libraries
-(numpy, scipy) have all contributed to its success.
+In the past years the Python programming language has experienced a
+huge increase as the language of choice for scientific computing. It's
+interactive nature, it's openness and the maturation of some of the
+scientific libraries (numpy, scipy) have all contributed to its
+success.
 
-Because of this, libraries that are too domain specific to be included
-within the general-purpose scipy libraries are distributed in the form
-of scikits. In this paper, we present one of such packages:
-scikit-learn, a library for machine learning.
+However, machine learning libraries were confined to specific domains
+(PyMVPA) or to concrete methods (PyBrain), and while several machine
+learning libraries and frameworks provide Python bindings, those
+interfaces are usually less pythonic than those designed exclusively
+for the Python language.
 
-%% this is just the same lame thing everyone says
-When building this library, we wanted it to be fast, simple ...
+ %% better word for pythonic
 
+This motivated us to develop scikits.learn, a module that implements a
+broad range of machine learning algorithms under a Pythonic
+interface. Most code is written in Python, 
+
+The modular design of scikits.learn makes it easy to implement new
+algorithms. The large number of algorithms aleady implemented allows
+for easy comparison of accuracy and performance of various algorithms.
 
 
 \begin{center}
@@ -72,9 +96,11 @@ When building this library, we wanted it to be fast, simple ...
 
 \begin{tabular}{c c c c c c c}
 \hline\hline %inserts double horizontal lines 
-implements & SKL & PyML & pybrain & PyMVPA &  MDP & shogun \\ [0.5ex]
+implements & scikits.learn & PyML & pybrain & PyMVPA &  MDP & Shogun \\ [0.5ex]
 \hline
-svm        & Yes & ?   & ?       &  ?     & ?    & ? \\
+SVM        & + & ?   & ?       &  ?     & ?    & + \\
+Elastic Net & + & ?   & ?       &  ?     & ?    & - \\
+
 \hline
 \end{tabular}
 \end{center}
@@ -82,31 +108,41 @@ svm        & Yes & ?   & ?       &  ?     & ?    & ? \\
 
 \section{Technology}
 
-We based our developement around the technologies numpy and
-cython. Numpy arrays are the choice for representing data. It is easy
-to convert/load numpy arrays from virtually any existing format: .mat,
-csv, gzip, etc.
+Key technologies are numpy and cython. Numpy arrays are the choice for
+representing data. Numpy is the universal format for representing
+arrays, all methods accept dense or sparse numpy arrays on entry, and
+it is also easy to convert and load numpy arrays from existing formats:
+.mat, csv, gzip, etc.
 
-Cython is used to speedup some algorithms (CD, SGD) and to interface C
-code (talk about libsvm).
+The purpose of Cython is twofold. First, it allows to reach the
+performance of traditional compiled languages as C while retaining
+some of the benefits of Python, such as clear syntax and garbage
+collection.
+
+Second, Cython allows to easily access third-party libraries. libsvm
+and liblinear have been efficiently binded using Cython [...]. Bench ?
+
 
 \section{Code by implementation, not by inheritance}
 
 To have a uniform API, we adopt simple conventions and limit to a
-minimum the number of methods an object has to implement. However, we
-do not enforce inheritance, any object implementing these methods is
-an estimator.
+minimum the number of methods an object has to implement. In its
+simples form, a classifier is an object that implements a \emph{fit}
+and \emph{predict} method. Inheritance is not enforced.
 
-
-Estimators with .fit(), .predict()
-
+Filters implement \emph{transform}. Other imple
 
 \section{Community}
 
 Examples, contributions, github.
 
+Ohloh describes the code as ``Well-commented source code'' and ``Very
+large, active development team''.
 
-
+\section{Drawnbacks}
+In contrast to the benefits of writing python code (dynamic,
+readable), we also have drawnbacks. As most algorithms are implemented
+in Python or Cython, reuse in other languages is difficult.
 
 
 \end{document}

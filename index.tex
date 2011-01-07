@@ -47,12 +47,20 @@
 \maketitle
 
 \begin{abstract}
-This paper describes scikits.learn, a Python module integrating
-various machine learning algorithms under a common interface. It
-offers a wide range of methods such as Support Vector Machines, linear
-models (L1, L2 penalized), logistic regression, gaussian mixture models and
-more. The large number of algorithms aleady implemented allows for
-easy comparison of accuracy and performance of various algorithms.
+This paper describes \emph{scikits.learn}, a Python module integrating
+a wide range of state-of-the-art machine learning algorithms for
+medium-scale supervised and unsupervised problems.
+
+%% accesible for non-specialists: language, API, documentation
+
+Focuses on bringing machine learning to non-specialists using a
+general-purpose high-level language with special care on
+documentation and API.
+
+The large number of algorithms aleady implemented allows for easy
+comparison of prediction and numerical performance of algorithms on a
+given application.
+
 
 scikits.learn is licensed under the simplified BSD license,
 encouraging its use in both free and commercial settings. Soruce code
@@ -61,31 +69,46 @@ and documentation can be downloaded from
 
 \end{abstract}
 
-\keywords{Python, open source software, support vector machines,
-  lasso, elastic net.}
+\keywords{Python, supervised learning, unsupervised learning}
 
+
+%%  It offers a wide range of
+%% methods such as Support Vector Machines, linear models (L1, L2
+%% penalized), logistic regression, gaussian mixture models and more.
 
 
 \section{Introduction}
 In the past years the Python programming language has experienced a
-huge increase as the language of choice for scientific computing. It's
-interactive nature, it's openness and the maturation of the scientific
-libraries (numpy, scipy) make it a very appealing choice for both
-research and industry.
+huge increase as the language of choice for scientific computing. 
 
-However, machine learning libraries were confined to specific domains
+It's an eappealing choice for both research and industry because it is
+high level, general-purpose, interactive and there is a maturing ecosystem of 
+of scientific libraries (numpy, scipy, matplotlib) [CITE MARS 2011 CiSE].
+
+%% It's high level, general-purpose, interactive nature, it's openness
+%% and the maturation of the scientific libraries (numpy, scipy) make
+%% it a very appealing choice for both research and industry.
+
+Existing Python machine learning libraries  are often confined to specific domains
 (PyMVPA) or to concrete methods (PyBrain), and while several machine
 learning libraries and frameworks provide Python bindings, those
-interfaces are usually less python-friendly than those designed
+interfaces are usually less Python-friendly than those designed
 from the ground up with that language in mind.
 
 
- %% better word for pythonic
+--> NO FRAMEWORK, design by convention
+
+strives for easy of use by usng plain np arrays instead of specialized
+data structures and limiting framework code.
+
+%% numerical efficiency is achieved 
 
 This motivated us to develop scikits.learn, a module that implements a
 broad range of machine learning algorithms under a Pythonic
 interface. Most code is written in Python, althought some parts are
 written in C and Cython for performance.
+
+% std libraries like libsvm
 
 The API has been kept as simple as possible, making it easy to
 implement new algorithms and improve old ones. The large number of

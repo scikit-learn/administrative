@@ -13,27 +13,30 @@
 
 
 
-\ShortHeadings{Scikit-learn: machine learning in Python}{Pedregosa, Varoquaux et al.}
+\ShortHeadings{scikits.learn: machine learning in Python}{Pedregosa, Varoquaux et al.}
 \firstpageno{1}
 
 
 \begin{document}
 
-\title{Scikit-learn: machine learning in Python}
+\title{scikits.learn: machine learning in Python}
 
 
 \author{\name Fabian Pedregosa \email fabian.pedregosa@inria.fr \\
         \name Gael Varoquaux \email gael.varoquaux@normalesup.org  \\
         \name Alexandre Gramfort \email TODO (INRIA?)\\
         \name Vincent Michel  \email TODO \\
-       \addr Department of Statistics\\
-       University of Washington\\
-       Seattle, WA 98195-4322, USA
+       \addr  Neurospin, Bâtiment 145\\
+       point courier 156, CEA Saclay\\
+       91191 Gif sur Yvette – FRANCE
        \AND
        \name Olivier Grisel \email jordan@cs.berkeley.edu \\
        \addr Division of Computer Science and Department of Statistics\\
        University of California\\
-       Berkeley, CA 94720-1776, USA}
+       Berkeley, CA 94720-1776, USA
+       \AND
+       \name MANY MORE
+}
 
 
  %% David Cournapeau ?
@@ -47,11 +50,9 @@
 This paper describes scikits.learn, a Python module integrating
 various machine learning algorithms under a common interface. It
 offers a wide range of methods such as Support Vector Machines, linear
-models (l1 and l2), logistic regression, gaussian mixture models and
-more.
-
-We have succesfully used this software to real-world problems, some of
-them can be seen in the web page.
+models (L1, L2 penalized), logistic regression, gaussian mixture models and
+more. The large number of algorithms aleady implemented allows for
+easy comparison of accuracy and performance of various algorithms.
 
 scikits.learn is licensed under the simplified BSD license,
 encouraging its use in both free and commercial settings. Soruce code
@@ -68,25 +69,28 @@ and documentation can be downloaded from
 \section{Introduction}
 In the past years the Python programming language has experienced a
 huge increase as the language of choice for scientific computing. It's
-interactive nature, it's openness and the maturation of some of the
-scientific libraries (numpy, scipy) have all contributed to its
-success.
+interactive nature, it's openness and the maturation of the scientific
+libraries (numpy, scipy) make it a very appealing choice for both
+research and industry.
 
 However, machine learning libraries were confined to specific domains
 (PyMVPA) or to concrete methods (PyBrain), and while several machine
 learning libraries and frameworks provide Python bindings, those
-interfaces are usually less pythonic than those designed exclusively
-for the Python language.
+interfaces are usually less python-friendly than those designed
+from the ground up with that language in mind.
+
 
  %% better word for pythonic
 
 This motivated us to develop scikits.learn, a module that implements a
 broad range of machine learning algorithms under a Pythonic
-interface. Most code is written in Python, 
+interface. Most code is written in Python, althought some parts are
+written in C and Cython for performance.
 
-The modular design of scikits.learn makes it easy to implement new
-algorithms. The large number of algorithms aleady implemented allows
-for easy comparison of accuracy and performance of various algorithms.
+The API has been kept as simple as possible, making it easy to
+implement new algorithms and improve old ones. The large number of
+algorithms aleady implemented allows for easy comparison of accuracy
+and performance of various algorithms.
 
 
 \begin{center}
@@ -96,19 +100,18 @@ for easy comparison of accuracy and performance of various algorithms.
 
 \begin{tabular}{c c c c c c c}
 \hline\hline %inserts double horizontal lines 
-implements & scikits.learn & PyML & pybrain & PyMVPA &  MDP & Shogun \\ [0.5ex]
+implements & scikits.learn & mlpy & pybrain & PyMVPA &  MDP & Shogun \\ [0.5ex]
 \hline
-SVM        & + & ?   & ?       &  ?     & ?    & + \\
+Support Vector Machines        & + & ?   & ?       &  ?     & ?    & + \\
 Elastic Net & + & ?   & ?       &  ?     & ?    & - \\
-
+Gaussian Mixture Models  & + & ?   & ?       &  ?     & ?    & - \\
+Usable in commercial code &  + & -   & +       &  +     & +    & - \\
 \hline
 \end{tabular}
 \end{center}
 
 
-\section{Technology}
-
-Key technologies are numpy and cython. Numpy arrays are the choice for
+Key technologies include numpy and cython. Numpy arrays are the choice for
 representing data. Numpy is the universal format for representing
 arrays, all methods accept dense or sparse numpy arrays on entry, and
 it is also easy to convert and load numpy arrays from existing formats:
@@ -120,29 +123,66 @@ some of the benefits of Python, such as clear syntax and garbage
 collection.
 
 Second, Cython allows to easily access third-party libraries. libsvm
-and liblinear have been efficiently binded using Cython [...]. Bench ?
+and liblinear have been efficiently binded using Cython [...]. Special
+care has been taken in this step, effectively reducing the overhead of
+Python/C communication and yelding memory and speed effective bindings.
+
+
+|| BENCKMARK IMAGE ||
+
+
+Special care is taken in the algorithmic efficiency. Least Angle
+regression uses smart reordering of computations, and achieves 10x to
+2x performance improvements over the reference implementation, the R
+pakcage LARS. Also, fast KNN in high-dimensional spaces is achieved
+using the BallTree algorithm.
+
+|| BENCH ||
 
 
 \section{Code by implementation, not by inheritance}
 
-To have a uniform API, we adopt simple conventions and limit to a
-minimum the number of methods an object has to implement. In its
-simples form, a classifier is an object that implements a \emph{fit}
-and \emph{predict} method. Inheritance is not enforced.
+We adopt simple conventions and limit the number of methods an object
+has to implement. In its simples form, a classifier is an object that
+implements a \emph{fit} and \emph{predict} method. Inheritance is not
+enforced, and any classifier implementing these methods is able to
+plug in the scikits.learn framework.
 
-Filters implement \emph{transform}. Other imple
+
+More spcialized classifiers might implement other methods as
+well. Filters are objects that implement a \emph{transform} method,
+and serve for feature selection.
+
+
 
 \section{Community}
 
-Examples, contributions, github.
+Special care has been taken to encourage external contributions. First
+of, every significant function is documented and tested. In fact,
+Ohloh, the open source directory, describes the project as
+``Well-commented source code'' and ``Very large, active development
+team''.
 
-Ohloh describes the code as ``Well-commented source code'' and ``Very
-large, active development team''.
+Also, a precise instructions on how to contribute as well as coding
+guidelines make contributing code easy and efficient process. 28
+developers contributed code over the last twelve months.
+
+We have succesfully used this software to real-world problems. Some
+applications can be seen in the online gallery, featuring more than 60
+examples.
+
 
 \section{Drawnbacks}
-In contrast to the benefits of writing python code (dynamic,
-readable), we also have drawnbacks. As most algorithms are implemented
-in Python or Cython, reuse in other languages is difficult.
+While the choice of Python ensoures code reuse in the package, it also
+binds us to this language and limits its use outside the Python
+language.
 
+This effectively rules out code sharing with other major scientific
+platforms, such as MATLAB© and R.
+
+
+\section{Conclusions}
+
+bla bla.
 
 \end{document}

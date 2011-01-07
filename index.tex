@@ -5,12 +5,11 @@
 
 % Short headings should be running head and authors last names
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%                                   %%%%%%%
-%%%%%%% GAEL: YEAH THIS IS STILL HORRIBLE %%%%%%%
-%%%%%%%                                   %%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
 
+\newcommand{\GAEL}[1]{\textcolor{blue}{\uline{#1}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \ShortHeadings{scikits.learn: machine learning in Python}{Pedregosa, Varoquaux et al.}
@@ -115,6 +114,7 @@ implement new algorithms and improve old ones. The large number of
 algorithms aleady implemented allows for easy comparison of accuracy
 and performance of various algorithms.
 
+\section{Project vision}
 
 \begin{center}
 %% \caption{Overview of existing machine learning libraries}
@@ -131,6 +131,9 @@ Gaussian Mixture Models  & + & ?   & ?       &  ?     & ?    & - \\
 Usable in commercial code &  + & -   & +       &  +     & +    & - \\
 \hline
 \end{tabular}
+\GAEL{Plutot que des croix, mettre des timings sur des tests canoniques (à 
+définir, mais cela serait sur les donnees canoniques). Rajouter kNN, et
+ICA ou kmeans.}
 \end{center}
 
 
@@ -151,6 +154,8 @@ care has been taken in this step, effectively reducing the overhead of
 Python/C communication and yelding memory and speed effective bindings.
 
 
+\section{Computational efficiency tradeoffs}
+
 || BENCKMARK IMAGE ||
 
 
@@ -162,9 +167,10 @@ using the BallTree algorithm.
 
 || BENCH ||
 
+\section{Code design}
 
-\section{Code by implementation, not by inheritance}
-
+\paragraph{Code by interface, not by inheritance}
+%
 We adopt simple conventions and limit the number of methods an object
 has to implement. In its simples form, a classifier is an object that
 implements a \emph{fit} and \emph{predict} method. Inheritance is not
@@ -176,15 +182,32 @@ More spcialized classifiers might implement other methods as
 well. Filters are objects that implement a \emph{transform} method,
 and serve for feature selection.
 
+\GAEL{The word filter is often used in ML for specific kind of
+transformations. We should refrain from using it. In the scikit we now
+call these objects 'Transforms'. }
 
+\GAEL{Speak here about API for unsupervised problems: score, transform and
+predict can be useful to give an application-centric meaning to
+unsupervised models.}
 
-\section{Community}
+\paragraph{Model selection}
+
+\GAEL{Speak of the model-selection framework: GridSearch and Pipeline
+objects, but also the different 'XXXCV' objects, and why they are needed
+(for numerical performance)}
+
+\section{Community-driven development}
+
+\GAEL{Probably shouldn't be a full section, maybe in the conclusion, or
+in the vision}
 
 Special care has been taken to encourage external contributions. First
 of, every significant function is documented and tested. In fact,
 Ohloh, the open source directory, describes the project as
 ``Well-commented source code'' and ``Very large, active development
 team''.
+
+\GAEL{Speak of coding standards, and testing} 
 
 Also, a precise instructions on how to contribute as well as coding
 guidelines make contributing code easy and efficient process. 28
@@ -196,12 +219,15 @@ examples.
 
 
 \section{Drawnbacks}
+
+\GAEL{Probably shouldn't be a full section, maybe in the conclusion}
+
 While the choice of Python ensoures code reuse in the package, it also
 binds us to this language and limits its use outside the Python
 language.
 
 This effectively rules out code sharing with other major scientific
-platforms, such as MATLAB© and R.
+platforms, such as MATLAB©, Octace, and R.
 
 
 \section{Conclusions}

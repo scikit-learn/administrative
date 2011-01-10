@@ -9,6 +9,8 @@
 \usepackage[normalem]{ulem}
 
 \newcommand{\GAEL}[1]{\textcolor{blue}{\uline{#1}}}
+\newcommand{\FABIAN}[1]{\textcolor{red}{\uline{#1}}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -38,23 +40,19 @@
 }
 
 
- %% David Cournapeau ?
-
 \editor{?}
-
 
 \maketitle
 
 \begin{abstract}
 This paper describes \emph{scikits.learn}, a Python module integrating
 a wide range of state-of-the-art machine learning algorithms for
-medium-scale supervised and unsupervised problems.
+medium-scale supervised and unsupervised problems. 
 
-%% accesible for non-specialists: language, API, documentation
 
-Focuses on bringing machine learning to non-specialists using a
-general-purpose high-level language with special care on
-documentation and API.
+It focuses on bringing machine learning to non-specialists using a
+general-purpose high-level language with special care on documentation
+and clean API.
 
 The large number of algorithms aleady implemented allows for easy
 comparison of prediction and numerical performance of algorithms on a
@@ -68,6 +66,8 @@ and documentation can be downloaded from
 
 \end{abstract}
 
+but I don't think that when 
+
 \keywords{Python, supervised learning, unsupervised learning}
 
 
@@ -78,41 +78,33 @@ and documentation can be downloaded from
 
 \section{Introduction}
 In the past years the Python programming language has experienced a
-huge increase as the language of choice for scientific computing. 
+huge increase as the language of choice for scientific computing. Its
+high level, general-purpose, interactive nature and its maturing
+ecosystem of of scientific libraries (numpy, scipy, matplotlib) [CITE
+  MARS 2011 CiSE] make it a very appealing choice for both research
+and industry.
 
-It's an eappealing choice for both research and industry because it is
-high level, general-purpose, interactive and there is a maturing ecosystem of 
-of scientific libraries (numpy, scipy, matplotlib) [CITE MARS 2011 CiSE].
-
-%% It's high level, general-purpose, interactive nature, it's openness
-%% and the maturation of the scientific libraries (numpy, scipy) make
-%% it a very appealing choice for both research and industry.
-
-Existing Python machine learning libraries  are often confined to specific domains
-(PyMVPA) or to concrete methods (PyBrain), and while several machine
-learning libraries and frameworks provide Python bindings, those
-interfaces are usually less Python-friendly than those designed
-from the ground up with that language in mind.
-
-
---> NO FRAMEWORK, design by convention
-
-strives for easy of use by usng plain np arrays instead of specialized
-data structures and limiting framework code.
-
-%% numerical efficiency is achieved 
 
 This motivated us to develop scikits.learn, a module that implements a
 broad range of machine learning algorithms under a Pythonic
-interface. Most code is written in Python, althought some parts are
-written in C and Cython for performance.
+interface. While several other machine learning toolkits implement
+most of their code in C/C++ and provide Python bindings, we write as
+much code as possible in Python, and code performance-critical blocks
+in C or Cython. TODO: advantages of this. Too soon for this (maybe
+should go into Project vision)?
 
-% std libraries like libsvm
 
 The API has been kept as simple as possible, making it easy to
 implement new algorithms and improve old ones. The large number of
 algorithms aleady implemented allows for easy comparison of accuracy
 and performance of various algorithms.
+
+--> NO FRAMEWORK, design by convention
+
+strives for easy of use by using plain np arrays instead of specialized
+data structures and limiting framework code.
+
+% std libraries like libsvm
 
 \section{Project vision}
 
@@ -123,17 +115,20 @@ and performance of various algorithms.
 
 \begin{tabular}{c c c c c c c}
 \hline\hline %inserts double horizontal lines 
-implements & scikits.learn & mlpy & pybrain & PyMVPA &  MDP & Shogun \\ [0.5ex]
+implements & scikits.learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]
 \hline
 Support Vector Machines        & + & ?   & ?       &  ?     & ?    & + \\
 Elastic Net & + & ?   & ?       &  ?     & ?    & - \\
 Gaussian Mixture Models  & + & ?   & ?       &  ?     & ?    & - \\
+k-Nearest Neighbors & + & ?   & ?       &  ?     & ?    & - \\
+Independent Component Analysis & + & ?   & ?       &  ?     & ?    & - \\
 Usable in commercial code &  + & -   & +       &  +     & +    & - \\
 \hline
 \end{tabular}
 \GAEL{Plutot que des croix, mettre des timings sur des tests canoniques (à 
 définir, mais cela serait sur les donnees canoniques). Rajouter kNN, et
-ICA ou kmeans.}
+ICA ou kmeans.}\\
+\FABIAN{How to indent text to the left ?}
 \end{center}
 
 

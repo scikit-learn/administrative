@@ -27,7 +27,7 @@
         \name Gael Varoquaux \email gael.varoquaux@normalesup.org  \\
         \name Alexandre Gramfort \email TODO (INRIA?)\\
         \name Vincent Michel  \email TODO \\
-       \addr  Neurospin, Bâtiment 145\\
+       \addr  Neurospin, B\^atiment 145\\
        point courier 156, CEA Saclay\\
        91191 Gif sur Yvette – FRANCE
        \AND
@@ -49,10 +49,9 @@ This paper describes \emph{scikits.learn}, a Python module integrating
 a wide range of state-of-the-art machine learning algorithms for
 medium-scale supervised and unsupervised problems. 
 
-
-It focuses on bringing machine learning to non-specialists using a
-general-purpose high-level language with special care on documentation
-and clean API.
+This package focuses on bringing machine learning to non-specialists
+using a general-purpose high-level language with special care on
+extensive, clear documentation and consistent API.
 
 The large number of algorithms aleady implemented allows for easy
 comparison of prediction and numerical performance of algorithms on a
@@ -66,8 +65,6 @@ and documentation can be downloaded from
 
 \end{abstract}
 
-but I don't think that when 
-
 \keywords{Python, supervised learning, unsupervised learning}
 
 
@@ -79,19 +76,27 @@ but I don't think that when
 \section{Introduction}
 In the past years the Python programming language has experienced a
 huge increase as the language of choice for scientific computing. Its
-high level, general-purpose, interactive nature and its maturing
-ecosystem of of scientific libraries (numpy, scipy, matplotlib) [CITE
-  MARS 2011 CiSE] make it a very appealing choice for both research
-and industry.
+high level, interactive nature and its maturing ecosystem of
+scientific libraries (numpy, scipy, matplotlib) [CITE Mars 2011 CiSE]
+make it a very appealing choice for both research and industry.
 
+Also, due to its ubiquity, ease of use and its general-purpose
+(nature?) we have found it to be the perfect tool to bring machine
+learning to the non-specialist. In a context such as machine learning,
+where state-of-the art methods are routinely used by non-specialist,
+this vector of communication is priceless. [Rephrase]
 
 This motivated us to develop scikits.learn, a module that implements a
-broad range of machine learning algorithms under a Pythonic
-interface. While several other machine learning toolkits implement
-most of their code in C/C++ and provide Python bindings, we write as
-much code as possible in Python, and code performance-critical blocks
-in C or Cython. TODO: advantages of this. Too soon for this (maybe
-should go into Project vision)?
+broad range of machine learning algorithms under a common interface,
+with special emphasis on ease of use, documentation, and consistent API.
+
+
+our vision is
+to write as much code as possible in Python, and code
+performance-critical blocks in C or Cython.
+While several other machine learning toolkits implement
+most of their code in C/C++ and provide Python bindings, . TODO: advantages of
+this. Too soon for this (maybe should go into Project vision)?
 
 
 The API has been kept as simple as possible, making it easy to
@@ -131,6 +136,7 @@ ICA ou kmeans.}\\
 \FABIAN{How to indent text to the left ?}
 \end{center}
 
+An important aspect in the design of scikits.learn was ...
 
 Key technologies include numpy and cython. Numpy arrays are the choice for
 representing data. Numpy is the universal format for representing
@@ -148,6 +154,8 @@ and liblinear have been efficiently binded using Cython [...]. Special
 care has been taken in this step, effectively reducing the overhead of
 Python/C communication and yelding memory and speed effective bindings.
 
+%% what sets us apart from many other machine learning toolboxes, is
+%% that ...
 
 \section{Computational efficiency tradeoffs}
 
@@ -191,16 +199,24 @@ unsupervised models.}
 objects, but also the different 'XXXCV' objects, and why they are needed
 (for numerical performance)}
 
+Model selection is performed by GridSearchCV (Pipeline)
+
+However, some properties in the algorithms (warm restarts, path
+solutions, etc.) can, and should be used be used to speed up the
+process. To allow this The methods are model-dependent and are
+implemented in classes that append ``CV'', for cross-validation, to
+the model name (Lasso and LassoCV, etc.)
+
+
 \section{Community-driven development}
 
 \GAEL{Probably shouldn't be a full section, maybe in the conclusion, or
 in the vision}
 
 Special care has been taken to encourage external contributions. First
-of, every significant function is documented and tested. In fact,
-Ohloh, the open source directory, describes the project as
-``Well-commented source code'' and ``Very large, active development
-team''.
+of, every significant function is documented and tested.  Ohloh, the
+open source directory, describes the project as ``Well-commented
+source code'' and ``Very large, active development team''.
 
 \GAEL{Speak of coding standards, and testing} 
 
@@ -217,16 +233,17 @@ examples.
 
 \GAEL{Probably shouldn't be a full section, maybe in the conclusion}
 
+
+
+\section{Conclusions}
+
+bla bla.
+
 While the choice of Python ensoures code reuse in the package, it also
 binds us to this language and limits its use outside the Python
 language.
 
 This effectively rules out code sharing with other major scientific
 platforms, such as MATLAB©, Octace, and R.
-
-
-\section{Conclusions}
-
-bla bla.
 
 \end{document}

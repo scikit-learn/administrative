@@ -25,18 +25,18 @@
 
 \author{\name Fabian Pedregosa \email fabian.pedregosa@inria.fr \\
         \name Gael Varoquaux \email gael.varoquaux@normalesup.org  \\
-        \name Alexandre Gramfort \email TODO (INRIA?)\\
+        \name Alexandre Gramfort \email alexandre.gramfort@inria.fr \\
         \name Vincent Michel  \email TODO \\
-       \addr  Neurospin, B\^atiment 145\\
-       point courier 156, CEA Saclay\\
-       91191 Gif sur Yvette – FRANCE
-       \AND
-       \name Olivier Grisel \email jordan@cs.berkeley.edu \\
-       \addr Division of Computer Science and Department of Statistics\\
-       University of California\\
-       Berkeley, CA 94720-1776, USA
-       \AND
-       \name MANY MORE
+        \name Bertrand Thirion  \email bertrand.thirion@inria.fr \\
+        \addr  Neurospin, B\^atiment 145\\
+        point courier 156, CEA Saclay\\
+        91191 Gif sur Yvette – FRANCE
+        \AND
+        \name Olivier Grisel \email olivier.grisel@ensta.fr \\
+        \addr Nuxeo \\
+        \\
+        \AND
+        \name MANY MORE
 }
 
 
@@ -51,10 +51,6 @@ medium-scale supervised and unsupervised problems. This package
 focuses on bringing machine learning to non-specialists using a
 general-purpose high-level language with special care on extensive,
 clear documentation and consistent API.
-
-%% The large number of algorithms aleady implemented allows for easy
-%% comparison of prediction and numerical performance of algorithms on a
-%% given application.
 
 
 scikits.learn is licensed under the simplified BSD license,
@@ -80,7 +76,7 @@ scientific libraries (numpy, scipy, matplotlib) [CITE Mars 2011 CiSE]
 make it a very appealing choice for both research and industry.
 
 We have also found it to be a convenient vector of communication with
-the non-specialist.  Users can use an interactive, easy-to-learn,
+the non-specialist. Users can use an interactive, easy-to-learn,
 general-purpose language and have access to state-of-the-art
 scientific software.
 
@@ -94,21 +90,13 @@ broad range of machine learning algorithms under a common interface,
 with special emphasis on ease of use, documentation, and consistent
 API. MORE
 
+The large number of algorithms aleady implemented allows for easy
+comparison of prediction and numerical performance of algorithms on a
+given application.
 
 //
 
 //
-
-
-The API has been kept as simple as possible, making it easy to
-implement new algorithms and improve old ones. The large number of
-algorithms aleady implemented allows for easy comparison of accuracy
-and performance of various algorithms.
-
---> NO FRAMEWORK, design by convention
-
-strives for easy of use by using plain np arrays instead of specialized
-data structures and limiting framework code.
 
 % std libraries like libsvm
 
@@ -140,18 +128,19 @@ ICA ou kmeans.}\\
 
 An important aspect in the design of scikits.learn was to write as
 much code as possible in Python. This allow us to take maximum
-advantage of existing python scientific libraries such as numpy for
-fast array manipulation and scipy for numerical computations.
-
+advantage of existing python scientific libraries such as numpy and
+scipy.
 
 %% While several other machine learning toolkits implement most of their
 %% code in C/C++ and provide Python bindings. TODO: advantages of
 %% this. Too soon for this (maybe should go into Project vision)?
 
-Numpy arrays are the choice for representing data. Numpy is the
-universal format for representing arrays, all methods accept dense or
+Numpy is used for fast array manipulation, and provide the base data
+structure for representing information. All methods accept dense or
 sparse numpy arrays on entry, and it is also easy to convert and load
 numpy arrays from existing formats: .mat, csv, gzip, etc.
+
+
 
 The purpose of Cython is twofold. First, it allows to reach the
 performance of traditional compiled languages as C while retaining
@@ -165,6 +154,13 @@ Python/C communication and yielding memory and speed effective bindings.
 
 %% what sets us apart from many other machine learning toolboxes, is
 %% that ...
+
+
+--> NO FRAMEWORK, design by convention
+
+strives for easy of use by using plain np arrays instead of specialized
+data structures and limiting framework code.
+
 
 \section{Computational efficiency tradeoffs}
 
@@ -253,6 +249,6 @@ binds us to this language and limits its use outside the Python
 language.
 
 This effectively rules out code sharing with other major scientific
-platforms, such as MATLAB©, Octace, and R.
+platforms, such as MATLAB©, Octave, and R.
 
 \end{document}

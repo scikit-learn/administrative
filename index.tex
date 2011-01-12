@@ -47,15 +47,14 @@
 \begin{abstract}
 This paper describes \emph{scikits.learn}, a Python module integrating
 a wide range of state-of-the-art machine learning algorithms for
-medium-scale supervised and unsupervised problems. 
+medium-scale supervised and unsupervised problems. This package
+focuses on bringing machine learning to non-specialists using a
+general-purpose high-level language with special care on extensive,
+clear documentation and consistent API.
 
-This package focuses on bringing machine learning to non-specialists
-using a general-purpose high-level language with special care on
-extensive, clear documentation and consistent API.
-
-The large number of algorithms aleady implemented allows for easy
-comparison of prediction and numerical performance of algorithms on a
-given application.
+%% The large number of algorithms aleady implemented allows for easy
+%% comparison of prediction and numerical performance of algorithms on a
+%% given application.
 
 
 scikits.learn is licensed under the simplified BSD license,
@@ -80,23 +79,25 @@ high level, interactive nature and its maturing ecosystem of
 scientific libraries (numpy, scipy, matplotlib) [CITE Mars 2011 CiSE]
 make it a very appealing choice for both research and industry.
 
-Also, due to its ubiquity, ease of use and its general-purpose
-(nature?) we have found it to be the perfect tool to bring machine
-learning to the non-specialist. In a context such as machine learning,
-where state-of-the art methods are routinely used by non-specialist,
-this vector of communication is priceless. [Rephrase]
+We have also found it to be a convenient vector of communication with
+the non-specialist.  Users can use an interactive, easy-to-learn,
+general-purpose language and have access to state-of-the-art
+scientific software.
+
+In a context such as
+machine learning where state-of-the art methods are routinely used by
+non-specialist.
+
 
 This motivated us to develop scikits.learn, a module that implements a
 broad range of machine learning algorithms under a common interface,
-with special emphasis on ease of use, documentation, and consistent API.
+with special emphasis on ease of use, documentation, and consistent
+API. MORE
 
 
-our vision is
-to write as much code as possible in Python, and code
-performance-critical blocks in C or Cython.
-While several other machine learning toolkits implement
-most of their code in C/C++ and provide Python bindings, . TODO: advantages of
-this. Too soon for this (maybe should go into Project vision)?
+//
+
+//
 
 
 The API has been kept as simple as possible, making it easy to
@@ -120,13 +121,14 @@ data structures and limiting framework code.
 
 \begin{tabular}{c c c c c c c}
 \hline\hline %inserts double horizontal lines 
-implements & scikits.learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]
+ & scikits.learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]
 \hline
 Support Vector Machines        & + & ?   & ?       &  ?     & ?    & + \\
 Elastic Net & + & ?   & ?       &  ?     & ?    & - \\
 Gaussian Mixture Models  & + & ?   & ?       &  ?     & ?    & - \\
 k-Nearest Neighbors & + & ?   & ?       &  ?     & ?    & - \\
-Independent Component Analysis & + & ?   & ?       &  ?     & ?    & - \\
+Independent Component Analysis & + & ?  & ?  & ?  & ?  & - \\
+ANN  & - & ?  & ?  & ?  & ?  & - \\
 Usable in commercial code &  + & -   & +       &  +     & +    & - \\
 \hline
 \end{tabular}
@@ -136,13 +138,20 @@ ICA ou kmeans.}\\
 \FABIAN{How to indent text to the left ?}
 \end{center}
 
-An important aspect in the design of scikits.learn was ...
+An important aspect in the design of scikits.learn was to write as
+much code as possible in Python. This allow us to take maximum
+advantage of existing python scientific libraries such as numpy for
+fast array manipulation and scipy for numerical computations.
 
-Key technologies include numpy and cython. Numpy arrays are the choice for
-representing data. Numpy is the universal format for representing
-arrays, all methods accept dense or sparse numpy arrays on entry, and
-it is also easy to convert and load numpy arrays from existing formats:
-.mat, csv, gzip, etc.
+
+%% While several other machine learning toolkits implement most of their
+%% code in C/C++ and provide Python bindings. TODO: advantages of
+%% this. Too soon for this (maybe should go into Project vision)?
+
+Numpy arrays are the choice for representing data. Numpy is the
+universal format for representing arrays, all methods accept dense or
+sparse numpy arrays on entry, and it is also easy to convert and load
+numpy arrays from existing formats: .mat, csv, gzip, etc.
 
 The purpose of Cython is twofold. First, it allows to reach the
 performance of traditional compiled languages as C while retaining
@@ -152,7 +161,7 @@ collection.
 Second, Cython allows to easily access third-party libraries. libsvm
 and liblinear have been efficiently binded using Cython [...]. Special
 care has been taken in this step, effectively reducing the overhead of
-Python/C communication and yelding memory and speed effective bindings.
+Python/C communication and yielding memory and speed effective bindings.
 
 %% what sets us apart from many other machine learning toolboxes, is
 %% that ...
@@ -165,7 +174,7 @@ Python/C communication and yelding memory and speed effective bindings.
 Special care is taken in the algorithmic efficiency. Least Angle
 regression uses smart reordering of computations, and achieves 10x to
 2x performance improvements over the reference implementation, the R
-pakcage LARS. Also, fast KNN in high-dimensional spaces is achieved
+package LARS. Also, fast KNN in high-dimensional spaces is achieved
 using the BallTree algorithm.
 
 || BENCH ||

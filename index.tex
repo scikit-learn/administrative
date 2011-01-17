@@ -85,21 +85,11 @@ make it a very appealing choice for both research and industry.
 %% machine learning where state-of-the art methods are routinely used by
 %% non-specialist.
 
-This motivated us to develop scikits.learn, a module with the goal of
-providing an efficient implementation of state-of-the-art machine
-learning algorithms for the Python language. The project was started
-in January 2010, and after just one year of intensive development,
-more than 40 algorithms ranging from supervised to unsupervised
-learning have already been implemented, providing an unequal framework
-for easily comparison of different methods on a given application.
+This motivated us to develop a library with the goal of providing
+efficient implementations of state-of-the-art machine learning
+algorithms for the Python language. The resulting project, called
+scikits.learn ...
 
-
-We firmly believe that documentation is a key component of a software
-distribution, and as such scikits.learn includes a ~300 page user
-guide with narrative documentation, class reference, tutorial,
-installation instructions as well as a collection of more than 60
-examples, some of them featuring real-world applications of the
-library.
 
 
 The package has only numpy and scipy as strict dependences, which
@@ -109,40 +99,66 @@ part of major open source distributions such as Ubuntu, Debian, NetBSD
 or Macports and in commercial distributions such as ``Enthought Python
 Distribution'' thanks to its liberal BSD license.
 
-% std libraries like libsvm
 
-\section{Project vision}
-
-SOMETHING
-
-An important aspect in the design of scikits.learn was to make
-extensive use of existing python scientific libraries such as numpy
-and scipy. This allow for maximum code reuse while reducing deployment
-costs.
-
-Numpy is used for fast array manipulation, and provide the base data
-structure for representing information. This choice strives for easy
-of use by using plain np arrays instead of specialized data structures
-and limiting framework code.
+\section {Project vision}
 
 
-%% All methods accept dense or
-%% sparse numpy arrays on entry, and it is also easy to convert and load
-%% numpy arrays from existing formats: .mat, csv, gzip, etc.
+Today the project already contains more than 40 algorithms ranging
+from supervised to unsupervised learning, providing an unequal
+framework for easily comparison of different methods on a given
+application.
 
+Methods coded in Python but include standard libraries such as libsvm
+and liblinear.
+
+We firmly believe that documentation is a key component of a software
+distribution, and as such scikits.learn includes a ~300 page user
+guide with narrative documentation, class reference, tutorial,
+installation instructions as well as a collection of more than 60
+examples, some of them featuring real-world applications of the
+library.
+
+
+\section{Underlying technologies}
+
+%% Frankly, we just do the same thing as everybody else. Maybe a bit
+%% better.
+
+%% An important aspect in the design of scikits.learn is to make
+%% extensive use of python scientific libraries such as numpy and
+%% scipy. This allows for maximum code reuse while reducing deployment
+%% costs.
+
+
+scikits.learn builds upon a powerful stack of existing libraries.
+
+\paragraph{Numpy}
+
+Numpy provides the base data structure for representing
+information. This choice strives for easy of use by using plain numpy
+arrays instead of specialized data structures and limiting framework
+code.
+
+\paragraph{Scipy}
+
+TODO.
+
+\paragraph{Cython}
 
 The purpose of Cython is twofold. First, it allows to reach the
 performance of compiled languages as C while retaining some of the
-benefits of Python, as clear syntax and garbage collection.
-
-Second, Cython allows to easily access third-party libraries. libsvm
-and liblinear have been efficiently wrapped using Cython [...]. Special
+benefits of Python, as clear syntax and garbage collection. Second,
+Cython allows to easily access third-party libraries. libsvm and
+liblinear have been efficiently wrapped using Cython [...]. Special
 care has been taken in this step, effectively reducing the overhead of
-Python/C communication and yielding memory and speed effective bindings.
+Python/C communication and yielding memory and speed effective
+bindings.
 
 %% what sets us apart from many other machine learning toolboxes, is
 %% that ...
 
+
+\section{Computational efficiency tradeoffs}
 
 
 \begin{center}
@@ -163,14 +179,10 @@ ANN  & - & 0.0  & 0.0  & 0.0  & 0.0  & - \\
 Usable in commercial code &  0.0 & -   & 0.0       &  0.0     & 0.0    & - \\
 \hline
 \end{tabular}
-\GAEL{Plutot que des croix, mettre des timings sur des tests canoniques (à 
-définir, mais cela serait sur les donnees canoniques). Rajouter kNN, et
-ICA ou kmeans.}\\
 
 \end{center}
 
 
-\section{Computational efficiency tradeoffs}
 
 || BENCKMARK IMAGE ||
 
@@ -179,9 +191,7 @@ Special care has been take on algorithmic efficiency, producing
 algorithms that are ofter faster than the ones found in compiled
 libraries.
 
-
-
-Least Angle Regression, is implemented in pure Python and achieve 10x
+Least Angle Regression is implemented in pure Python and achieve 10x
 to 2x gain in performance over the reference implementation, the R
 package LARS, by smarter updates of coefficients [rephrase].
 
@@ -199,16 +209,20 @@ BallTree algorithm (C++).
 
 \paragraph{Code by interface, not by inheritance}
 %
+
 We adopt simple conventions and limit the number of methods an object
-has to implement. In its simples form, a classifier is an object that
-implements a \emph{fit} and \emph{predict} method. Inheritance is not
+has to implement. 
+
+Inheritance is not
 enforced, and any classifier implementing these methods is able to
 plug in the scikits.learn framework.
 
+%% In its simples form, a classifier is an object that
+%% implements a \emph{fit} and \emph{predict} method. 
 
-More spcialized classifiers might implement other methods as
-well. Filters are objects that implement a \emph{transform} method,
-and serve for feature selection.
+%% More spcialized classifiers might implement other methods as
+%% well. Filters are objects that implement a \emph{transform} method,
+%% and serve for feature selection.
 
 \GAEL{The word filter is often used in ML for specific kind of
 transformations. We should refrain from using it. In the scikit we now
@@ -223,6 +237,8 @@ unsupervised models.}
 \GAEL{Speak of the model-selection framework: GridSearch and Pipeline
 objects, but also the different 'XXXCV' objects, and why they are needed
 (for numerical performance)}
+
+Model selection as a central problem in machine learning.
 
 Model selection is performed by GridSearchCV (Pipeline)
 
@@ -265,5 +281,11 @@ language.
 
 This effectively rules out code sharing with other major scientific
 platforms, such as MATLAB©, Octave, and R.
+
+
+
+\section{References}
+
+
 
 \end{document}

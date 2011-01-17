@@ -26,7 +26,7 @@
 \author{\name Fabian Pedregosa \email fabian.pedregosa@inria.fr \\
         \name Gael Varoquaux \email gael.varoquaux@normalesup.org  \\
         \name Alexandre Gramfort \email alexandre.gramfort@inria.fr \\
-        \name Vincent Michel  \email TODO \\
+        \name Vincent Michel  \email vincent.michel@inria.fr \\
         \name Bertrand Thirion  \email bertrand.thirion@inria.fr \\
         \addr  Neurospin, B\^atiment 145\\
         point courier 156, CEA Saclay\\
@@ -49,8 +49,8 @@ This paper describes \emph{scikits.learn}, a Python module integrating
 a wide range of state-of-the-art machine learning algorithms for
 medium-scale supervised and unsupervised problems. This package
 focuses on bringing machine learning to non-specialists using a
-general-purpose high-level language with special care on extensive,
-clear documentation and consistent API.
+general-purpose high-level language with special care on ease of use,
+documentation and consistent API.
 
 
 scikits.learn is licensed under the simplified BSD license,
@@ -72,28 +72,33 @@ and documentation can be downloaded from
 In the past years the Python programming language has experienced a
 huge increase as the language of choice for scientific computing. Its
 high level, interactive nature and its maturing ecosystem of
-scientific libraries (numpy, scipy, matplotlib) [CITE Mars 2011 CiSE]
+scientific libraries (numpy, scipy, matplotlib) [Mars 2011 CiSE]
 make it a very appealing choice for both research and industry.
 
-We have also found it to be a convenient vector of communication with
-the non-specialist. Users can use an interactive, easy-to-learn,
-general-purpose language and have access to state-of-the-art
-scientific software.
 
-In a context such as
-machine learning where state-of-the art methods are routinely used by
-non-specialist.
+%% We have also found it to be a convenient vector of communication with
+%% the non-specialist. Users can use an interactive, easy-to-learn,
+%% general-purpose language and have access to state-of-the-art
+%% scientific software.
 
+%% In a context such as
+%% machine learning where state-of-the art methods are routinely used by
+%% non-specialist.
 
-This motivated us to develop scikits.learn, a module that implements a
-broad range of machine learning algorithms under a common interface,
-with special emphasis on ease of use, documentation, and consistent
-API. MORE
+This motivated us to develop scikits.learn, a module for machine
+learning in Python. Although still growing, the range of algorithms
+already implemented include supervised, unsupervised problems and
+allows for easy comparison of prediction and numerical performance of
+algorithms on a given application.
 
-The large number of algorithms aleady implemented allows for easy
-comparison of prediction and numerical performance of algorithms on a
-given application.
+Special emphasis has been given to ease of use and documentation. The
+documentation includes a 150+ page reference 
 
+The package only has
+numpy and scipy as strict dependence, which ensure it's availability
+in a rich set of platforms.
+
+The large number of algorithms aleady implemented
 //
 
 //
@@ -107,7 +112,7 @@ given application.
 
 % it would be nicer with checkbox images
 
-\begin{tabular}{c c c c c c c}
+\begin{tabular}{l c c c c c c}
 \hline\hline %inserts double horizontal lines 
  & scikits.learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]
 \hline
@@ -115,7 +120,7 @@ Support Vector Machines        & + & ?   & ?       &  ?     & ?    & + \\
 Elastic Net & + & ?   & ?       &  ?     & ?    & - \\
 Gaussian Mixture Models  & + & ?   & ?       &  ?     & ?    & - \\
 k-Nearest Neighbors & + & ?   & ?       &  ?     & ?    & - \\
-Independent Component Analysis & + & ?  & ?  & ?  & ?  & - \\
+Indep. Component Analysis & + & ?  & ?  & ?  & ?  & - \\
 ANN  & - & ?  & ?  & ?  & ?  & - \\
 Usable in commercial code &  + & -   & +       &  +     & +    & - \\
 \hline
@@ -123,13 +128,13 @@ Usable in commercial code &  + & -   & +       &  +     & +    & - \\
 \GAEL{Plutot que des croix, mettre des timings sur des tests canoniques (à 
 définir, mais cela serait sur les donnees canoniques). Rajouter kNN, et
 ICA ou kmeans.}\\
-\FABIAN{How to indent text to the left ?}
+
 \end{center}
 
-An important aspect in the design of scikits.learn was to write as
-much code as possible in Python. This allow us to take maximum
-advantage of existing python scientific libraries such as numpy and
-scipy.
+An important aspect in the design of scikits.learn was to make
+extensive use of existing python scientific libraries such as numpy
+and scipy. This allow for maximum code reuse 
+
 
 %% While several other machine learning toolkits implement most of their
 %% code in C/C++ and provide Python bindings. TODO: advantages of
@@ -167,11 +172,23 @@ data structures and limiting framework code.
 || BENCKMARK IMAGE ||
 
 
-Special care is taken in the algorithmic efficiency. Least Angle
-regression uses smart reordering of computations, and achieves 10x to
-2x performance improvements over the reference implementation, the R
-package LARS. Also, fast KNN in high-dimensional spaces is achieved
-using the BallTree algorithm.
+Special care has also been take on algorithmic efficiency, producing
+algorithms that are ofter faster than the ones found in compiled
+libraries.
+
+
+
+Least Angle Regression, is implemented in pure Python and achieve 10x
+to 2x gain in performance over the reference implementation, the R
+package LARS, by smarter updates of coefficients [rephrase].
+
+
+The elasticnet algorithm, by coordinate descent, coded in Cython
+achieves the same order of performance as the highly optimized Fortran
+version elasticnet.
+
+Also, fast KNN in high-dimensional spaces is achieved using the
+BallTree algorithm (C++).
 
 || BENCH ||
 
@@ -232,11 +249,6 @@ developers contributed code over the last twelve months.
 We have succesfully used this software to real-world problems. Some
 applications can be seen in the online gallery, featuring more than 60
 examples.
-
-
-\section{Drawnbacks}
-
-\GAEL{Probably shouldn't be a full section, maybe in the conclusion}
 
 
 

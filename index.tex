@@ -93,6 +93,7 @@ more than 40 algorithms ranging from supervised to unsupervised
 learning have already been implemented, providing an unequal framework
 for easily comparison of different methods on a given application.
 
+
 We firmly believe that documentation is the single most important part
 of a software distribution, and as such scikits.learn includes a ~300
 page user guide with narrative documentation, class reference,
@@ -103,14 +104,46 @@ the library.
 
 The package has only numpy and scipy as strict dependences, which
 ensure it's availability in a rich set of platforms. scikits.learn
-runs on Windows and POSIX platforms, such as Linux, NetBSD and Mac OS
-X. Furthermore, it is distributed as part of major open source
-distributions such as Ubuntu, Debian, NetBSD or Macports and in
-commercial distributions such as ``Enthought Python Distribution''.
+runs on Windows and POSIX platforms. Furthermore, it is distributed as
+part of major open source distributions such as Ubuntu, Debian, NetBSD
+or Macports and in commercial distributions such as ``Enthought Python
+Distribution'' thanks to its liberal BSD license.
 
 % std libraries like libsvm
 
 \section{Project vision}
+
+SOMETHING
+
+An important aspect in the design of scikits.learn was to make
+extensive use of existing python scientific libraries such as numpy
+and scipy. This allow for maximum code reuse and reducing the
+deployment cost of library availability in the host platform.
+
+Numpy is used for fast array manipulation, and provide the base data
+structure for representing information. This choice strives for easy
+of use by using plain np arrays instead of specialized data structures
+and limiting framework code.
+
+
+%% All methods accept dense or
+%% sparse numpy arrays on entry, and it is also easy to convert and load
+%% numpy arrays from existing formats: .mat, csv, gzip, etc.
+
+
+The purpose of Cython is twofold. First, it allows to reach the
+performance of compiled languages as C while retaining some of the
+benefits of Python, as clear syntax and garbage collection.
+
+Second, Cython allows to easily access third-party libraries. libsvm
+and liblinear have been efficiently wrapped using Cython [...]. Special
+care has been taken in this step, effectively reducing the overhead of
+Python/C communication and yielding memory and speed effective bindings.
+
+%% what sets us apart from many other machine learning toolboxes, is
+%% that ...
+
+
 
 \begin{center}
 %% \caption{Overview of existing machine learning libraries}
@@ -135,39 +168,6 @@ définir, mais cela serait sur les donnees canoniques). Rajouter kNN, et
 ICA ou kmeans.}\\
 
 \end{center}
-
-An important aspect in the design of scikits.learn was to make
-extensive use of existing python scientific libraries such as numpy
-and scipy. This allow for maximum code reuse and reducing the
-deployment cost of library availability in the host platform.
-
-%% While several other machine learning toolkits implement most of their
-%% code in C/C++ and provide Python bindings. TODO: advantages of
-%% this. Too soon for this (maybe should go into Project vision)?
-
-Numpy is used for fast array manipulation, and provide the base data
-structure for representing information. 
-
-All methods accept dense or
-sparse numpy arrays on entry, and it is also easy to convert and load
-numpy arrays from existing formats: .mat, csv, gzip, etc.
-
-
-The purpose of Cython is twofold. First, it allows to reach the
-performance of compiled languages as C while retaining some of the
-benefits of Python, such as clear syntax and garbage collection.
-
-Second, Cython allows to easily access third-party libraries. libsvm
-and liblinear have been efficiently wrapped using Cython [...]. Special
-care has been taken in this step, effectively reducing the overhead of
-Python/C communication and yielding memory and speed effective bindings.
-
-%% what sets us apart from many other machine learning toolboxes, is
-%% that ...
-
-
-strives for easy of use by using plain np arrays instead of specialized
-data structures and limiting framework code.
 
 
 \section{Computational efficiency tradeoffs}

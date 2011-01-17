@@ -146,7 +146,8 @@ TODO.
 \paragraph{Cython}
 
 The purpose of Cython is twofold. First, it allows to reach the
-performance of compiled languages as C while retaining some of the
+performance of compiled languages as C for algorithms that cannot be
+coded efficiently using Numpy/Scipy while retaining some of the
 benefits of Python, as clear syntax and garbage collection. Second,
 Cython allows to easily access third-party libraries. libsvm and
 liblinear have been efficiently wrapped using Cython [...]. Special
@@ -234,19 +235,23 @@ unsupervised models.}
 
 \paragraph{Model selection}
 
-\GAEL{Speak of the model-selection framework: GridSearch and Pipeline
-objects, but also the different 'XXXCV' objects, and why they are needed
-(for numerical performance)}
+A unified framework for model selection is tricky, as ideally the
+problem should be solved for all models but in practice
+method-specific considerations must be taken for efficiency.
 
-Model selection as a central problem in machine learning.
 
-Model selection is performed by GridSearchCV (Pipeline)
+Our solution is based on one side on having an object GridSearch that
+[...] 
 
-However, some properties in the algorithms (warm restarts, path
-solutions, etc.) can, and should be used be used to speed up the
-process. To allow this The methods are model-dependent and are
-implemented in classes that append ``CV'', for cross-validation, to
-the model name (Lasso and LassoCV, etc.)
+However, this does not allow the use of model-specific information to
+cross validate. To help this, some algorithms have a cross-val
+counterpart.
+
+%% However, some properties in the algorithms (warm restarts, path
+%% solutions, etc.) can, and should be used be used to speed up the
+%% process. To allow this The methods are model-dependent and are
+%% implemented in classes that append ``CV'', for cross-validation, to
+%% the model name (Lasso and LassoCV, etc.)
 
 
 \section{Community-driven development}

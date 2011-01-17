@@ -85,23 +85,28 @@ make it a very appealing choice for both research and industry.
 %% machine learning where state-of-the art methods are routinely used by
 %% non-specialist.
 
-This motivated us to develop scikits.learn, a module for machine
-learning in Python. Although still growing, the range of algorithms
-already implemented include supervised, unsupervised problems and
-allows for easy comparison of prediction and numerical performance of
-algorithms on a given application.
+This motivated us to develop scikits.learn, a module with the goal of
+providing an efficient implementation of state-of-the-art machine
+learning algorithms for the Python language. The project was started
+in January 2010, and after just one year of intensive development,
+more than 40 algorithms ranging from supervised to unsupervised
+learning have already been implemented, providing an unequal framework
+for easily comparison of different methods on a given application.
 
-Special emphasis has been given to ease of use and documentation. The
-documentation includes a 150+ page reference 
+We firmly believe that documentation is the single most important part
+of a software distribution, and as such scikits.learn includes a ~300
+page user guide with narrative documentation, class reference,
+tutorial, installation instructions as well as a collection of more
+than 60 examples, some of them featuring real-world applications of
+the library.
 
-The package only has
-numpy and scipy as strict dependence, which ensure it's availability
-in a rich set of platforms.
 
-The large number of algorithms aleady implemented
-//
-
-//
+The package has only numpy and scipy as strict dependences, which
+ensure it's availability in a rich set of platforms. scikits.learn
+runs on Windows and POSIX platforms, such as Linux, NetBSD and Mac OS
+X. Furthermore, it is distributed as part of major open source
+distributions such as Ubuntu, Debian, NetBSD or Macports and in
+commercial distributions such as ``Enthought Python Distribution''.
 
 % std libraries like libsvm
 
@@ -116,13 +121,13 @@ The large number of algorithms aleady implemented
 \hline\hline %inserts double horizontal lines 
  & scikits.learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]
 \hline
-Support Vector Machines        & + & ?   & ?       &  ?     & ?    & + \\
-Elastic Net & + & ?   & ?       &  ?     & ?    & - \\
-Gaussian Mixture Models  & + & ?   & ?       &  ?     & ?    & - \\
-k-Nearest Neighbors & + & ?   & ?       &  ?     & ?    & - \\
-Indep. Component Analysis & + & ?  & ?  & ?  & ?  & - \\
-ANN  & - & ?  & ?  & ?  & ?  & - \\
-Usable in commercial code &  + & -   & +       &  +     & +    & - \\
+Support Vector Machines        & 0.0 & 0.0   & 0.0       &  0.0     & 0.0    & 0.0 \\
+Elastic Net & 0.0 & 0.0   & 0.0       &  0.0     & 0.0    & - \\
+Gaussian Mixture Models  & 0.0 & 0.0   & 0.0       &  0.0     & 0.0    & - \\
+k-Nearest Neighbors & 0.0 & 0.0   & 0.0       &  0.0     & 0.0    & - \\
+Indep. Component Analysis & 0.0 & 0.0  & 0.0  & 0.0  & 0.0  & - \\
+ANN  & - & 0.0  & 0.0  & 0.0  & 0.0  & - \\
+Usable in commercial code &  0.0 & -   & 0.0       &  0.0     & 0.0    & - \\
 \hline
 \end{tabular}
 \GAEL{Plutot que des croix, mettre des timings sur des tests canoniques (à 
@@ -133,35 +138,33 @@ ICA ou kmeans.}\\
 
 An important aspect in the design of scikits.learn was to make
 extensive use of existing python scientific libraries such as numpy
-and scipy. This allow for maximum code reuse 
-
+and scipy. This allow for maximum code reuse and reducing the
+deployment cost of library availability in the host platform.
 
 %% While several other machine learning toolkits implement most of their
 %% code in C/C++ and provide Python bindings. TODO: advantages of
 %% this. Too soon for this (maybe should go into Project vision)?
 
 Numpy is used for fast array manipulation, and provide the base data
-structure for representing information. All methods accept dense or
+structure for representing information. 
+
+All methods accept dense or
 sparse numpy arrays on entry, and it is also easy to convert and load
 numpy arrays from existing formats: .mat, csv, gzip, etc.
 
 
-
 The purpose of Cython is twofold. First, it allows to reach the
-performance of traditional compiled languages as C while retaining
-some of the benefits of Python, such as clear syntax and garbage
-collection.
+performance of compiled languages as C while retaining some of the
+benefits of Python, such as clear syntax and garbage collection.
 
 Second, Cython allows to easily access third-party libraries. libsvm
-and liblinear have been efficiently binded using Cython [...]. Special
+and liblinear have been efficiently wrapped using Cython [...]. Special
 care has been taken in this step, effectively reducing the overhead of
 Python/C communication and yielding memory and speed effective bindings.
 
 %% what sets us apart from many other machine learning toolboxes, is
 %% that ...
 
-
---> NO FRAMEWORK, design by convention
 
 strives for easy of use by using plain np arrays instead of specialized
 data structures and limiting framework code.
@@ -172,7 +175,7 @@ data structures and limiting framework code.
 || BENCKMARK IMAGE ||
 
 
-Special care has also been take on algorithmic efficiency, producing
+Special care has been take on algorithmic efficiency, producing
 algorithms that are ofter faster than the ones found in compiled
 libraries.
 

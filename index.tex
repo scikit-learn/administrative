@@ -235,9 +235,13 @@ unsupervised models.}
 
 \paragraph{Model selection}
 
-A unified framework for model selection is tricky, as ideally the
-problem should be solved for all models but in practice
-method-specific considerations must be taken for efficiency.
+A unified approach for model selection is needed to tune parameters in
+a method-independent manner. This way we can abstract from the method
+and provide a generalized interface for model selection.
+
+
+However, in practice method-specific considerations must be taken for
+efficiency.
 
 
 Our solution is based on one side on having an object GridSearch that

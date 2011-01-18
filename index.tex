@@ -183,10 +183,7 @@ Usable in commercial code &  0.0 & -   & 0.0       &  0.0     & 0.0    & - \\
 
 \end{center}
 
-
-
 || BENCKMARK IMAGE ||
-
 
 Special care has been take on algorithmic efficiency, producing
 algorithms that are ofter faster than the ones found in compiled
@@ -214,9 +211,8 @@ BallTree algorithm (C++).
 We adopt simple conventions and limit the number of methods an object
 has to implement. 
 
-Inheritance is not
-enforced, and any classifier implementing these methods is able to
-plug in the scikits.learn framework.
+Inheritance is not enforced, and any classifier implementing these
+methods is able to plug in the scikits.learn framework.
 
 %% In its simples form, a classifier is an object that
 %% implements a \emph{fit} and \emph{predict} method. 
@@ -236,7 +232,12 @@ unsupervised models.}
 \paragraph{Model selection}
 
 A unified approach for model selection is needed to tune parameters in
-a method-independent manner. This way we can abstract from the method
+a method-independent manner. In scikits.learn we solved this problem
+is with an object that takes as input a classifier, and a set of
+possible parameters.
+
+
+This way we can abstract from the method
 and provide a generalized interface for model selection.
 
 

@@ -45,11 +45,11 @@
 \maketitle
 
 \begin{abstract}
-This paper describes \emph{scikits.learn}, a Python module integrating
+\emph{Scikits.learn} is a Python module integrating
 a wide range of state-of-the-art machine learning algorithms for
 medium-scale supervised and unsupervised problems. This package
 focuses on bringing machine learning to non-specialists using a
-general-purpose high-level language with special care on ease of use,
+general-purpose high-level language with a special care on ease of use,
 documentation and consistent API.
 
 
@@ -90,14 +90,14 @@ efficient implementations of state-of-the-art machine learning
 algorithms for the Python language. The resulting project, called
 scikits.learn [is still under active development but] already offers a
 wide range of machine learning of algorithms, including but not
-limited to, SVMs kNN GMM [...]
+limited to, SVMs kNN GMM [...] \GAEL{These are models, not algorithms :)} 
 
 
 
-The package has only numpy and scipy as strict dependences, which
-ensure it's availability in a rich set of platforms. scikits.learn
-runs on Windows and POSIX platforms. Furthermore, it is distributed as
-part of major open source distributions such as Ubuntu, Debian, NetBSD
+The package has only numpy and scipy as strict dependences, which ensure
+it's availability in a rich set of platforms. scikits.learn runs on
+Windows and POSIX platforms. Furthermore, it is distributed as part of
+major open source distributions such as Ubuntu, Debian, Mandriva, NetBSD
 or Macports and in commercial distributions such as ``Enthought Python
 Distribution'' thanks to its liberal BSD license.
 
@@ -141,7 +141,9 @@ information. This choice strives for easy of use by using plain numpy
 arrays instead of specialized data structures and limiting framework
 code.
 
-\paragraph{Scipy}
+\paragraph{Scipy} \GAEL{Survey what part of scipy we use: linear algebra,
+graphs (sparse matrices), basics statistical tools. Anything else? Grep
+will tell us}
 
 TODO.
 

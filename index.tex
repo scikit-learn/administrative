@@ -88,37 +88,18 @@ make it a very appealing choice for both research and industry.
 This motivated us to develop a library with the goal of providing
 efficient implementations of state-of-the-art machine learning
 algorithms for the Python language. The resulting project, called
-scikits.learn [is still under active development but] already offers a
-wide range of machine learning of algorithms, including but not
-limited to, SVMs kNN GMM [...] \GAEL{These are models, not algorithms :)} 
-
-
+scikits.learn aims to provide a reference implementation of some of
+the best known machine learning algorithms, while maintaining an
+easy-to-use interface that integrates nicely into the Python language
+\FABIAN{A better way to say this?}.
 
 The package has only numpy and scipy as strict dependences, which ensure
 it's availability in a rich set of platforms. scikits.learn runs on
 Windows and POSIX platforms. Furthermore, it is distributed as part of
 major open source distributions such as Ubuntu, Debian, Mandriva, NetBSD
 or Macports and in commercial distributions such as ``Enthought Python
-Distribution'' thanks to its liberal BSD license.
+Distribution'' thanks to its very liberal BSD license.
 
-
-\section {Project vision}
-
-
-Today the project already contains more than 40 algorithms ranging
-from supervised to unsupervised learning, providing an unequal
-framework for easily comparison of different methods on a given
-application.
-
-Methods coded in Python but include standard libraries such as libsvm
-and liblinear.
-
-We firmly believe that documentation is a key component of a software
-distribution, and as such scikits.learn includes a ~300 page user
-guide with narrative documentation, class reference, tutorial,
-installation instructions as well as a collection of more than 60
-examples, some of them featuring real-world applications of the
-library.
 
 
 \section{Underlying technologies}
@@ -161,6 +142,41 @@ bindings.
 
 %% what sets us apart from many other machine learning toolboxes, is
 %% that ...
+
+
+\section {Project vision}
+
+In order to maintain the source code comprehensible and easily
+extensible, as much as possible is coded in the Python language. This
+forces us to take special care on algorithmic efficiency, and as such
+we have produced algorithms that are often faster than the ones found
+in compiled libraries. \FABIAN{Need an example to corroborate this !!!!}
+
+However, we also incorporate some C/C++ libraries that are steadily
+available, such as libsvm and liblinear. These libraries have been
+carefully binded using Cython, and we have been capable of eliminating
+most of the C/Python communication overhead from which most bindings
+suffered. We also provide bindings that are both capable of working
+with dense and sparse matrices, something not implemented in any other
+Python library (AFAIK).
+
+[BENCH IMAGE SVM]
+
+Today the project already contains more than 40 algorithms ranging
+from supervised to unsupervised learning, providing an unequal
+framework for easily comparison of different methods on a given
+application.
+
+
+We firmly believe that documentation is a key component of a software
+distribution, and as such scikits.learn includes a ~300 page user
+guide with narrative documentation, class reference, tutorial,
+installation instructions as well as a collection of more than 60
+examples, some of them featuring real-world applications of the
+library.
+
+[TEST COVERAGE]
+
 
 
 \section{Computational efficiency tradeoffs}

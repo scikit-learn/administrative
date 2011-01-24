@@ -90,8 +90,8 @@ efficient implementations of state-of-the-art machine learning
 algorithms for the Python language. The resulting project, called
 scikits.learn aims to provide a reference implementation of some of
 the best known machine learning algorithms, while maintaining an
-easy-to-use interface that integrates nicely into the Python language
-\FABIAN{A better way to say this?}.
+easy-to-use interface tightly integrated in the Python language.
+
 
 The package has only numpy and scipy as strict dependences, which ensure
 it's availability in a rich set of platforms. scikits.learn runs on
@@ -104,14 +104,10 @@ Distribution'' thanks to its very liberal BSD license.
 
 \section{Underlying technologies}
 
-%% Frankly, we just do the same thing as everybody else. Maybe a bit
-%% better.
-
 %% An important aspect in the design of scikits.learn is to make
 %% extensive use of python scientific libraries such as numpy and
 %% scipy. This allows for maximum code reuse while reducing deployment
 %% costs.
-
 
 scikits.learn builds upon a powerful stack of existing libraries.
 
@@ -122,11 +118,11 @@ information. This choice strives for easy of use by using plain numpy
 arrays instead of specialized data structures and limiting framework
 code.
 
-\paragraph{Scipy} \GAEL{Survey what part of scipy we use: linear algebra,
-graphs (sparse matrices), basics statistical tools. Anything else? Grep
-will tell us}
+\paragraph{Scipy} 
 
-TODO.
+Scipy provides us with the efficient algorithms for linear algebra,
+sparse matrix structure, special functions and basic statistical
+functions.
 
 \paragraph{Cython}
 
@@ -156,14 +152,7 @@ communication overhead present in other bindings. These bindings are
 also unique in the sense that they are capapable of working natively
 (without conversion) with both dense and sparse arrays.
 
-[BENCH IMAGE SVM]
 
-We firmly believe that documentation is a key component of a software
-distribution, and as such scikits.learn includes a ~300 page user
-guide with narrative documentation, class reference, tutorial,
-installation instructions as well as a collection of more than 60
-examples, some of them featuring real-world applications of the
-library.
 
 [TEST COVERAGE]
 
@@ -239,6 +228,14 @@ developers contributed code over the last twelve months.
 We have succesfully used this software to real-world problems. Some
 applications can be seen in the online gallery, featuring more than 60
 examples.
+
+
+We firmly believe that documentation is a key component of a software
+distribution, and as such scikits.learn includes a ~300 page user
+guide with narrative documentation, class reference, tutorial,
+installation instructions as well as a collection of more than 60
+examples, some of them featuring real-world applications of the
+library.
 
 
 \section{Computational efficiency tradeoffs}

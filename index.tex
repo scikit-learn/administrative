@@ -133,6 +133,8 @@ syntax and garbage collection. Second, Cython allows to easily access
 third-party libraries, effectively eliminating most of the boilerplate
 code associated with Python/C extensions.
 
+\paragraph{Matplotlib ?}
+
 %% what sets us apart from many other machine learning toolboxes, is
 %% that ...
 
@@ -141,20 +143,21 @@ code associated with Python/C extensions.
 
 In order to maintain the source code easily comprehensible and
 extensible, as much as possible is coded in the Python language. 
+
 We take special care on algorithmic efficiency, and as such
 have produced algorithms that compete with 
 compiled libraries. \FABIAN{Need an example to corroborate this !!!!}
 
-However, because of their high quality and compatible license, we also
-incorporate C/C++ libraries libsvm and liblinear. These libraries have
-been carefully binded using Cython, eliminating most of the C/Python
-communication overhead present in other bindings. These bindings are
-also unique in the sense that they are capapable of working natively
-(without conversion) with both dense and sparse arrays.
 
+However,
+because of their high quality and compatible license, we also
+incorporate the C/C++ libraries LibSVM and LibLinear. These libraries
+have been carefully binded using Cython, eliminating most of the
+C/Python communication overhead present in other bindings. These
+bindings are also unique in the sense that they are capapable of
+working natively (without conversion) with both dense and sparse
+arrays.
 
-
-[TEST COVERAGE]
 
 
 \paragraph{Code by interface, not by inheritance}

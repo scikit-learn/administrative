@@ -132,13 +132,10 @@ TODO.
 
 The purpose of Cython is twofold. First, it allows to reach the
 performance of compiled languages as C for algorithms that cannot be
-coded efficiently using Numpy/Scipy while retaining some of the
-benefits of Python, as clear syntax and garbage collection. Second,
-Cython allows to easily access third-party libraries. libsvm and
-liblinear have been efficiently wrapped using Cython [...]. Special
-care has been taken in this step, effectively reducing the overhead of
-Python/C communication and yielding memory and speed effective
-bindings.
+coded efficiently using Numpy/Scipy while retaining a Python-like
+syntax and garbage collection. Second, Cython allows to easily access
+third-party libraries, effectively eliminating most of the boilerplate
+code associated with Python/C extensions.
 
 %% what sets us apart from many other machine learning toolboxes, is
 %% that ...
@@ -152,21 +149,14 @@ forces us to take special care on algorithmic efficiency, and as such
 we have produced algorithms that are often faster than the ones found
 in compiled libraries. \FABIAN{Need an example to corroborate this !!!!}
 
-However, we also incorporate some C/C++ libraries that are steadily
-available, such as libsvm and liblinear. These libraries have been
-carefully binded using Cython, and we have been capable of eliminating
-most of the C/Python communication overhead from which most bindings
-suffered. We also provide bindings that are both capable of working
-with dense and sparse matrices, something not implemented in any other
-Python library (AFAIK).
+However, because of their high quality and compatible license, we also
+incorporate C/C++ libraries libsvm and liblinear. These libraries have
+been carefully binded using Cython, eliminating most of the C/Python
+communication overhead present in other bindings. These bindings are
+also unique in the sense that they are capapable of working natively
+(without conversion) with both dense and sparse arrays.
 
 [BENCH IMAGE SVM]
-
-Today the project already contains more than 40 algorithms ranging
-from supervised to unsupervised learning, providing an unequal
-framework for easily comparison of different methods on a given
-application.
-
 
 We firmly believe that documentation is a key component of a software
 distribution, and as such scikits.learn includes a ~300 page user
@@ -177,6 +167,78 @@ library.
 
 [TEST COVERAGE]
 
+
+\paragraph{Code by interface, not by inheritance}
+%
+
+We adopt simple conventions and limit the number of methods an object
+has to implement. 
+
+Inheritance is not enforced, and any classifier implementing these
+methods is able to plug in the scikits.learn framework.
+
+%% In its simples form, a classifier is an object that
+%% implements a \emph{fit} and \emph{predict} method. 
+
+%% More spcialized classifiers might implement other methods as
+%% well. Filters are objects that implement a \emph{transform} method,
+%% and serve for feature selection.
+
+\GAEL{The word filter is often used in ML for specific kind of
+transformations. We should refrain from using it. In the scikit we now
+call these objects 'Transforms'. }
+
+\GAEL{Speak here about API for unsupervised problems: score, transform and
+predict can be useful to give an application-centric meaning to
+unsupervised models.}
+
+
+A unified approach for model selection is needed to tune parameters in
+a method-independent manner. In scikits.learn we solved this problem
+is with an object that takes as input a classifier, and a set of
+possible parameters.
+
+
+This way we can abstract from the method
+and provide a generalized interface for model selection.
+
+
+However, in practice method-specific considerations must be taken for
+efficiency.
+
+
+Our solution is based on one side on having an object GridSearch that
+[...] 
+
+However, this does not allow the use of model-specific information to
+cross validate. To help this, some algorithms have a cross-val
+counterpart.
+
+%% However, some properties in the algorithms (warm restarts, path
+%% solutions, etc.) can, and should be used be used to speed up the
+%% process. To allow this The methods are model-dependent and are
+%% implemented in classes that append ``CV'', for cross-validation, to
+%% the model name (Lasso and LassoCV, etc.)
+
+
+\paragraph{Community-driven development}
+
+To ensure the project continuity ...
+
+Special care has been taken to encourage external contributions. First
+of, every significant function is documented and tested.  Ohloh, the
+open source directory, describes the project as ``Well-commented
+source code'' and ``Very large, active development team''.
+
+\GAEL{Speak of coding standards, and testing} 
+
+Also, a precise instructions on how to contribute as well as coding
+guidelines make contributing code easy and efficient process. 28
+developers contributed code over the last twelve months.
+
+We have succesfully used this software to real-world problems. Some
+applications can be seen in the online gallery, featuring more than 60
+examples.
 
 
 \section{Computational efficiency tradeoffs}
@@ -225,85 +287,17 @@ BallTree algorithm (C++).
 
 \section{Code design}
 
-\paragraph{Code by interface, not by inheritance}
-%
-
-We adopt simple conventions and limit the number of methods an object
-has to implement. 
-
-Inheritance is not enforced, and any classifier implementing these
-methods is able to plug in the scikits.learn framework.
-
-%% In its simples form, a classifier is an object that
-%% implements a \emph{fit} and \emph{predict} method. 
-
-%% More spcialized classifiers might implement other methods as
-%% well. Filters are objects that implement a \emph{transform} method,
-%% and serve for feature selection.
-
-\GAEL{The word filter is often used in ML for specific kind of
-transformations. We should refrain from using it. In the scikit we now
-call these objects 'Transforms'. }
-
-\GAEL{Speak here about API for unsupervised problems: score, transform and
-predict can be useful to give an application-centric meaning to
-unsupervised models.}
-
-\paragraph{Model selection}
-
-A unified approach for model selection is needed to tune parameters in
-a method-independent manner. In scikits.learn we solved this problem
-is with an object that takes as input a classifier, and a set of
-possible parameters.
-
-
-This way we can abstract from the method
-and provide a generalized interface for model selection.
-
-
-However, in practice method-specific considerations must be taken for
-efficiency.
-
-
-Our solution is based on one side on having an object GridSearch that
-[...] 
-
-However, this does not allow the use of model-specific information to
-cross validate. To help this, some algorithms have a cross-val
-counterpart.
-
-%% However, some properties in the algorithms (warm restarts, path
-%% solutions, etc.) can, and should be used be used to speed up the
-%% process. To allow this The methods are model-dependent and are
-%% implemented in classes that append ``CV'', for cross-validation, to
-%% the model name (Lasso and LassoCV, etc.)
-
-
-\section{Community-driven development}
-
-\GAEL{Probably shouldn't be a full section, maybe in the conclusion, or
-in the vision}
-
-Special care has been taken to encourage external contributions. First
-of, every significant function is documented and tested.  Ohloh, the
-open source directory, describes the project as ``Well-commented
-source code'' and ``Very large, active development team''.
-
-\GAEL{Speak of coding standards, and testing} 
-
-Also, a precise instructions on how to contribute as well as coding
-guidelines make contributing code easy and efficient process. 28
-developers contributed code over the last twelve months.
-
-We have succesfully used this software to real-world problems. Some
-applications can be seen in the online gallery, featuring more than 60
-examples.
 
 
 
 \section{Conclusions}
 
-bla bla.
+Today the project already contains more than 40 algorithms ranging
+from supervised to unsupervised learning, providing an unequal
+framework for easily comparison of different methods on a given
+application.
+
+
 
 While the choice of Python ensoures code reuse in the package, it also
 binds us to this language and limits its use outside the Python

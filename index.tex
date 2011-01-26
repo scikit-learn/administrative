@@ -127,13 +127,14 @@ functions.
 \paragraph{Cython}
 
 The purpose of Cython is twofold. First, it allows to reach the
-performance of compiled languages as C for algorithms that cannot be
-coded efficiently using Numpy/Scipy while retaining a Python-like
-syntax and garbage collection. Second, Cython allows to easily access
-third-party libraries, effectively eliminating most of the boilerplate
-code associated with Python/C extensions.
+performance of compiled languages as C while retaining a Python-like
+syntax. Second, Cython allows to easily access third-party libraries,
+effectively eliminating most of the boilerplate code associated with
+Python/C extensions.
 
-\paragraph{Matplotlib ?}
+\paragraph{Matplotlib}
+
+Optional but highly recommended, visualization and examples.
 
 %% what sets us apart from many other machine learning toolboxes, is
 %% that ...
@@ -142,69 +143,25 @@ code associated with Python/C extensions.
 \section {Project vision}
 
 In order to maintain the source code easily comprehensible and
-extensible, as much as possible is coded in the Python language. 
+extensible, as much as possible is coded in the Python
+language. However, because of their high quality and compatible
+license, we also incorporate the C/C++ libraries LibSVM and LibLinear
+and provide high-quality, low-overhead bindings for these libraries.
 
-We take special care on algorithmic efficiency, and as such
-have produced algorithms that compete with 
-compiled libraries. \FABIAN{Need an example to corroborate this !!!!}
+\paragraph{Simple data format exchange}
 
-
-However,
-because of their high quality and compatible license, we also
-incorporate the C/C++ libraries LibSVM and LibLinear. These libraries
-have been carefully binded using Cython, eliminating most of the
-C/Python communication overhead present in other bindings. These
-bindings are also unique in the sense that they are capapable of
-working natively (without conversion) with both dense and sparse
-arrays.
-
-
+Use simple data structures for IO, Numpy arrays or
+scipy.sparse. Excellent communication with other data formats, python
+packages and also with C/Fortran libraries.
 
 \paragraph{Code by interface, not by inheritance}
-%
 
-We adopt simple conventions and limit the number of methods an object
-has to implement. 
+Inheritance is not enforced at any stage. In its simplest form, an
+estimator is simply an object that implements a `fit` and `predict`
+method, independent of its class hierarchy. Some more specialized
+objects might also implement a score function for [...] and transform for
+[...].
 
-Inheritance is not enforced, and any classifier implementing these
-methods is able to plug in the scikits.learn framework.
-
-%% In its simples form, a classifier is an object that
-%% implements a \emph{fit} and \emph{predict} method. 
-
-%% More spcialized classifiers might implement other methods as
-%% well. Filters are objects that implement a \emph{transform} method,
-%% and serve for feature selection.
-
-\GAEL{The word filter is often used in ML for specific kind of
-transformations. We should refrain from using it. In the scikit we now
-call these objects 'Transforms'. }
-
-\GAEL{Speak here about API for unsupervised problems: score, transform and
-predict can be useful to give an application-centric meaning to
-unsupervised models.}
-
-
-A unified approach for model selection is needed to tune parameters in
-a method-independent manner. In scikits.learn we solved this problem
-is with an object that takes as input a classifier, and a set of
-possible parameters.
-
-
-This way we can abstract from the method
-and provide a generalized interface for model selection.
-
-
-However, in practice method-specific considerations must be taken for
-efficiency.
-
-
-Our solution is based on one side on having an object GridSearch that
-[...] 
-
-However, this does not allow the use of model-specific information to
-cross validate. To help this, some algorithms have a cross-val
-counterpart.
 
 %% However, some properties in the algorithms (warm restarts, path
 %% solutions, etc.) can, and should be used be used to speed up the
@@ -215,23 +172,23 @@ counterpart.
 
 \paragraph{Community-driven development}
 
-To ensure the project continuity ...
+We base our development on collaborative tools such as git, github and
+public mailing lists. External contributions are welcomed and
+encouraged via developer manual and API guidelines. Quality of
+existing code is ensured with unitary tests and regularly checked with
+tools such as pep8, pyflakes, coverage.
 
-Special care has been taken to encourage external contributions. First
-of, every significant function is documented and tested.  Ohloh, the
-open source directory, describes the project as ``Well-commented
-source code'' and ``Very large, active development team''.
+%% Special care has been taken to encourage external contributions. First
+%% of, every significant function is documented and tested.  Ohloh, the
+%% open source directory, describes the project as ``Well-commented
+%% source code'' and ``Very large, active development team''.
 
-\GAEL{Speak of coding standards, and testing} 
 
-Also, a precise instructions on how to contribute as well as coding
-guidelines make contributing code easy and efficient process. 28
-developers contributed code over the last twelve months.
+%% We have succesfully used this software to real-world problems. Some
+%% applications can be seen in the online gallery, featuring more than 60
+%% examples.
 
-We have succesfully used this software to real-world problems. Some
-applications can be seen in the online gallery, featuring more than 60
-examples.
-
+\paragraph{Documentation}
 
 We firmly believe that documentation is a key component of a software
 distribution, and as such scikits.learn includes a ~300 page user
@@ -289,6 +246,29 @@ BallTree algorithm (C++).
 
 
 
+\paragraph {Model selection}
+
+A unified approach for model selection is needed to tune parameters in
+a method-independent manner. In scikits.learn we solved this problem
+is with an object that takes as input a classifier, and a set of
+possible parameters.
+
+
+This way we can abstract from the method
+and provide a generalized interface for model selection.
+
+
+However, in practice method-specific considerations must be taken for
+efficiency.
+
+
+Our solution is based on one side on having an object GridSearch that
+[...] 
+
+However, this does not allow the use of model-specific information to
+cross validate. To help this, some algorithms have a cross-val
+counterpart.
+
 
 \section{Conclusions}
 
@@ -310,6 +290,8 @@ platforms, such as MATLAB©, Octave, and R.
 
 \section{References}
 
+ME:
 
+\includegraphics{images/parafaber.jpg}
 
 \end{document}

@@ -16,6 +16,8 @@ from shogun.Distance import EuclidianDistance
 from datetime import datetime
 import numpy as np
 
+from mdp.nodes.classifier_nodes import KNNClassifier
+
 from scikits.learn import neighbors
 
 n_samples = 3000
@@ -23,7 +25,7 @@ n_dim = 5
 n_neighbors = 9
 X = 100 * np.random.randn(n_samples, n_dim)
 y = 10 * np.random.randn(n_samples).astype(np.int).astype(np.float)
-
+print 'Using %s points, %s dims and %s classes' % (n_samples, n_dim, len(np.unique(y)))
 
 def bench():
     """
@@ -40,6 +42,12 @@ def bench():
     knn.classify(feat).get_labels()
     print 'shogun: ', datetime.now() - start
 
+
+    start2 = datetime.now()
+    knn_mdp = KNNClassifier(k=n_neighbors)
+    knn_mdp.train(X, y)
+    knn_mdp.label(X)
+    print 'mdp: ', datetime.now() - start2
 
     start2 = datetime.now()
     clf = neighbors.Neighbors(n_neighbors=n_neighbors)

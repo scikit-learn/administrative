@@ -1,3 +1,15 @@
+"""
+So here it is: Shogun does not for a distance tree, but always uses
+brute force.
+
+So on low dimensions we can have the factor we want, just augment the
+number of samples :-)
+
+On the other hand, their brute force is somehow faster than ours ...
+
+"""
+
+
 from shogun.Classifier import KNN
 from shogun.Features import RealFeatures, Labels
 from shogun.Distance import EuclidianDistance
@@ -6,34 +18,34 @@ import numpy as np
 
 from scikits.learn import neighbors
 
-n = 1000
-k = 9
-X , y = np.random.randn(n, 5), np.random.randn(n)
+n_samples = 3000
+n_dim = 5
+n_neighbors = 9
+X = 100 * np.random.randn(n_samples, n_dim)
+y = 10 * np.random.randn(n_samples).astype(np.int).astype(np.float)
 
 
-@profile
 def bench():
     """
     put as function for easy profiling
     """
 
     start = datetime.now()
-    feat = RealFeatures(X)
+    feat = RealFeatures(X.T)
     distance = EuclidianDistance(feat, feat)
     labels = Labels(y)
 
-    knn = KNN(k, distance, labels)
-    knn_train = knn.train()
+    knn = KNN(n_neighbors, distance, labels)
+    knn.train()
     knn.classify(feat).get_labels()
-    print knn_train
-    print datetime.now() - start
+    print 'shogun: ', datetime.now() - start
 
 
     start2 = datetime.now()
-    clf = neighbors.Neighbors(n_neighbors=k)
+    clf = neighbors.Neighbors(n_neighbors=n_neighbors)
     clf.fit(X, y)
     clf.predict(X)
-    print datetime.now() - start2
+    print 'skl: ', datetime.now() - start2
 
 
 if __name__ == '__main__':

@@ -12,13 +12,14 @@ WTF ??
 from shogun.Classifier import LibSVMMultiClass
 from shogun.Features import RealFeatures, Labels
 from shogun.Kernel import GaussianKernel
+from mdp.nodes import LibSVMClassifier
 
 from datetime import datetime
 import numpy as np
 
 from scikits.learn import svm
 
-n_samples = 5000
+n_samples = 3000
 n_dim = 50
 
 X = 100 * np.random.randn(n_samples, n_dim)
@@ -42,26 +43,24 @@ def bench():
     kernel = GaussianKernel(feat, feat, 1.)
     shogun_svm = LibSVMMultiClass(C, kernel, labels)
     shogun_svm.train()
+    shogun_pred = shogun_svm.classify(feat).get_labels()
     print 'shogun: ', datetime.now() - start
 
-
     start2 = datetime.now()
-    clf = svm.SVC(kernel='rbf', gamma=1., C=1.)
-    clf.fit(X, y)
+    skl_clf = svm.SVC(kernel='rbf', gamma=1., C=C)
+    skl_clf.fit(X, y)
+    skl_pred = skl_clf.predict(X)
     print 'skl: ', datetime.now() - start2
-
-
-    # for some reason can't be imported from top
-    # YAY !!!
-    from mdp.nodes import LibSVMClassifier
-
+    print 'Similarity with shogun %s %% ' % 100 * np.mean(shogun_pred == skl_pred)
 
     #$ CRASH !!! $$$$#$#$#$!##Q#$!#$@@@@!@#!@#!
     start2 = datetime.now()
     # no way to set parameters. yeah!!!
-    clf = LibSVMClassifier()
-    clf.learn(X, y)
-    print 'skl: ', datetime.now() - start2
+    mdp_clf = LibSVMClassifier(kernel='rbf', params={'C':1})
+    mdp_clf.train(X, y)
+    mdp_pred = mdp_clf.label(X)
+    print 'mdp: ', datetime.now() - start2
+    print 'Similarity with shogun %s %% ' % 100 * np.mean(shogun_pred ==  mdp_pred)
 
 
     

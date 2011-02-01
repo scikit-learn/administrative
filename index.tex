@@ -90,8 +90,12 @@ efficient implementations of state-of-the-art machine learning
 algorithms for the Python language. The resulting project, called
 scikits.learn aims to provide a reference implementation of some of
 the best known machine learning algorithms, while maintaining an
-easy-to-use interface tightly integrated in the Python language.
-
+easy-to-use interface tightly integrated in the Python language. The
+package is mostly coded in Python, although some algorithms are coded
+in the Cython language for efficiency. Also, because of their high
+quality and compatible license, we also incorporate and provide
+high-quality, low-overhead bindings for the C/C++ libraries LibSVM and
+LibLinear.
 
 The package has only numpy and scipy as strict dependences, which ensure
 it's availability in a rich set of platforms including
@@ -116,7 +120,8 @@ scikits.learn builds upon a powerful stack of existing libraries.
 Numpy provides the base data structure for representing
 information. This choice strives for easy of use by using plain numpy
 arrays instead of specialized data structures and limiting framework
-code.
+code. Our objects work directly with NumPy arrays, providing a
+flexible way to communicate with other packages.
 
 \paragraph{Scipy} 
 
@@ -142,22 +147,14 @@ Optional but highly recommended, visualization and examples.
 
 \section {Project vision}
 
-In order to maintain the source code easily comprehensible and
-extensible, as much as possible is coded in the Python
-language. However, because of their high quality and compatible
-license, we also incorporate the C/C++ libraries LibSVM and LibLinear
-and provide high-quality, low-overhead bindings for these libraries.
 
-\paragraph{Simple data format exchange}
+How is the library structured ???
 
-Use simple data structures for IO, Numpy arrays or
-scipy.sparse. Excellent communication with other data formats, python
-packages and also with C/Fortran libraries.
 
 \paragraph{Code by interface, not by inheritance}
 
 Inheritance is not enforced at any stage. In its simplest form, an
-estimator is simply an object that implements a `fit` and `predict`
+estimator is any object that implements a `fit` and `predict`
 method, independent of its class hierarchy. Some more specialized
 objects might also implement a score function for [...] and transform for
 [...].
@@ -201,6 +198,11 @@ library.
 \section{Computational efficiency tradeoffs}
 
 
+Special care has been take on algorithmic efficiency, producing
+algorithms that are ofter faster than the ones found in compiled
+libraries.
+
+
 \begin{center}
 %% \caption{Overview of existing machine learning libraries}
 
@@ -210,10 +212,10 @@ library.
 \hline\hline %inserts double horizontal lines 
  & scikits.learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]
 \hline
-Support Vector Machines        & 0.0 & 0.0   & 0.0       &  0.0     & 0.0    & 0.0 \\
+Support Vector Machines        & 3.69 & 0.0   & 0.0       &  0.0     & 20.62    & 15.79 \\
 Elastic Net & 0.0 & 0.0   & 0.0       &  0.0     & 0.0    & - \\
 Gaussian Mixture Models  & 0.0 & 0.0   & 0.0       &  0.0     & 0.0    & - \\
-k-Nearest Neighbors & 0.0 & 0.0   & 0.0       &  0.0     & 0.0    & - \\
+k-Nearest Neighbors & 0.41 & ?   & 0.0       &  0.0     & 4.94    & 1.50 \\
 Indep. Component Analysis & 0.0 & 0.0  & 0.0  & 0.0  & 0.0  & - \\
 ANN  & - & 0.0  & 0.0  & 0.0  & 0.0  & - \\
 Usable in commercial code &  0.0 & -   & 0.0       &  0.0     & 0.0    & - \\
@@ -222,11 +224,6 @@ Usable in commercial code &  0.0 & -   & 0.0       &  0.0     & 0.0    & - \\
 
 \end{center}
 
-|| BENCKMARK IMAGE ||
-
-Special care has been take on algorithmic efficiency, producing
-algorithms that are ofter faster than the ones found in compiled
-libraries.
 
 Least Angle Regression is implemented in pure Python and achieve 10x
 to 2x gain in performance over the reference implementation, the R
@@ -237,10 +234,9 @@ The elasticnet algorithm, by coordinate descent, coded in Cython
 achieves the same order of performance as the highly optimized Fortran
 version elasticnet.
 
-Also, fast KNN in high-dimensional spaces is achieved using the
-BallTree algorithm (C++).
+Also, fast k-nearest neighbors is achieved by constructing a binary
+tree of the samples similar to the one found in the kd-tree structure.
 
-|| BENCH ||
 
 \section{Code design}
 

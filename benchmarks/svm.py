@@ -27,7 +27,6 @@ X = 100 * np.random.randn(n_samples, n_dim)
 # how lame is that ?
 y = np.linspace(0, 10, num=n_samples).astype(np.int32).astype(np.float64)
 
-print y
 print 'Using %s points, %s dims and %s classes' % (n_samples, n_dim, len(np.unique(y)))
 
 
@@ -45,18 +44,27 @@ def bench():
     shogun_svm.train()
     print 'shogun: ', datetime.now() - start
 
-    # start2 = datetime.now()
-    # knn_mdp = KNNClassifier(k=n_neighbors)
-    # knn_mdp.train(X, y)
-    # knn_mdp.label(X)
-    # print 'mdp: ', datetime.now() - start2
 
     start2 = datetime.now()
     clf = svm.SVC(kernel='rbf', gamma=1., C=1.)
     clf.fit(X, y)
-#    clf.predict(X)
     print 'skl: ', datetime.now() - start2
 
+
+    # for some reason can't be imported from top
+    # YAY !!!
+    from mdp.nodes import LibSVMClassifier
+
+
+    #$ CRASH !!! $$$$#$#$#$!##Q#$!#$@@@@!@#!@#!
+    start2 = datetime.now()
+    # no way to set parameters. yeah!!!
+    clf = LibSVMClassifier()
+    clf.learn(X, y)
+    print 'skl: ', datetime.now() - start2
+
+
+    
 
 if __name__ == '__main__':
     print __doc__

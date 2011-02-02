@@ -166,7 +166,7 @@ Support Vector Classification, k-Nearest Neighbors and the Lasso.
 Some more specialized objects might also implement a score function
 for testing the accuracy of an estimator.
 
-Some classes of unsupervised  and transform for [...].
+Some classes of unsupervised also implement a transform for [...].
 
 
 %% However, some properties in the algorithms (warm restarts, path
@@ -238,17 +238,16 @@ License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 %% WHAT TO DO WHITH THE ALGORITHMS THAT ARE IMPLEMENTED IN MDP VIA
 %% SCIKIT-LEARN ??
 
-Least Angle Regression is implemented in pure Python and achieve 10x
-to 2x gain in performance over the reference implementation, the R
-package LARS, by smarter updates of coefficients [rephrase].
+%% Least Angle Regression is implemented in pure Python and achieve 10x
+%% to 2x gain in performance over the reference implementation, the R
+%% package LARS, by smarter updates of coefficients [rephrase].
 
+%% The elasticnet algorithm, by coordinate descent, coded in Cython
+%% achieves the same order of performance as the highly optimized Fortran
+%% version elasticnet.
 
-The elasticnet algorithm, by coordinate descent, coded in Cython
-achieves the same order of performance as the highly optimized Fortran
-version elasticnet.
-
-Also, fast k-nearest neighbors is achieved by constructing a binary
-tree of the samples similar to the one found in the kd-tree structure.
+%% Also, fast k-nearest neighbors is achieved by constructing a binary
+%% tree of the samples similar to the one found in the kd-tree structure.
 
 
 \section{Code design}
@@ -260,7 +259,13 @@ tree of the samples similar to the one found in the kd-tree structure.
 Model selection is the problem of finding optimal parameters for a
 model with the data at hand [...].
 
-For convenience we provide some function that handle.
+However, manually iterating over models and find the one with higher
+score is a tedious task, thus we provide for convenience some objects
+to automate this task.
+
+
+
+ For convenience we provide some function that handle.
 
 This works because all estimators in scikits.learn implement a .fit
 and a .predict function.

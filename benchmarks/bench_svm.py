@@ -17,7 +17,12 @@ from mdp.nodes import LibSVMClassifier
 from datetime import datetime
 import numpy as np
 
-from scikits.learn import svm
+# skl import
+from scikits.learn import svm as skl_svm
+
+# mlpy import
+from mlpy import LibSvm as mlpy_svm
+
 
 n_samples = 3000
 n_dim = 50
@@ -49,7 +54,7 @@ def bench():
     print 'shogun: ', datetime.now() - start
 
     start = datetime.now()
-    skl_clf = svm.SVC(kernel='rbf', C=C)
+    skl_clf = skl_svm.SVC(kernel='rbf', C=C)
     skl_clf.fit(X, y)
     skl_pred = skl_clf.predict(X)
     print
@@ -65,7 +70,6 @@ def bench():
     print 'Similarity with shogun %s %% ' % 100 * np.mean(shogun_pred ==  mdp_pred)
 
 
-    from mlpy import LibSvm as mlpy_svm
 
     start = datetime.now()
     mlpy_svm = mlpy_svm(kernel_type='rbf', C=1.)

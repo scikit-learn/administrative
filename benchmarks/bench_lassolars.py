@@ -51,7 +51,7 @@ def bench():
     # print 'shogun: ', datetime.now() - start
 
     start = datetime.now()
-    skl_clf = linear_model.LassoLARS(alpha=0)
+    skl_clf = linear_model.LassoLARS(alpha=0.)
     skl_clf.fit(X, y)
     skl_pred = skl_clf.predict(X)
     print
@@ -68,24 +68,24 @@ def bench():
 
 
     # our lasso does a couple more of steps, different parameters
-    start = datetime.now()
-    mlpy_svm = mlpy_lasso(m=n_dim)
-    mlpy_svm.learn(X, y)
-    mlpy_pred = mlpy_svm.pred(X)
-    print
-    print 'mlpy: ', datetime.now() - start
+    # start = datetime.now()
+    # mlpy_clf = mlpy_lasso(m=n_dim)
+    # mlpy_clf.learn(X, y)
+    # mlpy_pred = mlpy_clf.pred(X)
+    # print
+    # print 'mlpy: ', datetime.now() - start
     # print 'Similarity with skl %s %% ' % 100 * np.mean(mlpy_pred ==  mdp_pred)
 
 
-    # from mvpa.datasets import Dataset
-    # from mvpa.clfs import svm as mvpa_svm
-    # tstart = datetime.now()
-    # data = Dataset(samples=X, labels=y)
-    # clf = mvpa_svm.RbfCSVMC(C=1.)
-    # clf.train(data)
-    # mvpa_pred = clf.predict(X)
-    # print
-    # print 'pymvpa: ', (datetime.now() - tstart)
+    from mvpa.datasets import Dataset
+    from mvpa.clfs import lars as mvpa_lars
+    tstart = datetime.now()
+    data = Dataset(samples=X, labels=y)
+    clf = mvpa_lars.LARS()
+    clf.train(data)
+    mvpa_pred = clf.predict(X)
+    print
+    print 'pymvpa: ', (datetime.now() - tstart)
     # print 'Similarity with shogun %s %% ' % 100 * np.mean(mvpa_pred ==  mdp_pred)
     
     

@@ -67,14 +67,13 @@ def bench():
     # print 'Similarity with shogun %s %% ' % 100 * np.mean(shogun_pred ==  mdp_pred)
 
 
-    # our lasso does a couple more of steps, different parameters
-    # start = datetime.now()
-    # mlpy_clf = mlpy_lasso(m=n_dim)
-    # mlpy_clf.learn(X, y)
-    # mlpy_pred = mlpy_clf.pred(X)
-    # print
-    # print 'mlpy: ', datetime.now() - start
-    # print 'Similarity with skl %s %% ' % 100 * np.mean(mlpy_pred ==  mdp_pred)
+#    our lasso does a couple more of steps, different parameters
+    start = datetime.now()
+    mlpy_clf = mlpy_lasso(m=n_dim)
+    mlpy_clf.learn(X, y)
+    mlpy_pred = mlpy_clf.pred(X)
+    print
+    print 'mlpy: ', datetime.now() - start
 
 
     from mvpa.datasets import Dataset

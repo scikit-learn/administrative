@@ -149,7 +149,10 @@ Optional but highly recommended, visualization and examples.
 \section {Project vision}
 
 
-How is the library structured ???
+The library is structured in several submodules, each of which covers
+a family of related algorithms. This way, the svm module support
+vector machine-related algorithms of classification (SVC), regression
+(SVR) and unsupervised learning (OneClassSVM).
 
 
 \paragraph{Code by interface, not by inheritance}
@@ -214,9 +217,10 @@ libraries.
  & scikits.learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]
 \hline
 Support Vector Machines        & 3.69 & 0.0   & 0.0       &  0.0     & 20.62    & 15.79 \\
+Lasso LARS & 1.45 & 168.25   & -       &  64.89     & -    & - \\
 Elastic Net & 0.0 & 0.0   & 0.0       &  0.0     & 0.0    & - \\
 Gaussian Mixture Models  & 0.0 & 0.0   & 0.0       &  0.0     & 0.0    & - \\
-k-Nearest Neighbors & 0.41 & ?   & 0.0       &  0.0     & 4.94    & 1.50 \\
+k-Nearest Neighbors & 1.38 & 0.30  & ?       &  0.75     & 59.62    & 0.73 \\
 Indep. Component Analysis & 0.0 & 0.0  & 0.0  & 0.0  & 0.0  & - \\
 ANN  & - & 0.0  & 0.0  & 0.0  & 0.0  & - \\
 Usable in commercial code &  0.0 & -   & 0.0       &  0.0     & 0.0    & - \\
@@ -225,6 +229,9 @@ Usable in commercial code &  0.0 & -   & 0.0       &  0.0     & 0.0    & - \\
 
 \end{center}
 
+
+%% WHAT TO DO WHITH THE ALGORITHMS THAT ARE IMPLEMENTED IN MDP VIA
+%% SCIKIT-LEARN ??
 
 Least Angle Regression is implemented in pure Python and achieve 10x
 to 2x gain in performance over the reference implementation, the R

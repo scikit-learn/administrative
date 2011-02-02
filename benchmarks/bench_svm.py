@@ -33,6 +33,8 @@ print 'Using %s points, %s dims and %s classes' % (n_samples, n_dim, len(np.uniq
 
 C = 1.
 
+# TODO: set gamma
+
 def bench():
     # as function for easy profiling
 
@@ -46,23 +48,46 @@ def bench():
     shogun_pred = shogun_svm.classify(feat).get_labels()
     print 'shogun: ', datetime.now() - start
 
-    start2 = datetime.now()
-    skl_clf = svm.SVC(kernel='rbf', gamma=1., C=C)
+    start = datetime.now()
+    skl_clf = svm.SVC(kernel='rbf', C=C)
     skl_clf.fit(X, y)
     skl_pred = skl_clf.predict(X)
-    print 'skl: ', datetime.now() - start2
+    print
+    print 'skl: ', datetime.now() - start
     print 'Similarity with shogun %s %% ' % 100 * np.mean(shogun_pred == skl_pred)
 
-    #$ CRASH !!! $$$$#$#$#$!##Q#$!#$@@@@!@#!@#!
-    start2 = datetime.now()
-    # no way to set parameters. yeah!!!
+    start = datetime.now()
     mdp_clf = LibSVMClassifier(kernel='rbf', params={'C':1})
     mdp_clf.train(X, y)
     mdp_pred = mdp_clf.label(X)
-    print 'mdp: ', datetime.now() - start2
+    print
+    print 'mdp: ', datetime.now() - start
     print 'Similarity with shogun %s %% ' % 100 * np.mean(shogun_pred ==  mdp_pred)
 
 
+    from mlpy import LibSvm as mlpy_svm
+
+    start = datetime.now()
+    mlpy_svm = mlpy_svm(kernel_type='rbf', C=1.)
+    mlpy_svm.learn(X, y)
+    mlpy_pred = mlpy_svm.pred(X)
+    print
+    print 'mlpy: ', datetime.now() - start
+    print 'Similarity with shogun %s %% ' % 100 * np.mean(mlpy_pred ==  mdp_pred)
+
+
+    from mvpa.datasets import Dataset
+    from mvpa.clfs import svm as mvpa_svm
+    tstart = datetime.now()
+    data = Dataset(samples=X, labels=y)
+    clf = mvpa_svm.RbfCSVMC(C=1.)
+    clf.train(data)
+    mvpa_pred = clf.predict(X)
+    print
+    print 'pymvpa: ', (datetime.now() - tstart)
+    print 'Similarity with shogun %s %% ' % 100 * np.mean(mvpa_pred ==  mdp_pred)
+    
+    
     
 
 if __name__ == '__main__':

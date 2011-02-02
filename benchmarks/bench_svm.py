@@ -43,18 +43,9 @@ C = 1.
 def bench():
     # as function for easy profiling
 
-    start = datetime.now()
-    feat = RealFeatures(X.T)
-    labels = Labels(y)
-
-    kernel = GaussianKernel(feat, feat, 1.)
-    shogun_svm = LibSVMMultiClass(C, kernel, labels)
-    shogun_svm.train()
-    shogun_pred = shogun_svm.classify(feat).get_labels()
-    print 'shogun: ', datetime.now() - start
 
     start = datetime.now()
-    skl_clf = skl_svm.SVC(kernel='rbf', C=C)
+    skl_clf = skl_svm.ElasticNet()
     skl_clf.fit(X, y)
     skl_pred = skl_clf.predict(X)
     print

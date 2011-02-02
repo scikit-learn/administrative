@@ -223,7 +223,7 @@ libraries.
 \hline
 Support Vector Machines & 6.39 & 9.55 & - & 10.34 & 20.62 & 15.79 \\
 Lasso LARS & 1.45 & 168.25   & -       &  64.89     & -    & - \\
-Elastic Net & 0.0 & 0.0   & 0.0       &  0.0     & 0.0    & - \\
+Elastic Net & 0.61 & 59.32 & -  &  ??  & -  & - \\
 Gaussian Mixture Models  & 0.0 & 0.0   & 0.0       &  0.0     & 0.0    & - \\
 k-Nearest Neighbors & 1.38 & 0.30  & - &  0.75 & 59.62    & 0.73 \\
 Indep. Component Analysis & 0.0 & 0.0  & 0.0  & 0.0  & 0.0  & - \\
@@ -257,18 +257,18 @@ tree of the samples similar to the one found in the kd-tree structure.
 
 \paragraph {Model selection}
 
-A unified approach for model selection is needed to tune parameters in
-a method-independent manner. In scikits.learn we solved this problem
-is with an object that takes as input a classifier, and a set of
-possible parameters.
+Model selection is the problem of finding optimal parameters for a
+model with the data at hand [...].
+
+For convenience we provide some function that handle.
+
+This works because all estimators in scikits.learn implement a .fit
+and a .predict function.
 
 
-This way we can abstract from the method
-and provide a generalized interface for model selection.
-
-
-However, in practice method-specific considerations must be taken for
-efficiency.
+However, some models allow for further optimizations. For example,
+LARS provides the full path, coordinate descent methods allow for warm
+restarts, etc.
 
 
 Our solution is based on one side on having an object GridSearch that

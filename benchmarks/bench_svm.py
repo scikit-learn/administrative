@@ -72,9 +72,9 @@ def bench():
 
 
     start = datetime.now()
-    mlpy_svm = mlpy_svm(kernel_type='rbf', C=1.)
-    mlpy_svm.learn(X, y)
-    mlpy_pred = mlpy_svm.pred(X)
+    mlpy_clf = mlpy_svm(kernel_type='rbf', C=1.)
+    mlpy_clf.learn(X, y)
+    mlpy_pred = mlpy_clf.pred(X)
     print
     print 'mlpy: ', datetime.now() - start
     print 'Similarity with shogun %s %% ' % 100 * np.mean(mlpy_pred ==  mdp_pred)

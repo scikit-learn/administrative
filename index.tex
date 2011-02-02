@@ -157,11 +157,16 @@ vector machine-related algorithms of classification (SVC), regression
 
 \paragraph{Code by interface, not by inheritance}
 
-Inheritance is not enforced at any stage. In its simplest form, an
-estimator is any object that implements a `fit` and `predict`
-method, independent of its class hierarchy. Some more specialized
-objects might also implement a score function for [...] and transform for
-[...].
+Inheritance is not enforced at any stage. However, we adopt some
+conventions that make the API easier to learn. Estimators are object
+that implements that implement a `fit` and `predict` method,
+independently of its class hierarchy. Examples of estimators include
+Support Vector Classification, k-Nearest Neighbors and the Lasso.
+
+Some more specialized objects might also implement a score function
+for testing the accuracy of an estimator.
+
+Some classes of unsupervised  and transform for [...].
 
 
 %% However, some properties in the algorithms (warm restarts, path
@@ -176,8 +181,8 @@ objects might also implement a score function for [...] and transform for
 We base our development on collaborative tools such as git, github and
 public mailing lists. External contributions are welcomed and
 encouraged via developer manual and API guidelines. Quality of
-existing code is ensured with unitary tests and regularly checked with
-tools such as pep8, pyflakes, coverage.
+existing code is ensured [ha!] with unitary tests and regularly
+checked with tools such as pep8, pyflakes, coverage.
 
 %% Special care has been taken to encourage external contributions. First
 %% of, every significant function is documented and tested.  Ohloh, the
@@ -191,7 +196,7 @@ tools such as pep8, pyflakes, coverage.
 
 \paragraph{Documentation}
 
-We firmly believe that documentation is a key component of a software
+We believe that documentation is a key component of a software
 distribution, and as such scikits.learn includes a ~300 page user
 guide with narrative documentation, class reference, tutorial,
 installation instructions as well as a collection of more than 60
@@ -216,14 +221,14 @@ libraries.
 \hline\hline %inserts double horizontal lines 
  & scikits.learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]
 \hline
-Support Vector Machines        & 3.69 & 0.0   & 0.0       &  0.0     & 20.62    & 15.79 \\
+Support Vector Machines & 6.39 & 9.55 & - & 10.34 & 20.62 & 15.79 \\
 Lasso LARS & 1.45 & 168.25   & -       &  64.89     & -    & - \\
 Elastic Net & 0.0 & 0.0   & 0.0       &  0.0     & 0.0    & - \\
 Gaussian Mixture Models  & 0.0 & 0.0   & 0.0       &  0.0     & 0.0    & - \\
-k-Nearest Neighbors & 1.38 & 0.30  & ?       &  0.75     & 59.62    & 0.73 \\
+k-Nearest Neighbors & 1.38 & 0.30  & - &  0.75 & 59.62    & 0.73 \\
 Indep. Component Analysis & 0.0 & 0.0  & 0.0  & 0.0  & 0.0  & - \\
 ANN  & - & 0.0  & 0.0  & 0.0  & 0.0  & - \\
-Usable in commercial code &  0.0 & -   & 0.0       &  0.0     & 0.0    & - \\
+License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 \hline
 \end{tabular}
 

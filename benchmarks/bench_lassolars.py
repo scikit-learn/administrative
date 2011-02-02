@@ -81,9 +81,11 @@ def bench():
     from mvpa.clfs import lars as mvpa_lars
     tstart = datetime.now()
     data = Dataset(samples=X, labels=y)
-    clf = mvpa_lars.LARS()
-    clf.train(data)
-    mvpa_pred = clf.predict(X)
+    mvpa_clf = mvpa_lars.LARS()
+    mvpa_clf.train(data)
+
+    # BROKEN
+#    mvpa_pred = mvpa_clf.predict(X)
     print
     print 'pymvpa: ', (datetime.now() - tstart)
     # print 'Similarity with shogun %s %% ' % 100 * np.mean(mvpa_pred ==  mdp_pred)

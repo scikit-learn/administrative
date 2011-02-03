@@ -149,10 +149,10 @@ Optional but highly recommended, visualization and examples.
 \section {Project vision}
 
 
-The library is structured in several submodules, each of which covers
-a family of related algorithms. This way, the svm module support
-vector machine-related algorithms of classification (SVC), regression
-(SVR) and unsupervised learning (OneClassSVM).
+The library is structured in submodules, each of which covers a family
+of related algorithms. This way, the svm module support vector
+machine-related algorithms of classification (SVC), regression (SVR)
+and unsupervised learning (OneClassSVM).
 
 
 \paragraph{Code by interface, not by inheritance}
@@ -234,7 +234,6 @@ License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 
 \end{center}
 
-
 %% WHAT TO DO WHITH THE ALGORITHMS THAT ARE IMPLEMENTED IN MDP VIA
 %% SCIKIT-LEARN ??
 
@@ -249,37 +248,30 @@ License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 %% Also, fast k-nearest neighbors is achieved by constructing a binary
 %% tree of the samples similar to the one found in the kd-tree structure.
 
-
 \section{Code design}
-
 
 
 \paragraph {Model selection}
 
 Model selection is the problem of finding optimal parameters for a
-model with the data at hand [...].
+model with the data at hand [...]. Usually, this process is carried
+out by measuring the performance of the different classifiers over all
+possible parameters.
 
-However, manually iterating over models and find the one with higher
-score is a tedious task, thus we provide for convenience some objects
-to automate this task.
+To ease this repetitive task, scikits.learn proposes some convenience
+objects. GridSearchCV is takes as input a classifier and a list of
+parameters and stores the best one. This works because all estimators
+in scikits.learn implement functions .\emph{fit}, \emph{predict} and
+possibly \emph{score} so GridSearchCV is able to use classifiers as
+black boxes.
 
-The object GridSearchCV takes as input a classifier and a ...
-
-This works because all estimators in scikits.learn implement a .fit
-and a .predict function.
-
+For convenience, GridSearchCV is also a classifier (implements fit and
+predict), thus can be used transparently as any other classifier.
 
 However, some models allow for further optimizations. For example,
 LARS provides the full path, coordinate descent methods allow for warm
 restarts, etc.
 
-
-Our solution is based on one side on having an object GridSearch that
-[...] 
-
-However, this does not allow the use of model-specific information to
-cross validate. To help this, some algorithms have a cross-val
-counterpart.
 
 
 \section{Conclusions}

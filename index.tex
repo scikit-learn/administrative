@@ -157,16 +157,16 @@ and unsupervised learning (OneClassSVM).
 
 \paragraph{Code by interface, not by inheritance}
 
-Inheritance is not enforced at any stage. However, we adopt some
-conventions that make the API easier to learn. Estimators are object
-that implements that implement a `fit` and `predict` method,
-independently of its class hierarchy. Examples of estimators include
-Support Vector Classification, k-Nearest Neighbors and the Lasso.
+Inheritance is not enforced at any stage, instead, we adopt some
+simple conventions that make the API easier to learn. We call an
+estimator to any object that implements that implement a `fit` and
+`predict` method, independently of its class hierarchy. Examples of
+estimators include Support Vector Classification, k-Nearest Neighbors
+and the Lasso.
 
 Some more specialized objects might also implement a score function
-for testing the accuracy of an estimator.
-
-Some classes of unsupervised also implement a transform for [...].
+for testing the accuracy of an estimator. Some classes of unsupervised
+also implement a transform for [...].
 
 
 %% However, some properties in the algorithms (warm restarts, path
@@ -246,6 +246,16 @@ License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 
 %% Also, fast k-nearest neighbors is achieved by constructing a binary
 %% tree of the samples similar to the one found in the kd-tree structure.
+
+
+While all modules in the SVM columns use libsvm \cite{libsvm} in the
+background, superior results of scikits.learn can be explained by two
+factors. First of, our bindings are implemented in Cython and
+providine lower overhead on the C/Python layer than those based on
+ctypes. Second, we've patched libsvm to work efficiency on dense data,
+providing less memory footprint, better usage of memory alignment and
+the pipelining capabilities of modern processors.
+
 
 \section{Code design}
 

@@ -215,7 +215,6 @@ libraries.
 \begin{center}
 %% \caption{Overview of existing machine learning libraries}
 
-% it would be nicer with checkbox images
 
 \begin{tabular}{l c c c c c c}
 \hline\hline %inserts double horizontal lines 
@@ -263,14 +262,16 @@ objects. GridSearchCV is takes as input a classifier and a list of
 parameters and stores the best one. This works because all estimators
 in scikits.learn implement functions .\emph{fit}, \emph{predict} and
 possibly \emph{score} so GridSearchCV is able to use classifiers as
-black boxes.
-
-For convenience, GridSearchCV is also a classifier (implements fit and
-predict), thus can be used transparently as any other classifier.
+black boxes. For convenience, GridSearchCV is also a classifier
+(implements fit and predict), thus can be used transparently as any
+other classifier.
 
 However, some models allow for further optimizations. For example,
 LARS provides the full path, coordinate descent methods allow for warm
-restarts, etc.
+restarts, Ridge has a closed form for leave-one-out cross validation,
+etc. In these cases, we provide optimized cross-validating
+classifiers. In these cases, we append ``CV'' to the name of the
+classifier.
 
 
 
@@ -280,8 +281,6 @@ Today the project already contains more than 40 algorithms ranging
 from supervised to unsupervised learning, providing an unequal
 framework for easily comparison of different methods on a given
 application.
-
-
 
 While the choice of Python ensoures code reuse in the package, it also
 binds us to this language and limits its use outside the Python

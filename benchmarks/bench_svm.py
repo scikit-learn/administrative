@@ -1,90 +1,85 @@
-"""
-===================================================
-Bench multiclass SVMs from shogun and scikits.learn
-===================================================
 
-Shogun is not able to transparently handle the multi-class case ??
-
-WTF ??
-
-"""
-
+import numpy as np
+from datetime import datetime
 from shogun.Classifier import LibSVMMultiClass
 from shogun.Features import RealFeatures, Labels
 from shogun.Kernel import GaussianKernel
 from mdp.nodes import LibSVMClassifier
-
-from datetime import datetime
-import numpy as np
-
-# skl import
+from mvpa.datasets import Dataset
+from mvpa.clfs import svm as mvpa_svm
 from scikits.learn import svm as skl_svm
-
-# mlpy import
 from mlpy import LibSvm as mlpy_svm
 
 
-n_samples = 3000
-n_dim = 50
-
+#
+#       .. Generate dataset ..
+#
+n_samples, n_dim = 500, 500
 X = 100 * np.random.randn(n_samples, n_dim)
-
-# shogun wants its classes to be contiguous integers !!!
-# how lame is that ?
 y = np.linspace(0, 10, num=n_samples).astype(np.int32).astype(np.float64)
 
-print 'Using %s points, %s dims and %s classes' % (n_samples, n_dim, len(np.unique(y)))
-
+print 'Using %s points, %s dims and %s classes' % \
+      (n_samples, n_dim, len(np.unique(y)))
 
 C = 1.
 
-# TODO: set gamma
 
-def bench():
-    # as function for easy profiling
-
-
+def bench_shogun():
+#
+#       .. Shogun ..
+#
     start = datetime.now()
-    skl_clf = skl_svm.ElasticNet()
-    skl_clf.fit(X, y)
-    skl_pred = skl_clf.predict(X)
-    print
-    print 'skl: ', datetime.now() - start
-    print 'Similarity with shogun %s %% ' % 100 * np.mean(shogun_pred == skl_pred)
-
-    start = datetime.now()
-    mdp_clf = LibSVMClassifier(kernel='rbf', params={'C':1})
-    mdp_clf.train(X, y)
-    mdp_pred = mdp_clf.label(X)
-    print
-    print 'mdp: ', datetime.now() - start
-    print 'Similarity with shogun %s %% ' % 100 * np.mean(shogun_pred ==  mdp_pred)
+    feat = RealFeatures(X.T)
+    labels = Labels(y.astype(np.float64))
+    kernel = GaussianKernel(feat, feat, 1.)
+    shogun_svm = LibSVMMultiClass(C, kernel, labels)
+    shogun_svm.train()
+    return datetime.now() - start
 
 
-
+def bench_mlpy():
+#
+#       .. MLPy ..
+#
     start = datetime.now()
     mlpy_clf = mlpy_svm(kernel_type='rbf', C=1.)
     mlpy_clf.learn(X, y)
-    mlpy_pred = mlpy_clf.pred(X)
-    print
-    print 'mlpy: ', datetime.now() - start
-    print 'Similarity with shogun %s %% ' % 100 * np.mean(mlpy_pred ==  mdp_pred)
+    mlpy_clf.pred(X)
+    return datetime.now() - start
 
 
-    from mvpa.datasets import Dataset
-    from mvpa.clfs import svm as mvpa_svm
+def bench_skl():
+#
+#       .. scikits.learn ..
+#
+    start = datetime.now()
+    clf = skl_svm.SVC(kernel='rbf', C=1.)
+    clf.fit(X, y)
+    clf.predict(X)
+    return datetime.now() - start
+
+
+def bench_pymvpa():
+#
+#       .. PyMVPA ..
+#
     tstart = datetime.now()
     data = Dataset(samples=X, labels=y)
     clf = mvpa_svm.RbfCSVMC(C=1.)
     clf.train(data)
-    mvpa_pred = clf.predict(X)
-    print
-    print 'pymvpa: ', (datetime.now() - tstart)
-    print 'Similarity with shogun %s %% ' % 100 * np.mean(mvpa_pred ==  mdp_pred)
-    
-    
-    
+    clf.predict(X)
+    return datetime.now() - tstart
+
+
+def bench_pybrain():
+#
+#       .. PyMVPA ..
+#
+    raise NotImplementedError
+
 
 if __name__ == '__main__':
     print __doc__
-    bench()
+    print 'Shogun: ', bench_shogun()
+    print 'scikits.learn: ', bench_skl()
+    print 'MLPy: ', bench_mlpy()

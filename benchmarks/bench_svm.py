@@ -1,3 +1,4 @@
+"""SVM benchmarks"""
 
 import numpy as np
 from datetime import datetime
@@ -17,10 +18,6 @@ from mlpy import LibSvm as mlpy_svm
 n_samples, n_dim = 500, 500
 X = 100 * np.random.randn(n_samples, n_dim)
 y = np.linspace(0, 10, num=n_samples).astype(np.int32).astype(np.float64)
-
-print 'Using %s points, %s dims and %s classes' % \
-      (n_samples, n_dim, len(np.unique(y)))
-
 C = 1.
 
 
@@ -80,6 +77,8 @@ def bench_pybrain():
 
 if __name__ == '__main__':
     print __doc__
+    print 'Using %s points, %s dims and %s classes' % \
+          (n_samples, n_dim, len(np.unique(y)))
     print 'Shogun: ', bench_shogun()
     print 'scikits.learn: ', bench_skl()
     print 'MLPy: ', bench_mlpy()

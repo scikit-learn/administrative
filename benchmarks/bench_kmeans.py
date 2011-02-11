@@ -7,6 +7,8 @@ from shogun.Features import RealFeatures
 from shogun.Clustering import KMeans
 from scikits.learn import cluster as skl_cluster
 from pybrain.auxiliary import kmeans as pybrain_kmeans
+from mlpy import Kmeans as mlpy_Kmeans
+from mdp.nodes import KMeansClassifier as mdp_KMeans
 
 #
 #       .. Generate dataset ..
@@ -47,6 +49,27 @@ def bench_pybrain():
     return datetime.now() - start
 
 
+def bench_mlpy():
+#
+#       .. MLPy ..
+#
+    start = datetime.now()
+    clf = mlpy_Kmeans(k)
+    clf.compute(X)
+    return datetime.now() - start
+
+
+def bench_mdp():
+#
+#       .. MDP ..
+#
+    start = datetime.now()
+    clf = mdp_KMeans(k)
+    clf.train(X)
+    return datetime.now() - start
+
+
+
 if __name__ == '__main__':
     print __doc__
     print 'Using %s points, %s dims' % \
@@ -54,3 +77,5 @@ if __name__ == '__main__':
     print 'Shogun: ', bench_shogun()
     print 'scikits.learn: ', bench_skl()
     print 'pybrain: ', bench_pybrain()
+    print 'MLPy: ', bench_mlpy()
+    print 'MDP: ', bench_mdp()

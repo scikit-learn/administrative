@@ -35,7 +35,7 @@ def bench_skl():
 #       .. scikits.learn ..
 #
     start = datetime.now()
-    clf = skl_cluster.KMeans(k=k)
+    clf = skl_cluster.KMeans(k=k, n_init=1)
     clf.fit(X)
     return datetime.now() - start
 

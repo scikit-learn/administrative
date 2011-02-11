@@ -5,6 +5,8 @@ from datetime import datetime
 from scikits.learn import pca as skl_pca
 from pybrain.auxiliary import pca as pybrain_pca
 import mdp
+from mvpa.mappers.pca import PCAMapper as MVPA_PCA
+from mvpa.datasets import Dataset
 
 #
 #       .. Generate dataset ..
@@ -43,6 +45,18 @@ def bench_mdp():
     mdp.pca(X, output_dim=n_components)
     return datetime.now() - start
 
+def bench_mvpa():
+#
+#       .. PyMVPA ..
+#
+    start = datetime.now()
+    clf = MVPA_PCA()
+    data = Dataset(samples=X, labels=0)
+    clf.train(data)
+    print 'Warning, PyMVPA does not accept keyword to set number ' \
+          'of components'
+    return datetime.now() - start
+    
 
 
 if __name__ == '__main__':
@@ -52,3 +66,4 @@ if __name__ == '__main__':
     print 'scikits.learn: ', bench_skl()
     print 'pybrain: ', bench_pybrain()
     print 'MDP: ', bench_mdp()
+    print 'PyMVPA: ', bench_mvpa()

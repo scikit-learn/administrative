@@ -14,12 +14,12 @@ from mdp.nodes.classifier_nodes import KNNClassifier
 #
 #       .. Generate dataset ..
 #
-n_samples, n_dim, n_neighbors = 500, 500, 9
-X = 100 * np.random.randn(n_samples, n_dim)
-y = np.linspace(1, 10, num=n_samples).astype(np.int32)
+from load import load_data
+X, y = load_data()
+n_neighbors = 9
 
-print 'Using %s points, %s dims and %s classes' % \
-      (n_samples, n_dim, len(np.unique(y)))
+# print 'Using %s points, %s dims and %s classes' % \
+#       (n_samples, n_dim, len(np.unique(y)))
 
 
 def bench_shogun():

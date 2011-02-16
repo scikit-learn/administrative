@@ -14,3 +14,10 @@ def load_data():
     return  X, y
     
     
+def bench(func):
+    try:
+        a = func()
+    except Exception as detail:
+        print 'Something went wrong in function %s: '
+        print detail
+    return a

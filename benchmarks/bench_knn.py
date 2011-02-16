@@ -14,12 +14,12 @@ from mdp.nodes.classifier_nodes import KNNClassifier
 #
 #       .. Generate dataset ..
 #
-from load import load_data
+from load import load_data, bench
+print 'Loading data ...'
 X, y = load_data()
+print 'Done, %s samples with %s features loaded into ' \
+      'memory' % X.shape
 n_neighbors = 9
-
-# print 'Using %s points, %s dims and %s classes' % \
-#       (n_samples, n_dim, len(np.unique(y)))
 
 
 def bench_shogun():
@@ -86,8 +86,8 @@ def bench_pymvpa():
 
 if __name__ == '__main__':
     print __doc__
-    print 'Shogun: ', bench_shogun()
-    print 'MDP: ', bench_mdp()
-    print 'scikits.learn: ', bench_skl()
-    print 'MLPy: ', bench_mlpy()
-    print 'PyMVPA: ', bench_pymvpa()
+    print 'Shogun: ', bench(bench_shogun)
+    print 'MDP: ', bench(bench_mdp)
+    print 'scikits.learn: ', bench(bench_skl)
+    print 'MLPy: ', bench(bench_mlpy)
+    print 'PyMVPA: ', bench(bench_pymvpa)

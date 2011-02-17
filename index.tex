@@ -224,7 +224,7 @@ Support Vector Classification & 9.44 & 16.78 & 17.46 & 26.09 & 52.36 & {\bf 8.79
 Lasso LARS & {\bf 1.45} & 168.25   & -       &  64.89     & -    & - \\
 Elastic Net & {\bf 0.42} & 73.06 & -  &  6.53  & -  & - \\
 k-Nearest Neighbors & 1.38 & {\bf 0.30}  & - &  0.75 & 59.62    & 0.73 \\
-Principal Component Analysis & {\bf 0.42} & 3.01  & 2.94  & INFINITY  & 0.58  & - \\
+Principal Component Analysis & {\bf 0.42} & 3.01  & 2.94  & * & 0.58  & - \\
 k-Means  & 0.16 & {\bf 0.02} & 187.02  & 0.0  & 0.07 & 0.07 \\
 License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 \hline
@@ -246,14 +246,16 @@ License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 %% Also, fast k-nearest neighbors is achieved by constructing a binary
 %% tree of the samples similar to the one found in the kd-tree structure.
 
+* PyMVPA does not allow to set a specific number of components, thus
+computations span during several minutes (> 20min).
 
-While all modules in the SVM columns use libsvm \cite{libsvm} in the
-background, superior results of scikits.learn can be explained by two
-factors. First of, our bindings are implemented in Cython and
-providine lower overhead on the C/Python layer than those based on
-ctypes. Second, we've patched libsvm to work efficiency on dense data,
-providing less memory footprint, better usage of memory alignment and
-the pipelining capabilities of modern processors.
+%% While all modules in the SVM columns use libsvm \cite{libsvm} in the
+%% background, superior results of scikits.learn can be explained by two
+%% factors. First of, our bindings are implemented in Cython and
+%% providine lower overhead on the C/Python layer than those based on
+%% ctypes. Second, we've patched libsvm to work efficiency on dense data,
+%% providing less memory footprint, better usage of memory alignment and
+%% the pipelining capabilities of modern processors.
 
 
 \section{Code design}

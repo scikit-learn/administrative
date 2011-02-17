@@ -54,10 +54,10 @@ def bench_mvpa():
 #
     start = datetime.now()
     clf = MVPA_PCA()
-    data = Dataset(samples=X, labels=0)
-    clf.train(data)
     print 'Warning, PyMVPA does not accept keyword to set number ' \
           'of components'
+    data = Dataset(samples=X, labels=0)
+    clf.train(data)
     return datetime.now() - start
 
 

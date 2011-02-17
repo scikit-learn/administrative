@@ -1,12 +1,13 @@
 \documentclass[twoside,11pt]{article} 
 \usepackage{jmlr2e} 
-\usepackage{hyperref}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
 \jmlrheading{1}{2011}{1-48}{4/00}{10/00}{Pedregosa, Varoquaux et al.}
 
 % Short headings should be running head and authors last names
 
 \usepackage{xcolor}
 \usepackage[normalem]{ulem}
+\usepackage{amsmath}
 
 \newcommand{\GAEL}[1]{\textcolor{blue}{\uline{#1}}}
 \newcommand{\FABIAN}[1]{\textcolor{red}{\uline{#1}}}
@@ -114,33 +115,34 @@ Distribution'' thanks to its very liberal BSD license.
 %% scipy. This allows for maximum code reuse while reducing deployment
 %% costs.
 
-scikits.learn builds upon a powerful stack of existing libraries.
+scikits.learn builds upon a powerful stack of existing libraries:
 
-\paragraph{Numpy}
-
-Numpy provides the base data structure for representing
+{\bf Numpy}:
+%
+the base data structure for representing
 information. This choice strives for easy of use by using plain numpy
 arrays instead of specialized data structures and limiting framework
 code. Our objects work directly with NumPy arrays, providing a
 flexible way to communicate with other packages.
 
-\paragraph{Scipy} 
+{\bf Scipy}:
+%
+efficient algorithms for linear algebra, sparse matrix structure, special
+functions and basic statistical functions.
 
-Scipy provides us with the efficient algorithms for linear algebra,
-sparse matrix structure, special functions and basic statistical
-functions.
-
-\paragraph{Cython}
-
+{\bf Cython}:
+%
 The purpose of Cython is twofold. First, it allows to reach the
-performance of compiled languages as C while retaining a Python-like
-syntax. Second, Cython allows to easily access third-party libraries,
+performance of compiled languages as C while retaining Python-like
+syntax and high-level operations. Second, Cython allows to easily bind 
+compiled libraries,
 effectively eliminating most of the boilerplate code associated with
 Python/C extensions.
 
-\paragraph{Matplotlib}
+{\bf Matplotlib}:
+%
+visualization and examples, optional but highly recommended.
 
-Optional but highly recommended, visualization and examples.
 
 %% what sets us apart from many other machine learning toolboxes, is
 %% that ...
@@ -212,10 +214,10 @@ algorithms that are ofter faster than the ones found in compiled
 libraries.
 
 
-\begin{center}
+\begin{table}[htb]
+\hspace*{-.03\linewidth}%
+\begin{minipage}{1.06\linewidth}
 %% \caption{Overview of existing machine learning libraries}
-
-
 \begin{tabular}{l c c c c c c}
 \hline\hline %inserts double horizontal lines 
  & scikits.learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]
@@ -224,13 +226,17 @@ Support Vector Classification & 9.44 & 16.78 & 17.46 & 26.09 & 52.36 & {\bf 8.79
 Lasso LARS & {\bf 1.45} & 168.25   & -       &  64.89     & -    & - \\
 Elastic Net & {\bf 0.42} & 73.06 & -  &  6.53  & -  & - \\
 k-Nearest Neighbors & 1.38 & {\bf 0.30}  & - &  0.75 & 59.62    & 0.73 \\
-Principal Component Analysis & {\bf 0.42} & 3.01  & 2.94  & * & 0.58  & - \\
-k-Means  & 2.64 & {\bf 0.66} & *  & -  & 0.28 & 0.49 \\
+PCA & {\bf 0.42} & 3.01  & 2.94  & $\star$ & 0.58  & - \\
+k-Means  & 2.64 & 0.66 & $\star$ & -  & {\bf 0.28} & 0.49 \\
 License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 \hline
 \end{tabular}
 
-\end{center}
+$\star$: Not converging after 1 hour iteration.
+\end{minipage}
+\caption{
+}
+\end{table}
 
 %% WHAT TO DO WHITH THE ALGORITHMS THAT ARE IMPLEMENTED IN MDP VIA
 %% SCIKIT-LEARN ??
@@ -245,8 +251,6 @@ License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 
 %% Also, fast k-nearest neighbors is achieved by constructing a binary
 %% tree of the samples similar to the one found in the kd-tree structure.
-
-* Not converging after 1hour iteration.
 
 %% While all modules in the SVM columns use libsvm \cite{libsvm} in the
 %% background, superior results of scikits.learn can be explained by two

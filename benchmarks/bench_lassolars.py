@@ -3,8 +3,8 @@
 from datetime import datetime
 from scikits.learn import linear_model
 from mlpy import Lasso as mlpy_lasso
-
-
+from mvpa.datasets import Dataset
+from mvpa.clfs import lars as mvpa_lars
 
 #
 #       .. Load dataset ..
@@ -43,8 +43,6 @@ def bench_pymvpa():
 #       .. PyMVPA ..
 #
 
-    from mvpa.datasets import Dataset
-    from mvpa.clfs import lars as mvpa_lars
     tstart = datetime.now()
     data = Dataset(samples=X, labels=y)
     mvpa_clf = mvpa_lars.LARS()

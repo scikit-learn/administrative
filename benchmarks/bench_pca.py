@@ -9,11 +9,14 @@ from mvpa.mappers.pca import PCAMapper as MVPA_PCA
 from mvpa.datasets import Dataset
 
 #
-#       .. Generate dataset ..
+#       .. Load dataset ..
 #
-n_samples, n_dim = 500, 500
+from load import load_data, bench
+print 'Loading data ...'
+X, y, T = load_data()
+print 'Done, %s samples with %s features loaded into ' \
+      'memory' % X.shape
 n_components = 9
-X = 100 * np.random.randn(n_samples, n_dim)
 
 
 
@@ -36,7 +39,6 @@ def bench_pybrain():
     return datetime.now() - start
 
 
-
 def bench_mdp():
 #
 #       .. MDP ..
@@ -44,6 +46,7 @@ def bench_mdp():
     start = datetime.now()
     mdp.pca(X, output_dim=n_components)
     return datetime.now() - start
+
 
 def bench_mvpa():
 #
@@ -56,14 +59,11 @@ def bench_mvpa():
     print 'Warning, PyMVPA does not accept keyword to set number ' \
           'of components'
     return datetime.now() - start
-    
 
 
 if __name__ == '__main__':
     print __doc__
-    print 'Using %s points, %s dims' % \
-          (n_samples, n_dim)
-    print 'scikits.learn: ', bench_skl()
-    print 'pybrain: ', bench_pybrain()
-    print 'MDP: ', bench_mdp()
-    print 'PyMVPA: ', bench_mvpa()
+    print 'scikits.learn: ', bench(bench_skl), bench(bench_skl)
+    print 'pybrain: ', bench(bench_pybrain), bench(bench_pybrain)
+    print 'MDP: ', bench(bench_mdp), bench(bench_mdp)
+    print 'PyMVPA: ', bench(bench_mvpa), bench(bench_mvpa)

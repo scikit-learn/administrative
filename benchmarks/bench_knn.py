@@ -31,9 +31,10 @@ def bench_shogun():
     feat = Features.RealFeatures(X.T)
     distance = Distance.EuclidianDistance(feat, feat)
     labels = Features.Labels(y.astype(np.float64))
+    test_feat = Features.RealFeatures(T.T)
     knn = Classifier.KNN(n_neighbors, distance, labels)
     knn.train()
-    knn.classify(feat).get_labels()
+    knn.classify(test_feat).get_labels()
     return datetime.now() - start
 
 
@@ -44,7 +45,7 @@ def bench_mdp():
     start = datetime.now()
     knn_mdp = KNNClassifier(k=n_neighbors)
     knn_mdp.train(X, y)
-    knn_mdp.label(X)
+    knn_mdp.label(T)
     return datetime.now() - start
 
 
@@ -55,7 +56,7 @@ def bench_skl():
     start = datetime.now()
     clf = neighbors.NeighborsClassifier(n_neighbors=n_neighbors)
     clf.fit(X, y)
-    clf.predict(X)
+    clf.predict(T)
     return datetime.now() - start
 
 
@@ -66,7 +67,7 @@ def bench_mlpy():
     start = datetime.now()
     mlpy_clf = mlpy_Knn(n_neighbors)
     mlpy_clf.compute(X, y)
-    mlpy_clf.predict(X)
+    mlpy_clf.predict(T)
     print 'MLPy timing: ', datetime.now() - start
 
 
@@ -78,7 +79,7 @@ def bench_pymvpa():
     data = Dataset(samples=X, labels=y)
     mvpa_clf = mvpa_knn.kNN()
     mvpa_clf.train(data)
-    mvpa_clf.predict(X)
+    mvpa_clf.predict(T)
     return datetime.now() - start
 
 

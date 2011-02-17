@@ -7,7 +7,10 @@ import numpy as np
 from datetime import datetime
 from shogun import Classifier, Features, Distance
 from scikits.learn import neighbors
+from mlpy import Knn as mlpy_Knn
 from mdp.nodes.classifier_nodes import KNNClassifier
+from mvpa.datasets import Dataset
+from mvpa.clfs import knn as mvpa_knn
 
 #
 #       .. Load dataset ..
@@ -60,7 +63,6 @@ def bench_mlpy():
 #
 #       .. MLPy ..
 #
-    from mlpy import Knn as mlpy_Knn
     start = datetime.now()
     mlpy_clf = mlpy_Knn(n_neighbors)
     mlpy_clf.compute(X, y)
@@ -72,8 +74,6 @@ def bench_pymvpa():
 #
 #       .. PyMVPA ..
 #
-    from mvpa.datasets import Dataset
-    from mvpa.clfs import knn as mvpa_knn
     start = datetime.now()
     data = Dataset(samples=X, labels=y)
     mvpa_clf = mvpa_knn.kNN()
@@ -84,7 +84,7 @@ def bench_pymvpa():
 
 if __name__ == '__main__':
     print __doc__
-#    print 'Shogun: ', bench(bench_shogun)
+    print 'Shogun: ', bench(bench_shogun)
     print 'MDP: ', bench(bench_mdp)
     print 'scikits.learn: ', bench(bench_skl)
     print 'MLPy: ', bench(bench_mlpy)

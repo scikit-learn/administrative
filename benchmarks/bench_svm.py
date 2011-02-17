@@ -2,7 +2,7 @@
 
 import numpy as np
 from datetime import datetime
-from shogun.Classifier import LibSVMMultiClass
+from shogun.Classifier import LibSVM
 from shogun.Features import RealFeatures, Labels
 from shogun.Kernel import GaussianKernel
 from mdp.nodes import LibSVMClassifier
@@ -11,14 +11,14 @@ from mvpa.clfs import svm as mvpa_svm
 from scikits.learn import svm as skl_svm
 from mlpy import LibSvm as mlpy_svm
 
-
 #
-#       .. Generate dataset ..
+#       .. Load dataset ..
 #
-n_samples, n_dim = 500, 500
-X = 100 * np.random.randn(n_samples, n_dim)
-y = np.linspace(0, 10, num=n_samples).astype(np.int32).astype(np.float64)
-C = 1.
+from load import load_data, bench
+print 'Loading data ...'
+X, y, T = load_data()
+print 'Done, %s samples with %s features loaded into ' \
+      'memory' % X.shape
 
 
 def bench_shogun():
@@ -27,10 +27,12 @@ def bench_shogun():
 #
     start = datetime.now()
     feat = RealFeatures(X.T)
+    feat_test = RealFeatures(T.T)
     labels = Labels(y.astype(np.float64))
     kernel = GaussianKernel(feat, feat, 1.)
-    shogun_svm = LibSVMMultiClass(C, kernel, labels)
+    shogun_svm = LibSVM(1., kernel, labels)
     shogun_svm.train()
+    shogun_svm.classify(feat_test).get_labels()
     return datetime.now() - start
 
 
@@ -40,8 +42,8 @@ def bench_mlpy():
 #
     start = datetime.now()
     mlpy_clf = mlpy_svm(kernel_type='rbf', C=1.)
-    mlpy_clf.learn(X, y)
-    mlpy_clf.pred(X)
+    mlpy_clf.learn(X, y.astype(np.float64))
+    mlpy_clf.pred(T)
     return datetime.now() - start
 
 
@@ -70,15 +72,15 @@ def bench_pymvpa():
 
 def bench_pybrain():
 #
-#       .. PyMVPA ..
+#       .. PyBrain ..
 #
     raise NotImplementedError
 
 
 if __name__ == '__main__':
     print __doc__
-    print 'Using %s points, %s dims and %s classes' % \
-          (n_samples, n_dim, len(np.unique(y)))
-    print 'Shogun: ', bench_shogun()
-    print 'scikits.learn: ', bench_skl()
-    print 'MLPy: ', bench_mlpy()
+    print 'Shogun: ', bench(bench_shogun), bench(bench_shogun)
+    print 'scikits.learn: ', bench(bench_skl), bench(bench_skl)
+    print 'MLPy: ', bench(bench_mlpy), bench(bench_mlpy)
+    print 'PyMVPA: ', bench(bench_pymvpa), bench(bench_pymvpa)
+    

@@ -5,18 +5,16 @@
 #
 import numpy as np
 from datetime import datetime
-from shogun.Classifier import KNN
-from shogun.Features import RealFeatures, Labels
-from shogun.Distance import EuclidianDistance
+from shogun import Classifier, Features, Distance
 from scikits.learn import neighbors
 from mdp.nodes.classifier_nodes import KNNClassifier
 
 #
-#       .. Generate dataset ..
+#       .. Load dataset ..
 #
 from load import load_data, bench
 print 'Loading data ...'
-X, y = load_data()
+X, y, T = load_data()
 print 'Done, %s samples with %s features loaded into ' \
       'memory' % X.shape
 n_neighbors = 9
@@ -27,10 +25,10 @@ def bench_shogun():
 #       .. Shogun ..
 #
     start = datetime.now()
-    feat = RealFeatures(X.T)
-    distance = EuclidianDistance(feat, feat)
-    labels = Labels(y.astype(np.float64))
-    knn = KNN(n_neighbors, distance, labels)
+    feat = Features.RealFeatures(X.T)
+    distance = Distance.EuclidianDistance(feat, feat)
+    labels = Features.Labels(y.astype(np.float64))
+    knn = Classifier.KNN(n_neighbors, distance, labels)
     knn.train()
     knn.classify(feat).get_labels()
     return datetime.now() - start
@@ -52,7 +50,7 @@ def bench_skl():
 #       .. scikits.learn ..
 #
     start = datetime.now()
-    clf = neighbors.Neighbors(n_neighbors=n_neighbors)
+    clf = neighbors.NeighborsClassifier(n_neighbors=n_neighbors)
     clf.fit(X, y)
     clf.predict(X)
     return datetime.now() - start
@@ -86,7 +84,7 @@ def bench_pymvpa():
 
 if __name__ == '__main__':
     print __doc__
-    print 'Shogun: ', bench(bench_shogun)
+#    print 'Shogun: ', bench(bench_shogun)
     print 'MDP: ', bench(bench_mdp)
     print 'scikits.learn: ', bench(bench_skl)
     print 'MLPy: ', bench(bench_mlpy)

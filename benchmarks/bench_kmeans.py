@@ -10,12 +10,17 @@ from pybrain.auxiliary import kmeans as pybrain_kmeans
 from mlpy import Kmeans as mlpy_Kmeans
 from mdp.nodes import KMeansClassifier as mdp_KMeans
 
+
 #
-#       .. Generate dataset ..
+#       .. Load dataset ..
 #
-n_samples, n_dim = 500, 500
+from load import load_data, bench
+print 'Loading data ...'
+X, y, T = load_data()
+print 'Done, %s samples with %s features loaded into ' \
+      'memory' % X.shape
+n_components = 9
 k = 9
-X = 100 * np.random.randn(n_samples, n_dim)
 
 
 def bench_shogun():
@@ -72,10 +77,8 @@ def bench_mdp():
 
 if __name__ == '__main__':
     print __doc__
-    print 'Using %s points, %s dims' % \
-          (n_samples, n_dim)
     print 'Shogun: ', bench_shogun()
     print 'scikits.learn: ', bench_skl()
-    print 'pybrain: ', bench_pybrain()
+#    print 'pybrain: ', bench_pybrain()
     print 'MLPy: ', bench_mlpy()
     print 'MDP: ', bench_mdp()

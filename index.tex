@@ -1,7 +1,8 @@
 \documentclass[twoside,11pt]{article} 
 \usepackage{jmlr2e} 
-\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
-\jmlrheading{1}{2011}{1-48}{4/00}{10/00}{Pedregosa, Varoquaux et al.}
+%\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,breaklinks=true]{hyperref}
+\usepackage{url}
+\jmlrheading{1}{2011}{XX}{XX/11}{XXX}{Pedregosa, Varoquaux, Gramfort et al.}
 
 % Short headings should be running head and authors last names
 
@@ -11,6 +12,7 @@
 
 \newcommand{\GAEL}[1]{\textcolor{blue}{\uline{#1}}}
 \newcommand{\FABIAN}[1]{\textcolor{red}{\uline{#1}}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -25,19 +27,44 @@
 
 
 \author{\name Fabian Pedregosa \email fabian.pedregosa@inria.fr \\
-        \name Gael Varoquaux \email gael.varoquaux@normalesup.org  \\
+        \name Ga\"el Varoquaux \email gael.varoquaux@normalesup.org  \\
         \name Alexandre Gramfort \email alexandre.gramfort@inria.fr \\
         \name Vincent Michel  \email vincent.michel@inria.fr \\
         \name Bertrand Thirion  \email bertrand.thirion@inria.fr \\
-        \addr  Neurospin, B\^atiment 145\\
-        point courier 156, CEA Saclay\\
-        91191 Gif sur Yvette – FRANCE
+        \addr Parietal, INRIA Saclay / Neurospin, 
+	    B\^at 145, CEA Saclay, 91191 Gif sur Yvette -- {\sc France}
         \AND
         \name Olivier Grisel \email olivier.grisel@ensta.fr \\
-        \addr Nuxeo \\
-        \\
+        \addr Nuxeo -- {\sc France} 
         \AND
-        \name MANY MORE
+        \name Matthieu Blondel \email mathieu@mblondel.org \\
+        \addr Kobe University -- {\sc Japan} 
+        \AND
+        \name Peter Prettenhofer \email peter.prettenhofer@gmail.com \\
+        \addr Bauhaus-Universit\"at Weimar -- {\sc Germany}
+        \AND
+        \name Ron Weiss \email ronweiss@gmail.com \\
+        \addr MARL, NYU, New York -- {\sc USA}
+        \AND
+        \name Vincent Dubourg \email vincent.dubourg@gmail.com\\
+        \addr  -- {\sc France}
+        \AND
+        \name Jake Vanderplas \email vanderplas@astro.washington.edu\\
+        \addr University of Washington -- {\sc USA}
+	\AND
+        \name Alexandre Passos \email alexandre.tp@gmail.com \\
+        \addr Unicamp,  Campinas -- {\sc Brazil}
+        \AND
+        \name David Cournapeau \email cournape@gmail.com \\
+        \addr Kyoto -- {\sc Japan}
+        \AND
+        \name Matthieu Brucher \email matthieu.brucher@gmail.com \\
+        \addr Total E\&P,  Pau -- {\sc France}
+        \AND
+        \name Matthieu Perrot \email matthieu.perrot@cea.fr\\
+        \name \'Edouard Duchesnay \email edouard.duchesnay@cea.fr \\
+        \addr LNAO / Neurospin, 
+	    B\^at 145, CEA Saclay, 91191 Gif sur Yvette -- {\sc France}
 }
 
 
@@ -51,17 +78,17 @@ a wide range of state-of-the-art machine learning algorithms for
 medium-scale supervised and unsupervised problems. This package
 focuses on bringing machine learning to non-specialists using a
 general-purpose high-level language with a special care on ease of use,
-documentation and consistent API.
-
-
-scikits.learn is licensed under the simplified BSD license,
-encouraging its use in both free and commercial settings. Soruce code
-and documentation can be downloaded from
+documentation and a consistent API.
+%
+It has minimal dependencies and is licensed under the simplified BSD
+license, encouraging its use in both academic and commercial settings. Source
+code, binaries, and documentation can be downloaded from
 \url{http://scikit-learn.sourceforge.net}.
 
 \end{abstract}
 
-\keywords{Python, supervised learning, unsupervised learning}
+\keywords{Python, supervised learning, unsupervised learning, model
+selection}
 
 
 %%  It offers a wide range of
@@ -70,12 +97,37 @@ and documentation can be downloaded from
 
 
 \section{Introduction}
-In the past years the Python programming language has experienced a
-huge increase as the language of choice for scientific computing. Its
-high level, interactive nature and its maturing ecosystem of
-scientific libraries (numpy, scipy, matplotlib) [Mars 2011 CiSE]
-make it a very appealing choice for both research and industry.
 
+The Python programming language is establishing itself as one of the
+languages of choice for scientific computing as well as web-based data
+processing. Its high-level interactive nature and its maturing ecosystem
+of scientific libraries \citep{cise2007,cise2011} make it a very
+appealing choice algorithmic development and data processing in both
+academic and industrial settings. In particular, as it is a
+general-purpose language, it enjoys success in applied problems as well
+as amongst computer scientists.
+%
+{\sl Scikits.learn} is a Python module harnessing this rich environment
+to provide to non-specialists state-of-the-art machine learning tools, to
+cope with the growing need of statistical data analysis and mining, in
+the software and web industries but also for basic research in non
+computer-science fields, such as biology, medicine or physics.
+
+The goal of the project is to provide a reference implementation of some
+of the best known machine learning algorithms, while maintaining an
+easy-to-use interface tightly integrated in the Python language. The
+package is mostly coded in Python, although some algorithms are coded in
+Cython or C/C++ language for efficiency. Also, because of their high
+quality and compatible license, we incorporate the libraries LibSVM
+\citep{chang2001} and LibLinear \citep{fan2008} and provide high-quality,
+low-overhead, bindings for these.
+%
+The package has only numpy and scipy as strict dependencies, which ensure
+it's availability in a rich set of platforms including Windows and any
+POSIX platforms. Furthermore, it is distributed as part of major open
+source distributions such as Ubuntu, Debian, Mandriva, NetBSD or Macports
+and in commercial distributions such as ``Enthought Python Distribution''
+thanks to its very liberal BSD license.
 
 %% We have also found it to be a convenient vector of communication with
 %% the non-specialist. Users can use an interactive, easy-to-learn,
@@ -86,25 +138,73 @@ make it a very appealing choice for both research and industry.
 %% machine learning where state-of-the art methods are routinely used by
 %% non-specialist.
 
-This motivated us to develop a library with the goal of providing
-efficient implementations of state-of-the-art machine learning
-algorithms for the Python language. The resulting project, called
-scikits.learn aims to provide a reference implementation of some of
-the best known machine learning algorithms, while maintaining an
-easy-to-use interface tightly integrated in the Python language. The
-package is mostly coded in Python, although some algorithms are coded
-in Cython or C/C++ language for efficiency. Also, because of their
-high quality and compatible license, we incorporate the C/C++
-libraries LibSVM and LibLinear and provide high-quality, low-overhead
-bindings for these.
+% This motivated us to develop a library with the goal of providing
+% efficient implementations of state-of-the-art machine learning
+% algorithms for the Python language. The resulting project, called
+% scikit-learn aims to provide a 
 
 
-The package has only numpy and scipy as strict dependences, which ensure
-it's availability in a rich set of platforms including
-Windows and any POSIX platforms. Furthermore, it is distributed as part of
-major open source distributions such as Ubuntu, Debian, Mandriva, NetBSD
-or Macports and in commercial distributions such as ``Enthought Python
-Distribution'' thanks to its very liberal BSD license.
+\section {Project vision}
+
+%% what sets us apart from many other machine learning toolboxes, is
+%% that ...
+
+\noindent{\bf BSD licensing}
+%
+Most of the Python ecosystem is licensed with non copyleft licensed such
+as the BSD license. This licensing scheme is beneficial for adoption
+outside the academic world, via the use of these tools in commercial
+projects. \emph{Scikits.learn} is distributed under the BSD license,
+which does impose some restrictions we cannot use some existing
+scientific code, such as the GSL (Gnu Scientific Library).
+
+\smallskip
+\noindent{\bf Bare-bone design and API}
+%
+To keep the barrier of entry low for users, we avoid framework code and
+try to keep the number of different objects to a minimum. In particular,
+we use as a core dataset object the numpy array \citep{Vanderwalt2011}
+that is common to scientific Python ecosystem.
+
+\smallskip
+\noindent{\bf Community-driven development}
+%
+We base our development on collaborative tools such as git, github and
+public mailing lists. External contributions are welcomed and
+encouraged via developer manual and API guidelines.
+
+\smallskip
+\noindent{\bf Code quality}
+%
+Rather than aim for many features, our goal is to provide solid
+implementation. The quality of the code base is ensured with unitary
+tests: as of release 0.6, test coverage is 78\%. Strict coding style
+convention are enforced following the Python guidelines, as well as the
+numpy style for documentation. We employ static analysis tools such as
+{\tt pyflakes} and {\tt pep8} to monitor the codebase. Finally, we strive
+to have consistent naming for the various functions and parameters.
+
+%% Special care has been taken to encourage external contributions. First
+%% of, every significant function is documented and tested.  Ohloh, the
+%% open source directory, describes the project as ``Well-commented
+%% source code'' and ``Very large, active development team''.
+
+
+%% We have succesfully used this software to real-world problems. Some
+%% applications can be seen in the online gallery, featuring more than 60
+%% examples.
+
+\smallskip
+\noindent{\bf Documentation}
+%
+We believe that documentation is a key component of a software
+distribution. \emph{Scikits.learn} provides a $\sim$300 page user
+guide built with the {\tt Sphinx} tool and including narrative
+documentation, class reference, tutorial, installation instructions as
+well as a collection of more than 60 examples, some of them featuring
+real-world applications. This documentation aims to minimize the amount
+of technical, machine-learning specific, terms used, while maintaining
+scientific precision with regards to the algorithms employed.
 
 
 
@@ -115,7 +215,7 @@ Distribution'' thanks to its very liberal BSD license.
 %% scipy. This allows for maximum code reuse while reducing deployment
 %% costs.
 
-scikits.learn builds upon a powerful stack of existing libraries:
+\emph{scikits.learn} builds upon a powerful stack of existing libraries:
 
 {\bf Numpy}:
 %
@@ -143,70 +243,19 @@ Python/C extensions.
 %
 visualization and examples, optional but highly recommended.
 
+%% {\bf Sphinx}:
 
-%% what sets us apart from many other machine learning toolboxes, is
-%% that ...
+% XXX: citations for the above?
 
 
-\section {Project vision}
-
+\section{Library overview}
 
 The library is structured in submodules, each of which covers a family
 of related algorithms. This way, the svm module support vector
 machine-related algorithms of classification (SVC), regression (SVR)
 and unsupervised learning (OneClassSVM).
 
-
-\paragraph{Code by interface, not by inheritance}
-
-Inheritance is not enforced at any stage, instead, we adopt some
-simple conventions that make the API easier to learn. We call an
-estimator to any object that implements that implement a `fit` and
-`predict` method, independently of its class hierarchy. Examples of
-estimators include Support Vector Classification, k-Nearest Neighbors
-and the Lasso.
-
-Some more specialized objects might also implement a score function
-for testing the accuracy of an estimator. Some classes of unsupervised
-also implement a transform for [...].
-
-
-%% However, some properties in the algorithms (warm restarts, path
-%% solutions, etc.) can, and should be used be used to speed up the
-%% process. To allow this The methods are model-dependent and are
-%% implemented in classes that append ``CV'', for cross-validation, to
-%% the model name (Lasso and LassoCV, etc.)
-
-
-\paragraph{Community-driven development}
-
-We base our development on collaborative tools such as git, github and
-public mailing lists. External contributions are welcomed and
-encouraged via developer manual and API guidelines. Quality of
-existing code is ensured [ha!] with unitary tests and regularly
-checked with tools such as pep8, pyflakes, coverage.
-
-%% Special care has been taken to encourage external contributions. First
-%% of, every significant function is documented and tested.  Ohloh, the
-%% open source directory, describes the project as ``Well-commented
-%% source code'' and ``Very large, active development team''.
-
-
-%% We have succesfully used this software to real-world problems. Some
-%% applications can be seen in the online gallery, featuring more than 60
-%% examples.
-
-\paragraph{Documentation}
-
-We believe that documentation is a key component of a software
-distribution, and as such scikits.learn includes a ~300 page user
-guide with narrative documentation, class reference, tutorial,
-installation instructions as well as a collection of more than 60
-examples, some of them featuring real-world applications of the
-library.
-
-
-\section{Computational efficiency tradeoffs}
+\section{High-level, yet efficient: some trade offs}
 
 
 Special care has been take on algorithmic efficiency, producing
@@ -217,13 +266,12 @@ libraries.
 \begin{table}[htb]
 \hspace*{-.03\linewidth}%
 \begin{minipage}{1.06\linewidth}
-%% \caption{Overview of existing machine learning libraries}
 \begin{tabular}{l c c c c c c}
 \hline\hline %inserts double horizontal lines 
  & scikits.learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]
 \hline
 Support Vector Classification & 9.44 & 16.78 & 17.46 & 26.09 & 52.36 & {\bf 8.79} \\
-Lasso LARS & {\bf 1.45} & 168.25   & -       &  64.89     & -    & - \\
+Lasso (LARS) & {\bf 1.45} & 168.25   & -       &  64.89     & -    & - \\
 Elastic Net & {\bf 0.42} & 73.06 & -  &  6.53  & -  & - \\
 k-Nearest Neighbors & 1.38 & {\bf 0.30}  & - &  0.75 & 59.62    & 0.73 \\
 PCA & {\bf 0.42} & 3.01  & 2.94  & $\star$ & 0.58  & - \\
@@ -235,6 +283,9 @@ License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 $\star$: Not converging after 1 hour iteration.
 \end{minipage}
 \caption{
+A comparison with other machine learning libraries exposed in Python.
+\cite{hanke2009}, \cite{zito2008}, \cite{schaul2010},
+\cite{sonnenburg2010}, \cite{albanese2008}
 }
 \end{table}
 
@@ -263,6 +314,26 @@ $\star$: Not converging after 1 hour iteration.
 
 \section{Code design}
 
+\paragraph{Code by interface, not by inheritance}
+
+Inheritance is not enforced at any stage, instead, we adopt some
+simple conventions that make the API easier to learn. We call an
+estimator to any object that implements that implement a `fit` and
+`predict` method, independently of its class hierarchy. Examples of
+estimators include Support Vector Classification, k-Nearest Neighbors
+and the Lasso.
+
+Some more specialized objects might also implement a score function
+for testing the accuracy of an estimator. Some classes of unsupervised
+also implement a transform for [...].
+
+
+%% However, some properties in the algorithms (warm restarts, path
+%% solutions, etc.) can, and should be used be used to speed up the
+%% process. To allow this The methods are model-dependent and are
+%% implemented in classes that append ``CV'', for cross-validation, to
+%% the model name (Lasso and LassoCV, etc.)
+
 
 \paragraph {Model selection}
 
@@ -271,10 +342,10 @@ model with the data at hand [...]. Usually, this process is carried
 out by measuring the performance of the different classifiers over all
 possible parameters.
 
-To ease this repetitive task, scikits.learn proposes some convenience
+To ease this repetitive task, \emph{scikits.learn} proposes some convenience
 objects. GridSearchCV is takes as input a classifier and a list of
 parameters and stores the best one. This works because all estimators
-in scikits.learn implement functions .\emph{fit}, \emph{predict} and
+in \emph{scikits.learn} implement functions .\emph{fit}, \emph{predict} and
 possibly \emph{score} so GridSearchCV is able to use classifiers as
 black boxes. For convenience, GridSearchCV is also a classifier
 (implements fit and predict), thus can be used transparently as any
@@ -296,19 +367,15 @@ from supervised to unsupervised learning, providing an unequal
 framework for easily comparison of different methods on a given
 application.
 
-While the choice of Python ensoures code reuse in the package, it also
+While the choice of Python ensures code reuse in the package, it also
 binds us to this language and limits its use outside the Python
 language.
 
 This effectively rules out code sharing with other major scientific
-platforms, such as MATLAB©, Octave, and R.
+platforms, such as MATLAB\texttrademark, Octave, and R.
 
 
 
-\section{References}
-
-ME:
-
-\includegraphics{images/parafaber.jpg}
+\bibliography{scikit}
 
 \end{document}

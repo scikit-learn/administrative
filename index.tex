@@ -17,7 +17,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\ShortHeadings{scikits.learn: machine learning in Python}{Pedregosa, Varoquaux et al.}
+\ShortHeadings{scikits.learn: machine learning in Python}{Pedregosa, Varoquaux, Gramfort et al.}
 \firstpageno{1}
 
 
@@ -107,64 +107,61 @@ academic and industrial settings. In particular, as it is a
 general-purpose language, it enjoys success in applied problems as well
 as amongst computer scientists.
 %
-{\sl Scikits.learn} is a Python module harnessing this rich environment
-to provide to non-specialists state-of-the-art machine learning tools, to
-cope with the growing need of statistical data analysis and mining, in
-the software and web industries but also for basic research in non
-computer-science fields, such as biology, medicine or physics.
+{\sl Scikits.learn} harnesses this rich environment to provide to
+non-specialists state-of-the-art machine learning tools, to cope with the
+growing need of statistical data analysis and mining, in the software and
+web industries but also for basic research in non computer-science
+fields, such as biology or physics.
 
 The goal of the project is to provide a reference implementation of some
 of the best known machine learning algorithms, while maintaining an
-easy-to-use interface tightly integrated in the Python language. The
-package is mostly coded in Python, although some algorithms are coded in
-Cython or C/C++ language for efficiency. Also, because of their high
-quality and compatible license, we incorporate the libraries LibSVM
-\citep{chang2001} and LibLinear \citep{fan2008} and provide high-quality,
-low-overhead, bindings for these.
+easy-to-use interface tightly integrated in the Python language.
+\emph{Scikits.learn} differs from other learning toolboxes in Python for
+various reasons: \emph{i)} it is distributed under the BSD license
+\emph{ii)} it incorporates compiled code for efficiency --unlike MDP
+\citep{zito2008} and pybrain \citep{schaul2010}-- \emph{iii)} it depends
+only on numpy and scipy --unlike pymvpa \citep{hanke2009}, we depending
+on R for distribution reasons-- \emph{iv)} it focuses on imperative
+programming and not data-flow frameworks --pybrain uses such a framework
+for building artificial neural networks.
+
+While the package is mostly coded in Python, it incorporates the
+libraries LibSVM \citep{chang2001} and LibLinear \citep{fan2008} that
+provide reference implementation of SVM and generalized linear models
+with compatible licenses.
 %
-The package has only numpy and scipy as strict dependencies, which ensure
-it's availability in a rich set of platforms including Windows and any
-POSIX platforms. Furthermore, it is distributed as part of major open
-source distributions such as Ubuntu, Debian, Mandriva, NetBSD or Macports
-and in commercial distributions such as ``Enthought Python Distribution''
-thanks to its very liberal BSD license.
+Binary packages are available on a rich set of platforms including
+Windows and any POSIX platforms. Furthermore, it is distributed as part
+of major open source distributions such as Ubuntu, Debian, Mandriva,
+NetBSD or Macports and in commercial distributions such as ``Enthought
+Python Distribution'' thanks to its liberal license.
 
-%% We have also found it to be a convenient vector of communication with
-%% the non-specialist. Users can use an interactive, easy-to-learn,
-%% general-purpose language and have access to state-of-the-art
-%% scientific software.
+%%The library is structured in submodules, each of which covers a family
+%%of related algorithms. This way, the svm module support vector
+%%machine-related algorithms of classification (SVC), regression (SVR)
+%%and unsupervised learning (OneClassSVM).
+%%
+%%% Mention 'flat is better than nested'
 
-%% In a context such as
-%% machine learning where state-of-the art methods are routinely used by
-%% non-specialist.
-
-% This motivated us to develop a library with the goal of providing
-% efficient implementations of state-of-the-art machine learning
-% algorithms for the Python language. The resulting project, called
-% scikit-learn aims to provide a 
+%%% Mention the quality of our SVM bindings
 
 
 \section {Project vision}
-
-%% what sets us apart from many other machine learning toolboxes, is
-%% that ...
 
 \noindent{\bf BSD licensing}
 %
 Most of the Python ecosystem is licensed with non copyleft licensed such
 as the BSD license. This licensing scheme is beneficial for adoption
 outside the academic world, via the use of these tools in commercial
-projects. \emph{Scikits.learn} is distributed under the BSD license,
-which does impose some restrictions we cannot use some existing
+projects. It does impose some restrictions: we cannot use some existing
 scientific code, such as the GSL (Gnu Scientific Library).
 
-\smallskip
-\noindent{\bf Bare-bone design and API}
+\smallskip \noindent{\bf Bare-bone design and API}
 %
-To keep the barrier of entry low for users, we avoid framework code and
-try to keep the number of different objects to a minimum. In particular,
-we use as a core dataset object the numpy array \citep{Vanderwalt2011}
-that is common to scientific Python ecosystem.
+For a low barrier of entry, we avoid framework code and keep the number
+of different objects to a minimum. In particular, we use as a dataset
+object the numpy array \citep{Vanderwalt2011} that is common to the
+scientific Python ecosystem.
 
 \smallskip
 \noindent{\bf Community-driven development}
@@ -173,99 +170,87 @@ We base our development on collaborative tools such as git, github and
 public mailing lists. External contributions are welcomed and
 encouraged via developer manual and API guidelines.
 
-\smallskip
-\noindent{\bf Code quality}
+\smallskip \noindent{\bf Code quality}
 %
 Rather than aim for many features, our goal is to provide solid
 implementation. The quality of the code base is ensured with unitary
-tests: as of release 0.6, test coverage is 78\%. Strict coding style
-convention are enforced following the Python guidelines, as well as the
-numpy style for documentation. We employ static analysis tools such as
-{\tt pyflakes} and {\tt pep8} to monitor the codebase. Finally, we strive
-to have consistent naming for the various functions and parameters.
+tests: as of release 0.6, test coverage is 78\%. We follow the Python
+coding style guidelines, as well as the numpy style for documentation. We
+employ static analysis tools such as {\tt pyflakes} and {\tt pep8}.
+Finally, we strive to have consistent naming for the various functions
+and parameters.
 
-%% Special care has been taken to encourage external contributions. First
-%% of, every significant function is documented and tested.  Ohloh, the
-%% open source directory, describes the project as ``Well-commented
-%% source code'' and ``Very large, active development team''.
-
-
-%% We have succesfully used this software to real-world problems. Some
-%% applications can be seen in the online gallery, featuring more than 60
-%% examples.
-
-\smallskip
-\noindent{\bf Documentation}
+\smallskip \noindent{\bf Documentation}
 %
-We believe that documentation is a key component of a software
-distribution. \emph{Scikits.learn} provides a $\sim$300 page user
-guide built with the {\tt Sphinx} tool and including narrative
-documentation, class reference, tutorial, installation instructions as
-well as a collection of more than 60 examples, some of them featuring
-real-world applications. This documentation aims to minimize the amount
-of technical, machine-learning specific, terms used, while maintaining
+We believe that documentation is a key component of software.
+\emph{Scikits.learn} provides a $\sim$300 page user guide including
+narrative documentation, class reference, tutorial, installation
+instructions as well as a collection of more than 60 examples, some of
+them featuring real-world applications. We try to minimize the amount of
+technical, machine-learning specific, terms used, while maintaining
 scientific precision with regards to the algorithms employed.
-
 
 
 \section{Underlying technologies}
 
-%% An important aspect in the design of scikits.learn is to make
-%% extensive use of python scientific libraries such as numpy and
-%% scipy. This allows for maximum code reuse while reducing deployment
-%% costs.
+%\emph{Scikits.learn} builds upon a powerful stack of existing libraries:
 
-\emph{scikits.learn} builds upon a powerful stack of existing libraries:
+%XXX: Shorten the above
 
-{\bf Numpy}:
+\noindent{\bf Numpy}:
 %
 the base data structure for representing
-information. This choice strives for easy of use by using plain numpy
-arrays instead of specialized data structures and limiting framework
-code. Our objects work directly with NumPy arrays, providing a
-flexible way to communicate with other packages.
+information. All the data for supervised or unsupervised learning is
+presented as one, or a few, numpy arrays. Numpy's view-based data model
+limits memory copy, even when binding with compiled code
+\citep{Vanderwalt2011}. Numpy also provides basic arithmetic operations. 
+%This choice strives for easy of use by using plain numpy
+%arrays instead of specialized data structures and limiting framework
+%code. Our objects work directly with NumPy arrays, providing a
+%flexible way to communicate with other packages.
 
-{\bf Scipy}:
+\noindent{\bf Scipy}:
 %
 efficient algorithms for linear algebra, sparse matrix structure, special
-functions and basic statistical functions.
+functions and basic statistical functions. {\sl Scipy} has binding for
+many Fortran-based standard numerical packages. This is important for
+ease of install and portability, as providing binaries binding Fortran
+can prove challenging on various platforms. 
 
-{\bf Cython}:
+\noindent{\bf Cython}:
 %
-The purpose of Cython is twofold. First, it allows to reach the
-performance of compiled languages as C while retaining Python-like
-syntax and high-level operations. Second, Cython allows to easily bind 
-compiled libraries,
-effectively eliminating most of the boilerplate code associated with
-Python/C extensions.
+generation of C code seamlessly inserted in Python. Cython allows to
+reach the performance of compiled languages as C while retaining
+Python-like syntax and high-level operations. Also, Cython is used to
+easily bind compiled libraries, eliminating most of the boilerplate code
+associated with Python/C extensions.
 
-{\bf Matplotlib}:
+\noindent{\bf Matplotlib}:
 %
-visualization and examples, optional but highly recommended.
+visualization and plotting. Matplotlib is used only in the examples.
 
-%% {\bf Sphinx}:
+\section{High-level yet efficient: some trade offs}
 
-% XXX: citations for the above?
+%Special care has been take on algorithmic efficiency, producing
+%algorithms that are ofter faster than the ones found in compiled
+%libraries.
 
+While the focus \emph{scikits.learn} is on ease of the use, and the code
+is written mostly in a high level language, care has been taken on
+computational efficiency. In table \ref{tab:comparisons}, we compare
+computation time for a few algorithms implemented in most of the major
+machine learning toolkits accessible in Python \GAEL{Fabian: please give
+details on the dataset.}. In the following, we discuss some aspects of
+these results, to illustrate the engineer trade offs related to
+performance in a high-level language. Note that, as of release 0.6, the
+\emph{scikits.learn} code was not yet modified to benefit from the
+lessons learned from these benchmarks.
 
-\section{Library overview}
-
-The library is structured in submodules, each of which covers a family
-of related algorithms. This way, the svm module support vector
-machine-related algorithms of classification (SVC), regression (SVR)
-and unsupervised learning (OneClassSVM).
-
-\section{High-level, yet efficient: some trade offs}
-
-
-Special care has been take on algorithmic efficiency, producing
-algorithms that are ofter faster than the ones found in compiled
-libraries.
-
-
-\begin{table}[htb]
-\hspace*{-.03\linewidth}%
-\begin{minipage}{1.06\linewidth}
+%{{{----------------------------------------------------------------------------
+\begin{table}[tb]
+\small
+\hspace*{.03\linewidth}%
+%\begin{minipage}{1.04\linewidth}
 \begin{tabular}{l c c c c c c}
 \hline\hline %inserts double horizontal lines 
  & scikits.learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]
@@ -274,43 +259,75 @@ Support Vector Classification & 9.44 & 16.78 & 17.46 & 26.09 & 52.36 & {\bf 8.79
 Lasso (LARS) & {\bf 1.45} & 168.25   & -       &  64.89     & -    & - \\
 Elastic Net & {\bf 0.42} & 73.06 & -  &  6.53  & -  & - \\
 k-Nearest Neighbors & 1.38 & {\bf 0.30}  & - &  0.75 & 59.62    & 0.73 \\
-PCA & {\bf 0.42} & 3.01  & 2.94  & $\star$ & 0.58  & - \\
+PCA (9 components) & {\bf 0.42} & 3.01  & 2.94  & $\star^1$ & 0.58  & - \\
 k-Means  & 2.64 & 0.66 & $\star$ & -  & {\bf 0.28} & 0.49 \\
 License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 \hline
 \end{tabular}
 
-$\star$: Not converging after 1 hour iteration.
-\end{minipage}
-\caption{
-A comparison with other machine learning libraries exposed in Python.
-\cite{hanke2009}, \cite{zito2008}, \cite{schaul2010},
-\cite{sonnenburg2010}, \cite{albanese2008}
-}
+$\star$: Not converging after 1 hour iteration. \hfill $^1$: pympva does
+not allow for truncated PCA.
+\vspace*{-1ex}
+%\end{minipage}
+\caption{\small
+A comparison with other machine learning libraries exposed in Python:
+MLPy \citep{albanese2008}, PyBrain \citep{schaul2010}, pymvpa
+\citep{hanke2009}, MDP \citep{zito2008} and Shogun
+\citep{sonnenburg2010}. \label{tab:comparisons}}
 \end{table}
+%----------------------------------------------------------------------------}}}
 
-%% WHAT TO DO WHITH THE ALGORITHMS THAT ARE IMPLEMENTED IN MDP VIA
-%% SCIKIT-LEARN ??
+\noindent{\bf SVM}:
+%
+While all packages compared for support vector classification use libsvm
+\citep{chang2001} in the background, good performance of
+\emph{scikits.learn} can be explained by two factors. First of, our
+bindings have low overhead, as they are implemented in Cython and avoid
+memory copies.
+\GAEL{Fabian: overhead numbers}
+Second, we've patched libsvm to work efficiency on dense data, providing
+less memory footprint, better usage of memory alignment and the
+pipelining capabilities of modern processors.
 
-%% Least Angle Regression is implemented in pure Python and achieve 10x
-%% to 2x gain in performance over the reference implementation, the R
-%% package LARS, by smarter updates of coefficients [rephrase].
 
-%% The elasticnet algorithm, by coordinate descent, coded in Cython
-%% achieves the same order of performance as the highly optimized Fortran
-%% version elasticnet.
+\noindent{\bf LARS}:
+%
+Least Angle Regression is implemented in pure Python and achieve 10x
+to 2x gain in performance over the reference implementation in R, by smarter 
+updates of coefficients [rephrase].
+\GAEL{Fabian: what are these smart updates}. The {\sl pymvpa} package
+uses this implementation via the Rpy R bindings and thus pays a
+heavy price to memory copies.
 
-%% Also, fast k-nearest neighbors is achieved by constructing a binary
-%% tree of the samples similar to the one found in the kd-tree structure.
+\noindent{\bf ElasticNet}:
+%
+We benchmarked coordinate descent implementations of elasticnet. 
+In \emph{scikits.learn}, it is coded in Cython 
+\GAEL{Fabian: a few words about the atlas code embedded}.
+It achieves the same order of performance as the highly optimized Fortran
+version \emph{glmnet} \citep{friedman2010} on medium-scale problems but
+performance on very large problems will be limited as we do not use the KKT 
+conditions to define an active set.
 
-%% While all modules in the SVM columns use libsvm \cite{libsvm} in the
-%% background, superior results of scikits.learn can be explained by two
-%% factors. First of, our bindings are implemented in Cython and
-%% providine lower overhead on the C/Python layer than those based on
-%% ctypes. Second, we've patched libsvm to work efficiency on dense data,
-%% providing less memory footprint, better usage of memory alignment and
-%% the pipelining capabilities of modern processors.
+\noindent{\bf kNN}:
+%
+The k-nearest neighbors is achieved by constructing a ball
+tree \citep{omohundro1989} of the samples. This strategy is very
+efficient in large dimensions, but is not favorable for low-dimensional
+problems. \GAEL{This does not explain why we do not perform poorly}
 
+\noindent{\bf PCA}:
+%
+For medium to large datasets, \emph{scikits.learn} provides an
+implementation of a truncated PCA based on random projections
+\citep{rokhlin2009}. On medium-scale problems, the NIPALS algorithm, used
+by MDP also performs very well.
+
+\noindent{\bf k-Means}:
+%
+Other pure-Python packages outperform the k-Means implementation of
+\emph{scikits.learn} as they take advantage of the triangular inequality
+\citep{elkan2003}.
 
 \section{Code design}
 

@@ -235,14 +235,19 @@ visualization and plotting. Matplotlib is used only in the examples.
 %algorithms that are ofter faster than the ones found in compiled
 %libraries.
 
-While the focus \emph{scikits.learn} is on ease of the use, and the code
-is written mostly in a high level language, care has been taken on
-computational efficiency. In table \ref{tab:comparisons}, we compare
-computation time for a few algorithms implemented in most of the major
-machine learning toolkits accessible in Python \GAEL{Fabian: please give
-details on the dataset.}. In the following, we discuss some aspects of
-these results, to illustrate the engineer trade offs related to
-performance in a high-level language. Note that, as of release 0.6, the
+While the focus \emph{scikits.learn} is on ease of the use, and the
+code is written mostly in a high level language, care has been taken
+on computational efficiency. In table \ref{tab:comparisons}, we
+compare computation time for a few algorithms implemented in most of
+the major machine learning toolkits accessible in Python.  
+
+\FABIAN{We perform training and prediction using MADELON, a 4400
+  instances and 500 attributes dataset
+
+ \GAEL{Fabian: please give details on the
+  dataset.}. In the following, we discuss some aspects of these
+results, to illustrate the engineer trade offs related to performance
+in a high-level language. Note that, as of release 0.6, the
 \emph{scikits.learn} code was not yet modified to benefit from the
 lessons learned from these benchmarks.
 

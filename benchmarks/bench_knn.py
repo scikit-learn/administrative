@@ -5,7 +5,7 @@
 #
 import numpy as np
 from datetime import datetime
-from shogun import Classifier, Features, Distance
+#from shogun import Classifier, Features, Distance
 from scikits.learn import neighbors
 from mlpy import Knn as mlpy_Knn
 from mdp.nodes.classifier_nodes import KNNClassifier
@@ -85,7 +85,7 @@ def bench_pymvpa():
 
 if __name__ == '__main__':
     print __doc__
-    print 'Shogun: ', bench(bench_shogun)
+    #print 'Shogun: ', bench(bench_shogun)
     print 'MDP: ', bench(bench_mdp)
     print 'scikits.learn: ', bench(bench_skl)
     print 'MLPy: ', bench(bench_mlpy)

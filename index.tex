@@ -150,9 +150,9 @@ Python Distribution'' thanks to its liberal license.
 \noindent{\bf BSD licensing}
 %
 Most of the Python ecosystem is licensed with non copyleft licensed such
-as the BSD license. This licensing scheme is beneficial for adoption
+as the BSD license. While this licensing scheme is beneficial for adoption
 outside the academic world, via the use of these tools in commercial
-projects. It does impose some restrictions: we cannot use some existing
+projects, it does impose some restrictions: we cannot use some existing
 scientific code, such as the GSL (Gnu Scientific Library).
 
 \smallskip \noindent{\bf Bare-bone design and API}
@@ -184,10 +184,10 @@ and parameters.
 We believe that documentation is a key component of software.
 \emph{Scikits.learn} provides a $\sim$300 page user guide including
 narrative documentation, class reference, tutorial, installation
-instructions as well as a collection of more than 60 examples, some of
-them featuring real-world applications. We try to minimize the amount of
-technical, machine-learning specific, terms used, while maintaining
-scientific precision with regards to the algorithms employed.
+instructions as well as more than 60 examples, some of them featuring
+real-world applications. We try to minimize the amount of
+machine-learning specific terms used, while maintaining precision with
+regards to the algorithms employed.
 
 
 \section{Underlying technologies}
@@ -217,7 +217,7 @@ efficient algorithms for linear algebra, sparse matrix structure, special
 functions and basic statistical functions. {\sl Scipy} has binding for
 many Fortran-based standard numerical packages. This is important for
 ease of install and portability, as providing binaries binding Fortran
-can prove challenging on various platforms. 
+code can prove challenging on various platforms. 
 
 \smallskip
 \noindent{\bf Cython}:
@@ -239,25 +239,22 @@ visualization and plotting. Matplotlib is used only in the examples.
 %algorithms that are ofter faster than the ones found in compiled
 %libraries.
 
-While the focus \emph{scikits.learn} is on ease of the use, and the
-code is written mostly in a high level language, care has been taken
-on computational efficiency. In table \ref{tab:comparisons}, we
-compare computation time for a few algorithms implemented in most of
-the major machine learning toolkits accessible in Python.  
-
-
-For these benchmarks, we used the Madelon \citep{Guyon2004} data set,
-a 4400 instances and 500 attributes dataset which was part of the NIPS
-2003 feature selection challenge. It is an artificial dataset
-containing data points grouped in 32 clusters placed on the vertices
-of a five dimensional hypercube and randomly labeled +1 or -1.
-
-
-In the following, we discuss some aspects of these results, to
-illustrate the engineer trade offs related to performance in a
-high-level language. Note that, as of release 0.6, the
-\emph{scikits.learn} code was not yet modified to benefit from the
-lessons learned from these benchmarks.
+While \emph{scikits.learn} focuses on ease of the use, and the code is
+written mostly in a high level language, care has been taken on
+computational efficiency. In table \ref{tab:comparisons}, we compare
+computation time for a few algorithms implemented in the major machine
+learning toolkits accessible in Python for the Madelon data set
+\citep{Guyon2004}: 4400 instances and 500 attributes.
+% which was part of the NIPS 2003 feature selection challenge. It is an
+% artificial dataset
+%containing data points grouped in 32 clusters placed on the vertices of
+%a five dimensional hypercube and randomly labeled +1 or -1.
+%
+%
+In the following, we discuss some aspects of these results, to illustrate
+the engineering trade offs related to performance in Python. Note that,
+as of release 0.6, \emph{scikits.learn} was not yet modified to benefit
+from the lessons learned from these benchmarks.
 
 %{{{----------------------------------------------------------------------------
 \begin{table}[tb]
@@ -283,59 +280,52 @@ not allow for truncated PCA.
 \vspace*{-1ex}
 %\end{minipage}
 \caption{\small
-Time in seconds for various machine learning libraries exposed in Python:
+Time in seconds on the Madelon dataset for various machine learning libraries exposed in Python:
 MLPy \citep{albanese2008}, PyBrain \citep{schaul2010}, pymvpa
 \citep{hanke2009}, MDP \citep{zito2008} and Shogun
-\citep{sonnenburg2010}. \label{tab:comparisons}}
+\citep{sonnenburg2010}. \label{tab:comparisons}
+\vspace*{-1.5em}
+}
 \end{table}
 %----------------------------------------------------------------------------}}}
 
-\smallskip
-\noindent{\bf SVM}:
+\smallskip \noindent{\bf SVM}:
 %
-While all packages compared for support vector classification use
-libsvm \citep{chang2001} in the background, good performance of
-\emph{scikits.learn} can be explained by two factors. First of, our
-bindings have low overhead, as they are implemented in Cython and
-avoid memory copies. As can be seen in the comparason, this overhead
-reduction translates in a speedup of 40\% when compared to libraries
-that use the python bindings as shipped by libsvm \citep{chang2001}.
-Second, we've patched libsvm to work efficiency on dense data,
-providing less memory footprint, better usage of memory alignment and
-pipelining capabilities of modern processors. Our patched version of
-libsvm also provides some unique features, such as the ability to work
-natively with sparse data and to set weights for individual samples.
+While all packages compared use libsvm in the background, good
+performance of \emph{scikits.learn} can be explained by two factors.
+First of, our bindings have up to 40\% less overhead, as the original
+libsvm Python bindings: they are implemented with Cython's numpy support
+to avoid memory copies. Second, we've patched libsvm to work efficiency
+on dense data, providing less memory footprint, better usage of memory
+alignment and pipelining capabilities of modern processors. This patched
+version also provides unique features, such as working natively with
+sparse data or setting weights for individual samples.
 
 
-\smallskip
-\noindent{\bf LARS}:
-By iteratively refining the residuals and instead of recomputing them,
-we are able to get performance gains of 2x to 10x over the reference R
-implementation \citep{LARS}. The {\sl pymvpa} package uses this
-implementation via the Rpy R bindings and thus pays a heavy price to
-memory copies.
+\smallskip \noindent{\bf LARS}:
+%
+Iteratively refining the residuals instead of recomputing them gives
+performance gains of 2x to 10x over the reference R implementation
+\citep{LARS}. {\sl Pymvpa} uses this implementation via the Rpy R
+bindings and pays a heavy price to memory copies.
 
 
-\smallskip
-\noindent{\bf ElasticNet}:
+\smallskip \noindent{\bf ElasticNet}:
 %
 We benchmarked coordinate descent implementations of elasticnet.  In
 \emph{scikits.learn}, it is coded in Cython and uses low-level BLAS
-routines for fast array multiplication. \FABIAN{Not sure wether this
-  belongs here }In case BLAS is not found on the host system,
-\emph{scikits.learn} will compile its own unoptimized version of these
-routines.  It achieves the same order of performance as the highly
-optimized Fortran version \emph{glmnet} \citep{friedman2010} on
-medium-scale problems but performance on very large problems will be
-limited as we do not use the KKT conditions to define an active set.
+routines for fast array multiplication. It achieves the same order of
+performance as the highly optimized Fortran version \emph{glmnet}
+\citep{friedman2010} on medium-scale problems but performance on very
+large problems will be limited as we do not use the KKT conditions to
+define an active set.
 
 \smallskip
 \noindent{\bf kNN}:
 %
 The k-nearest neighbors is achieved by constructing a ball
-tree \citep{omohundro1989} of the samples. This strategy is very
-efficient in large dimensions, but is not favorable for low-dimensional
-problems. \GAEL{This does not explain why we do not perform poorly}
+tree \citep{omohundro1989} of the samples. This strategy is less
+efficient than brute force search in large dimensions.
 
 \smallskip
 \noindent{\bf PCA}:
@@ -354,19 +344,26 @@ Other pure-Python packages outperform the k-Means implementation of
 
 \section{Code design}
 
-\paragraph{Code by interface, not by inheritance}
-
-Inheritance is not enforced at any stage, instead, we adopt some
-simple conventions that make the API easier to learn. We call an
-estimator to any object that implements that implement a `fit` and
-`predict` method, independently of its class hierarchy. Examples of
-estimators include Support Vector Classification, k-Nearest Neighbors
-and the Lasso.
-
-Some more specialized objects might also implement a score function
-for testing the accuracy of an estimator. Some classes of unsupervised
-also implement a transform for [...].
-
+\paragraph{Objects specified by interface, not by inheritance}
+%
+To facilitate the use of external objects with \emph{scikits.learn},
+inheritance is not enforced at any stage, instead, we rely on some simple
+conventions. The central object is an {\tt estimator}, that implements a
+{\tt fit} method, accepting as arguments an input data array and,
+optionally, a target array for supervised problems. Supervised estimators,
+such as SVCs, can implement a {\tt predict} method. Some estimators,
+that we call {\tt transformers}, \emph{e.g.} the PCA, implement a {\tt
+transform} method, returning modified input data.
+%
+Estimators may also provide a {\tt score} method, evaluating the goodness
+of fit of an estimator. It may be a log-likelihood, or the opposite of a
+loss function, but must always increase with fit quality.
+%
+The only other important object is the \emph{cross-validation iterator}:
+it is an iterable providing pair of train and test indices to split input
+data. It may be a standard list, or a Python generator dynamically
+creating these indices. Examples comprise K-fold, leave one out, or
+stratified schemes. 
 
 %% However, some properties in the algorithms (warm restarts, path
 %% solutions, etc.) can, and should be used be used to speed up the
@@ -375,46 +372,39 @@ also implement a transform for [...].
 %% the model name (Lasso and LassoCV, etc.)
 
 
-\paragraph {Model selection}
+\smallskip \noindent{\bf Model selection}
+%
+\emph{Scikits.learn} can evaluate the performance of an estimator or set
+its parameters by cross-validation, optionally distributing the
+computation on several cores. For this, it provides a {\tt GridSearchCV}
+object, where the ``CV'' stands for ``cross-validated'', that wraps a
+given estimator. During the call to {\tt fit} it selects the parameters
+on a specified parameter grid, maximizing a score function that default
+to the {\tt score} method of the original estimator. The calls to {\tt
+predict}, {\tt score}, or {\tt transform} are then delegated to the tuned
+estimator. This object can thus be used transparently as any other
+estimator. Such cross validation can be made more efficient for certain
+estimators by exploiting there specific properties, such as warm restarts
+or regularization paths. This is done via special cross-validated
+objects, such as the {\tt LassoCV}. Finally, a {\tt Pipeline} object can
+combine several {\tt transformers} and a final estimator to create a
+combined estimator applying \emph{e.g.} dimension reduction before the
+fit. {\tt Pipeline} behaves as a standard estimator, and can be thus used
+with the {\tt GridSearchCV} to tune the parameters of all steps together.
 
-Model selection is the problem of finding optimal parameters for a
-model with the data at hand [...]. Usually, this process is carried
-out by measuring the performance of the different classifiers over all
-possible parameters.
+\section{Conclusion}
 
-To ease this repetitive task, \emph{scikits.learn} proposes some convenience
-objects. GridSearchCV is takes as input a classifier and a list of
-parameters and stores the best one. This works because all estimators
-in \emph{scikits.learn} implement functions .\emph{fit}, \emph{predict} and
-possibly \emph{score} so GridSearchCV is able to use classifiers as
-black boxes. For convenience, GridSearchCV is also a classifier
-(implements fit and predict), thus can be used transparently as any
-other classifier.
-
-However, some models allow for further optimizations. For example,
-LARS provides the full path, coordinate descent methods allow for warm
-restarts, Ridge has a closed form for leave-one-out cross validation,
-etc. In these cases, we provide optimized cross-validating
-classifiers. In these cases, we append ``CV'' to the name of the
-classifier.
-
-
-
-\section{Conclusions}
-
-Today the project already contains more than 40 algorithms ranging
-from supervised to unsupervised learning, providing an unequal
-framework for easily comparison of different methods on a given
-application.
-
-While the choice of Python ensures code reuse in the package, it also
-binds us to this language and limits its use outside the Python
-language.
-
-This effectively rules out code sharing with other major scientific
-platforms, such as MATLAB\texttrademark, Octave, and R.
-
-
+\emph{Scikits.learn} exposes a wide variety of machine learning
+algorithms with a consistent, task-oriented, interface. Today the project
+contains more than 40 algorithms ranging from supervised to unsupervised
+learning, providing an unequaled framework for easy comparison of methods
+on a given application.
+%
+As it relies on the scientific Python ecosystem, it can be easily
+integrated in a variety of applications, outside the tradition range of
+statistical data analysis. Importantly, the algorithms can be used as
+building blocks for efficient approaches dedicated to specific use cases,
+for example in medical imaging \citep{Michel2011}.
 
 \bibliography{scikit}
 

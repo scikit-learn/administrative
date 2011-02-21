@@ -72,17 +72,18 @@
 
 \maketitle
 
-\begin{abstract}
-\emph{Scikits.learn} is a Python module integrating
-a wide range of state-of-the-art machine learning algorithms for
-medium-scale supervised and unsupervised problems. This package
-focuses on bringing machine learning to non-specialists using a
-general-purpose high-level language with a special care on ease of use,
-documentation and a consistent API.
+\begin{abstract} 
 %
-It has minimal dependencies and is licensed under the simplified BSD
-license, encouraging its use in both academic and commercial settings. Source
-code, binaries, and documentation can be downloaded from
+\emph{Scikits.learn} is a Python module integrating a wide range of
+state-of-the-art machine learning algorithms for medium-scale supervised
+and unsupervised problems. This package focuses on bringing machine
+learning to non-specialists using a general-purpose high-level language.
+Emphasis is put on ease of use, documentation, and API consistency
+without sacrificing speed.
+%
+It has minimal dependencies and is distributed under the simplified BSD
+license, encouraging its use in both academic and commercial settings.
+Source code, binaries, and documentation can be downloaded from
 \url{http://scikit-learn.sourceforge.net}.
 
 \end{abstract}
@@ -99,17 +100,18 @@ selection}
 \section{Introduction}
 
 The Python programming language is establishing itself as one of the
-languages of choice for scientific computing. Its high-level interactive
+languages of choice for scientific computing. It is an appealing choice 
+for algorithmic development and data processing in both academic and 
+industrial settings thanks high-level interactive
 nature and its maturing ecosystem of scientific libraries
-\citep{cise2007,cise2011} make it a very appealing choice algorithmic
-development and data processing in both academic and industrial settings.
+\citep{cise2007,cise2011}.
 In particular, as it is a general-purpose language, it enjoys success in
 applied problems as well as amongst computer scientists.
 %
 {\sl Scikits.learn} harnesses this rich environment to provide
 state-of-the-art machine learning tools to non-specialists, answering a
 growing need for statistical data analysis in the software and web
-industries but also for basic research in non computer-science fields,
+industries, but also for basic research in non computer-science fields,
 such as biology or physics.
 
 The goal of the project is to provide a reference implementation of some
@@ -119,14 +121,14 @@ easy-to-use interface tightly integrated in the Python language.
 various reasons: \emph{i)} it is distributed under the BSD license
 \emph{ii)} it incorporates compiled code for efficiency --unlike MDP
 \citep{zito2008} and pybrain \citep{schaul2010}-- \emph{iii)} it depends
-only on numpy and scipy --unlike pymvpa \citep{hanke2009}, we depending
+only on numpy and scipy --unlike pymvpa \citep{hanke2009}, we avoid depending
 on R for distribution reasons-- \emph{iv)} it focuses on imperative
 programming and not data-flow frameworks --pybrain uses such a framework
 for building artificial neural networks.
 
 While the package is mostly coded in Python, it incorporates the C++
 libraries LibSVM \citep{chang2001} and LibLinear \citep{fan2008} that
-provide reference implementation of SVM and generalized linear models
+provide reference implementations of SVMs and generalized linear models
 with compatible licenses.
 %
 Binary packages are available on a rich set of platforms including
@@ -149,9 +151,9 @@ Python Distribution'' thanks to its liberal license.
 
 \noindent{\bf BSD licensing}
 %
-Most of the Python ecosystem is licensed with non copyleft licensed such
+Most of the Python ecosystem is licensed with non copyleft licenses such
 as the BSD license. While this licensing scheme is beneficial for adoption
-outside the academic world, via the use of these tools in commercial
+outside the academic world via the use of these tools in commercial
 projects, it does impose some restrictions: we cannot use some existing
 scientific code, such as the GSL (Gnu Scientific Library).
 
@@ -172,7 +174,7 @@ encouraged via developer manual and API guidelines.
 \smallskip \noindent{\bf Code quality}
 %
 Rather than aim for many features, our goal is to provide solid
-implementation. The quality of the code base is ensured with unitary
+implementations. The quality of the code base is ensured with unitary
 tests: as of release 0.6, test coverage is 78\%. We follow the Python
 coding style guidelines, as well as the numpy style for documentation. We
 employ static analysis tools such as {\tt pyflakes} and {\tt pep8}.
@@ -184,7 +186,7 @@ and parameters.
 We believe that documentation is a key component of software.
 \emph{Scikits.learn} provides a $\sim$300 page user guide including
 narrative documentation, class reference, tutorial, installation
-instructions as well as more than 60 examples, some of them featuring
+instructions, as well as more than 60 examples, some of them featuring
 real-world applications. We try to minimize the amount of
 machine-learning specific terms used, while maintaining precision with
 regards to the algorithms employed.
@@ -257,7 +259,7 @@ as of release 0.6, \emph{scikits.learn} was not yet modified to benefit
 from the lessons learned from these benchmarks.
 
 %{{{----------------------------------------------------------------------------
-\begin{table}[tb]
+\begin{table}[h]
 \small
 \hspace*{.03\linewidth}%
 %\begin{minipage}{1.04\linewidth}
@@ -277,7 +279,7 @@ License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 
 $\star$: Not converging after 1 hour iteration. \hfill $^1$: pympva does
 not allow for truncated PCA.
-\vspace*{-1ex}
+\vspace*{-1.5ex}
 %\end{minipage}
 \caption{\small
 Time in seconds on the Madelon dataset for various machine learning libraries exposed in Python:
@@ -293,12 +295,12 @@ MLPy \citep{albanese2008}, PyBrain \citep{schaul2010}, pymvpa
 %
 While all packages compared use libsvm in the background, good
 performance of \emph{scikits.learn} can be explained by two factors.
-First of, our bindings have up to 40\% less overhead, as the original
+First, our bindings have up to 40\% less overhead than the original
 libsvm Python bindings: they are implemented with Cython's numpy support
-to avoid memory copies. Second, we've patched libsvm to work efficiency
+to avoid memory copies. Second, we patch libsvm to work efficiency
 on dense data, providing less memory footprint, better usage of memory
 alignment and pipelining capabilities of modern processors. This patched
-version also provides unique features, such as working natively with
+version also provides unique features, such as working without copies on
 sparse data or setting weights for individual samples.
 
 
@@ -314,9 +316,9 @@ bindings and pays a heavy price to memory copies.
 %
 We benchmarked coordinate descent implementations of elasticnet.  In
 \emph{scikits.learn}, it is coded in Cython and uses low-level BLAS
-routines for fast array multiplication. It achieves the same order of
+routines for fast array operations. It achieves the same order of
 performance as the highly optimized Fortran version \emph{glmnet}
-\citep{friedman2010} on medium-scale problems but performance on very
+\citep{friedman2010} on medium-scale problems, but performance on very
 large problems will be limited as we do not use the KKT conditions to
 define an active set.
 
@@ -344,10 +346,10 @@ Other pure-Python packages outperform the k-Means implementation of
 
 \section{Code design}
 
-\paragraph{Objects specified by interface, not by inheritance}
+\noindent{\bf Objects specified by interface, not by inheritance}
 %
 To facilitate the use of external objects with \emph{scikits.learn},
-inheritance is not enforced at any stage, instead, we rely on some simple
+inheritance is not enforced at any stage; instead, we rely on some simple
 conventions. The central object is an {\tt estimator}, that implements a
 {\tt fit} method, accepting as arguments an input data array and,
 optionally, a target array for supervised problems. Supervised estimators,
@@ -365,12 +367,6 @@ data. It may be a standard list, or a Python generator dynamically
 creating these indices. Examples comprise K-fold, leave one out, or
 stratified schemes. 
 
-%% However, some properties in the algorithms (warm restarts, path
-%% solutions, etc.) can, and should be used be used to speed up the
-%% process. To allow this The methods are model-dependent and are
-%% implemented in classes that append ``CV'', for cross-validation, to
-%% the model name (Lasso and LassoCV, etc.)
-
 
 \smallskip \noindent{\bf Model selection}
 %
@@ -378,18 +374,18 @@ stratified schemes.
 its parameters by cross-validation, optionally distributing the
 computation on several cores. For this, it provides a {\tt GridSearchCV}
 object, where the ``CV'' stands for ``cross-validated'', that wraps a
-given estimator. During the call to {\tt fit} it selects the parameters
-on a specified parameter grid, maximizing a score function that default
+given estimator. During the call to {\tt fit}, it selects the parameters
+on a specified parameter grid, maximizing a score function that defaults
 to the {\tt score} method of the original estimator. The calls to {\tt
 predict}, {\tt score}, or {\tt transform} are then delegated to the tuned
 estimator. This object can thus be used transparently as any other
 estimator. Such cross validation can be made more efficient for certain
-estimators by exploiting there specific properties, such as warm restarts
+estimators by exploiting their specific properties, such as warm restarts
 or regularization paths. This is done via special cross-validated
 objects, such as the {\tt LassoCV}. Finally, a {\tt Pipeline} object can
 combine several {\tt transformers} and a final estimator to create a
 combined estimator applying \emph{e.g.} dimension reduction before the
-fit. {\tt Pipeline} behaves as a standard estimator, and can be thus used
+fit. {\tt Pipeline} behave as standard estimators, and can be thus used
 with the {\tt GridSearchCV} to tune the parameters of all steps together.
 
 \section{Conclusion}
@@ -397,14 +393,14 @@ with the {\tt GridSearchCV} to tune the parameters of all steps together.
 \emph{Scikits.learn} exposes a wide variety of machine learning
 algorithms with a consistent, task-oriented, interface. Today the project
 contains more than 40 algorithms ranging from supervised to unsupervised
-learning, providing an unequaled framework for easy comparison of methods
-on a given application.
+learning, enabling easy comparison of methods for a given application.
 %
-As it relies on the scientific Python ecosystem, it can be easily
-integrated in a variety of applications, outside the tradition range of
-statistical data analysis. Importantly, the algorithms can be used as
-building blocks for efficient approaches dedicated to specific use cases,
-for example in medical imaging \citep{Michel2011}.
+As it relies on the scientific Python ecosystem, it lends itself to
+integration in a variety of applications outside the traditional range of
+statistical data analysis. Importantly, the algorithms, implemented in a
+high-level language, can be used as building blocks for approaches
+dedicated to specific use cases, \emph{e.g.} in medical imaging
+\citep{Michel2011}.
 
 \bibliography{scikit}
 

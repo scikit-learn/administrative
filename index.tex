@@ -293,16 +293,18 @@ MLPy \citep{albanese2008}, PyBrain \citep{schaul2010}, pymvpa
 \smallskip
 \noindent{\bf SVM}:
 %
-While all packages compared for support vector classification use libsvm
-\citep{chang2001} in the background, good performance of
+While all packages compared for support vector classification use
+libsvm \citep{chang2001} in the background, good performance of
 \emph{scikits.learn} can be explained by two factors. First of, our
-bindings have low overhead, as they are implemented in Cython and avoid
-memory copies. As can be seen in the comparason, this overhead reduction 
-translates in a speedup of 40\% when compared to libraries that use the 
-python bindings as shipped by libsvm \citep{chang2001}.
-Second, we've patched libsvm to work efficiency on dense data, providing
-less memory footprint, better usage of memory alignment and 
-pipelining capabilities of modern processors.
+bindings have low overhead, as they are implemented in Cython and
+avoid memory copies. As can be seen in the comparason, this overhead
+reduction translates in a speedup of 40\% when compared to libraries
+that use the python bindings as shipped by libsvm \citep{chang2001}.
+Second, we've patched libsvm to work efficiency on dense data,
+providing less memory footprint, better usage of memory alignment and
+pipelining capabilities of modern processors. Our patched version of
+libsvm also provides some unique features, such as the ability to work
+natively with sparse data and to set weights for individual samples.
 
 
 \smallskip

@@ -241,13 +241,17 @@ on computational efficiency. In table \ref{tab:comparisons}, we
 compare computation time for a few algorithms implemented in most of
 the major machine learning toolkits accessible in Python.  
 
-\FABIAN{We perform training and prediction using MADELON, a 4400
-  instances and 500 attributes dataset
 
- \GAEL{Fabian: please give details on the
-  dataset.}. In the following, we discuss some aspects of these
-results, to illustrate the engineer trade offs related to performance
-in a high-level language. Note that, as of release 0.6, the
+For these benchmarks, we used the Madelon \citep{Guyon2004} data set,
+a 4400 instances and 500 attributes dataset which was part of the NIPS
+2003 feature selection challenge. It is an artificial dataset
+containing data points grouped in 32 clusters placed on the vertices
+of a five dimensional hypercube and randomly labeled +1 or -1.
+
+
+In the following, we discuss some aspects of these results, to
+illustrate the engineer trade offs related to performance in a
+high-level language. Note that, as of release 0.6, the
 \emph{scikits.learn} code was not yet modified to benefit from the
 lessons learned from these benchmarks.
 
@@ -288,31 +292,33 @@ While all packages compared for support vector classification use libsvm
 \citep{chang2001} in the background, good performance of
 \emph{scikits.learn} can be explained by two factors. First of, our
 bindings have low overhead, as they are implemented in Cython and avoid
-memory copies.
-\GAEL{Fabian: overhead numbers}
+memory copies. As can be seen in the comparason, this overhead reduction 
+translates in a speedup of 50\% when compared to libraries that use the 
+python bindings as shipped by libsvm \citep{chang2001}.
 Second, we've patched libsvm to work efficiency on dense data, providing
 less memory footprint, better usage of memory alignment and the
 pipelining capabilities of modern processors.
 
 
 \noindent{\bf LARS}:
-%
-Least Angle Regression is implemented in pure Python and achieve 10x
-to 2x gain in performance over the reference implementation in R, by smarter 
-updates of coefficients [rephrase].
-\GAEL{Fabian: what are these smart updates}. The {\sl pymvpa} package
-uses this implementation via the Rpy R bindings and thus pays a
-heavy price to memory copies.
+By iteratively refining the residuals and instead of recomputing them,
+we are able to get performance gains of 2x to 10x over the reference R
+implementation \citep{LARS}. The {\sl pymvpa} package uses this
+implementation via the Rpy R bindings and thus pays a heavy price to
+memory copies.
+
 
 \noindent{\bf ElasticNet}:
 %
-We benchmarked coordinate descent implementations of elasticnet. 
-In \emph{scikits.learn}, it is coded in Cython 
-\GAEL{Fabian: a few words about the atlas code embedded}.
-It achieves the same order of performance as the highly optimized Fortran
-version \emph{glmnet} \citep{friedman2010} on medium-scale problems but
-performance on very large problems will be limited as we do not use the KKT 
-conditions to define an active set.
+We benchmarked coordinate descent implementations of elasticnet.  In
+\emph{scikits.learn}, it is coded in Cython and uses low-level BLAS
+routines for fast array multiplication. \FABIAN{Not sure wether this
+  belongs here }In case BLAS is not found on the host system,
+\emph{scikits.learn} will compile its own unoptimized version of these
+routines.  It achieves the same order of performance as the highly
+optimized Fortran version \emph{glmnet} \citep{friedman2010} on
+medium-scale problems but performance on very large problems will be
+limited as we do not use the KKT conditions to define an active set.
 
 \noindent{\bf kNN}:
 %

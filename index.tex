@@ -99,19 +99,18 @@ selection}
 \section{Introduction}
 
 The Python programming language is establishing itself as one of the
-languages of choice for scientific computing as well as web-based data
-processing. Its high-level interactive nature and its maturing ecosystem
-of scientific libraries \citep{cise2007,cise2011} make it a very
-appealing choice algorithmic development and data processing in both
-academic and industrial settings. In particular, as it is a
-general-purpose language, it enjoys success in applied problems as well
-as amongst computer scientists.
+languages of choice for scientific computing. Its high-level interactive
+nature and its maturing ecosystem of scientific libraries
+\citep{cise2007,cise2011} make it a very appealing choice algorithmic
+development and data processing in both academic and industrial settings.
+In particular, as it is a general-purpose language, it enjoys success in
+applied problems as well as amongst computer scientists.
 %
-{\sl Scikits.learn} harnesses this rich environment to provide to
-non-specialists state-of-the-art machine learning tools, to cope with the
-growing need of statistical data analysis and mining, in the software and
-web industries but also for basic research in non computer-science
-fields, such as biology or physics.
+{\sl Scikits.learn} harnesses this rich environment to provide
+state-of-the-art machine learning tools to non-specialists, answering a
+growing need for statistical data analysis in the software and web
+industries but also for basic research in non computer-science fields,
+such as biology or physics.
 
 The goal of the project is to provide a reference implementation of some
 of the best known machine learning algorithms, while maintaining an
@@ -125,7 +124,7 @@ on R for distribution reasons-- \emph{iv)} it focuses on imperative
 programming and not data-flow frameworks --pybrain uses such a framework
 for building artificial neural networks.
 
-While the package is mostly coded in Python, it incorporates the
+While the package is mostly coded in Python, it incorporates the C++
 libraries LibSVM \citep{chang2001} and LibLinear \citep{fan2008} that
 provide reference implementation of SVM and generalized linear models
 with compatible licenses.
@@ -197,18 +196,21 @@ scientific precision with regards to the algorithms employed.
 
 %XXX: Shorten the above
 
+\smallskip
 \noindent{\bf Numpy}:
 %
 the base data structure for representing
-information. All the data for supervised or unsupervised learning is
-presented as one, or a few, numpy arrays. Numpy's view-based data model
-limits memory copy, even when binding with compiled code
-\citep{Vanderwalt2011}. Numpy also provides basic arithmetic operations. 
+information. The data for supervised or unsupervised learning is
+presented as one, or a few, numpy arrays, thus integrating seamlessly
+with other scientific Python libraries. Numpy's view-based memory 
+model limits copies, even when binding with compiled code. It also 
+provides basic arithmetic operations. 
 %This choice strives for easy of use by using plain numpy
 %arrays instead of specialized data structures and limiting framework
 %code. Our objects work directly with NumPy arrays, providing a
 %flexible way to communicate with other packages.
 
+\smallskip
 \noindent{\bf Scipy}:
 %
 efficient algorithms for linear algebra, sparse matrix structure, special
@@ -217,6 +219,7 @@ many Fortran-based standard numerical packages. This is important for
 ease of install and portability, as providing binaries binding Fortran
 can prove challenging on various platforms. 
 
+\smallskip
 \noindent{\bf Cython}:
 %
 generation of C code seamlessly inserted in Python. Cython allows to
@@ -225,6 +228,7 @@ Python-like syntax and high-level operations. Also, Cython is used to
 easily bind compiled libraries, eliminating most of the boilerplate code
 associated with Python/C extensions.
 
+\smallskip
 \noindent{\bf Matplotlib}:
 %
 visualization and plotting. Matplotlib is used only in the examples.
@@ -241,7 +245,7 @@ computational efficiency. In table \ref{tab:comparisons}, we compare
 computation time for a few algorithms implemented in most of the major
 machine learning toolkits accessible in Python \GAEL{Fabian: please give
 details on the dataset.}. In the following, we discuss some aspects of
-these results, to illustrate the engineer trade offs related to
+these results, to illustrate the engineering trade offs related to
 performance in a high-level language. Note that, as of release 0.6, the
 \emph{scikits.learn} code was not yet modified to benefit from the
 lessons learned from these benchmarks.
@@ -270,13 +274,14 @@ not allow for truncated PCA.
 \vspace*{-1ex}
 %\end{minipage}
 \caption{\small
-A comparison with other machine learning libraries exposed in Python:
+Time in seconds for various machine learning libraries exposed in Python:
 MLPy \citep{albanese2008}, PyBrain \citep{schaul2010}, pymvpa
 \citep{hanke2009}, MDP \citep{zito2008} and Shogun
 \citep{sonnenburg2010}. \label{tab:comparisons}}
 \end{table}
 %----------------------------------------------------------------------------}}}
 
+\smallskip
 \noindent{\bf SVM}:
 %
 While all packages compared for support vector classification use libsvm
@@ -286,10 +291,11 @@ bindings have low overhead, as they are implemented in Cython and avoid
 memory copies.
 \GAEL{Fabian: overhead numbers}
 Second, we've patched libsvm to work efficiency on dense data, providing
-less memory footprint, better usage of memory alignment and the
+less memory footprint, better usage of memory alignment and 
 pipelining capabilities of modern processors.
 
 
+\smallskip
 \noindent{\bf LARS}:
 %
 Least Angle Regression is implemented in pure Python and achieve 10x
@@ -299,6 +305,7 @@ updates of coefficients [rephrase].
 uses this implementation via the Rpy R bindings and thus pays a
 heavy price to memory copies.
 
+\smallskip
 \noindent{\bf ElasticNet}:
 %
 We benchmarked coordinate descent implementations of elasticnet. 
@@ -309,6 +316,7 @@ version \emph{glmnet} \citep{friedman2010} on medium-scale problems but
 performance on very large problems will be limited as we do not use the KKT 
 conditions to define an active set.
 
+\smallskip
 \noindent{\bf kNN}:
 %
 The k-nearest neighbors is achieved by constructing a ball
@@ -316,6 +324,7 @@ tree \citep{omohundro1989} of the samples. This strategy is very
 efficient in large dimensions, but is not favorable for low-dimensional
 problems. \GAEL{This does not explain why we do not perform poorly}
 
+\smallskip
 \noindent{\bf PCA}:
 %
 For medium to large datasets, \emph{scikits.learn} provides an
@@ -323,6 +332,7 @@ implementation of a truncated PCA based on random projections
 \citep{rokhlin2009}. On medium-scale problems, the NIPALS algorithm, used
 by MDP also performs very well.
 
+\smallskip
 \noindent{\bf k-Means}:
 %
 Other pure-Python packages outperform the k-Means implementation of

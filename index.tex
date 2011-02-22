@@ -230,10 +230,10 @@ Python-like syntax and high-level operations. Also, Cython is used to
 easily bind compiled libraries, eliminating most of the boilerplate code
 associated with Python/C extensions.
 
-\smallskip
-\noindent{\bf Matplotlib}:
-%
-visualization and plotting. Matplotlib is used only in the examples.
+%\smallskip
+%\noindent{\bf Matplotlib}:
+%%
+%visualization and plotting. Matplotlib is used only in the examples.
 
 \section{High-level yet efficient: some trade offs}
 
@@ -241,12 +241,15 @@ visualization and plotting. Matplotlib is used only in the examples.
 %algorithms that are ofter faster than the ones found in compiled
 %libraries.
 
-While \emph{scikits.learn} focuses on ease of the use, and the code is
-written mostly in a high level language, care has been taken on
+While \emph{scikits.learn} focuses on ease of the use, and it is
+mostly written in a high level language, care has been taken on
 computational efficiency. In table \ref{tab:comparisons}, we compare
 computation time for a few algorithms implemented in the major machine
-learning toolkits accessible in Python for the Madelon data set
-\citep{Guyon2004}: 4400 instances and 500 attributes.
+learning toolkits accessible in Python. We use the Madelon data
+set \citep{Guyon2004}, 4400 instances and 500 attributes,
+that can be used in supervised
+and unsupervised settings and is quite large, but small enough for most
+algorithms to run.
 % which was part of the NIPS 2003 feature selection challenge. It is an
 % artificial dataset
 %containing data points grouped in 32 clusters placed on the vertices of
@@ -254,12 +257,12 @@ learning toolkits accessible in Python for the Madelon data set
 %
 %
 In the following, we discuss some aspects of these results, to illustrate
-the engineering trade offs related to performance in Python. Note that,
+the engineering trade offs related to performance. Note that,
 as of release 0.6, \emph{scikits.learn} was not yet modified to benefit
-from the lessons learned from these benchmarks.
+from the lessons learned. %from these benchmarks.
 
 %{{{----------------------------------------------------------------------------
-\begin{table}[h]
+\begin{table}[t]
 \small
 \hspace*{.03\linewidth}%
 %\begin{minipage}{1.04\linewidth}
@@ -391,16 +394,18 @@ with the {\tt GridSearchCV} to tune the parameters of all steps together.
 \section{Conclusion}
 
 \emph{Scikits.learn} exposes a wide variety of machine learning
-algorithms with a consistent, task-oriented, interface. Today the project
-contains more than 40 algorithms ranging from supervised to unsupervised
-learning, enabling easy comparison of methods for a given application.
+algorithms, supervised and unsupervised, with a consistent,
+task-oriented, interface, thus enabling easy comparison of methods for a
+given application.
 %
-As it relies on the scientific Python ecosystem, it lends itself to
-integration in a variety of applications outside the traditional range of
-statistical data analysis. Importantly, the algorithms, implemented in a
-high-level language, can be used as building blocks for approaches
-dedicated to specific use cases, \emph{e.g.} in medical imaging
-\citep{Michel2011}.
+As it relies on the scientific Python ecosystem, it can easily be
+integrated in applications outside the traditional range of statistical
+data analysis. Importantly, the algorithms, implemented in a high-level
+language, can be used as building blocks for approaches dedicated to
+specific use cases, \emph{e.g.} in medical imaging \citep{Michel2011}.
+%
+Future work include the addition of \emph{on line} learning, to scale on
+large datasets.
 
 \bibliography{scikit}
 

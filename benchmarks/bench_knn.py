@@ -7,9 +7,9 @@ import numpy as np
 from datetime import datetime
 from shogun import Classifier, Features, Distance
 from scikits.learn import neighbors
-from mlpy import Knn as mlpy_Knn
-from mvpa.datasets import dataset_wizard
-from mvpa.clfs import knn as mvpa_knn
+#from mlpy import Knn as mlpy_Knn
+#from mvpa.datasets import dataset_wizard
+#from mvpa.clfs import knn as mvpa_knn
 
 #
 #       .. Load dataset ..

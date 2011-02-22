@@ -8,8 +8,7 @@ from datetime import datetime
 from shogun import Classifier, Features, Distance
 from scikits.learn import neighbors
 from mlpy import Knn as mlpy_Knn
-from mdp.nodes.classifier_nodes import KNNClassifier
-from mvpa.datasets import Dataset
+from mvpa.datasets import dataset_wizard
 from mvpa.clfs import knn as mvpa_knn
 
 #
@@ -20,7 +19,7 @@ print 'Loading data ...'
 X, y, T = load_data()
 print 'Done, %s samples with %s features loaded into ' \
       'memory' % X.shape
-n_neighbors = 9
+n_neighbors = 8
 
 
 def bench_shogun():
@@ -42,6 +41,7 @@ def bench_mdp():
 #
 #       .. MDP ..
 #
+    from mdp.nodes.classifier_nodes import KNNClassifier
     start = datetime.now()
     knn_mdp = KNNClassifier(k=n_neighbors)
     knn_mdp.train(X, y)
@@ -68,7 +68,7 @@ def bench_mlpy():
     mlpy_clf = mlpy_Knn(n_neighbors)
     mlpy_clf.compute(X, y)
     mlpy_clf.predict(T)
-    print 'MLPy timing: ', datetime.now() - start
+    return datetime.now() - start
 
 
 def bench_pymvpa():
@@ -76,8 +76,8 @@ def bench_pymvpa():
 #       .. PyMVPA ..
 #
     start = datetime.now()
-    data = Dataset(samples=X, labels=y)
-    mvpa_clf = mvpa_knn.kNN()
+    data = dataset_wizard(X, y)
+    mvpa_clf = mvpa_knn.kNN(k=n_neighbors)
     mvpa_clf.train(data)
     mvpa_clf.predict(T)
     return datetime.now() - start
@@ -85,8 +85,8 @@ def bench_pymvpa():
 
 if __name__ == '__main__':
     print __doc__
-    print 'Shogun: ', bench(bench_shogun)
-    print 'MDP: ', bench(bench_mdp)
-    print 'scikits.learn: ', bench(bench_skl)
-    print 'MLPy: ', bench(bench_mlpy)
-    print 'PyMVPA: ', bench(bench_pymvpa)
+    print 'Shogun: ', bench(bench_shogun), bench(bench_shogun)
+    print 'MDP: ', bench(bench_mdp), bench(bench_mdp)
+    print 'scikits.learn: ', bench(bench_skl), bench(bench_skl)
+    print 'MLPy: ', bench(bench_mlpy), bench(bench_mlpy)
+    print 'PyMVPA: ', bench(bench_pymvpa), bench(bench_pymvpa)

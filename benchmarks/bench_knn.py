@@ -5,11 +5,6 @@
 #
 import numpy as np
 from datetime import datetime
-from shogun import Classifier, Features, Distance
-from scikits.learn import neighbors
-#from mlpy import Knn as mlpy_Knn
-#from mvpa.datasets import dataset_wizard
-#from mvpa.clfs import knn as mvpa_knn
 
 #
 #       .. Load dataset ..
@@ -26,6 +21,7 @@ def bench_shogun():
 #
 #       .. Shogun ..
 #
+    from shogun import Classifier, Features, Distance
     start = datetime.now()
     feat = Features.RealFeatures(X.T)
     distance = Distance.EuclidianDistance(feat, feat)
@@ -53,6 +49,7 @@ def bench_skl():
 #
 #       .. scikits.learn ..
 #
+    from scikits.learn import neighbors
     start = datetime.now()
     clf = neighbors.NeighborsClassifier(n_neighbors=n_neighbors)
     clf.fit(X, y)
@@ -64,6 +61,7 @@ def bench_mlpy():
 #
 #       .. MLPy ..
 #
+    from mlpy import Knn as mlpy_Knn
     start = datetime.now()
     mlpy_clf = mlpy_Knn(n_neighbors)
     mlpy_clf.compute(X, y)
@@ -75,6 +73,8 @@ def bench_pymvpa():
 #
 #       .. PyMVPA ..
 #
+    from mvpa.datasets import dataset_wizard
+    from mvpa.clfs import knn as mvpa_knn
     start = datetime.now()
     data = dataset_wizard(X, y)
     mvpa_clf = mvpa_knn.kNN(k=n_neighbors)

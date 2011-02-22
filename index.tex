@@ -273,7 +273,7 @@ from the lessons learned. %from these benchmarks.
 Support Vector Classification & 9.44 & 16.78 & 17.46 & 26.09 & 52.36 & {\bf 8.79} \\
 Lasso (LARS) & {\bf 1.45} & 168.25   & -       &  64.89     & -    & - \\
 Elastic Net & {\bf 0.42} & 73.06 & -  &  6.53  & -  & - \\
-k-Nearest Neighbors & 1.38 & {\bf 0.30}  & - &  0.75 & 59.62    & 0.73 \\
+k-Nearest Neighbors & {\bf 1.82} & 4.26 & - &  {\bf 1.82} & - $\star^2$ & 4.14 \\
 PCA (9 components) & {\bf 0.42} & 3.01  & 2.94  & $\star^1$ & 0.58  & - \\
 k-Means  & 2.64 & 0.66 & $\star$ & -  & {\bf 0.28} & 0.49 \\
 License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
@@ -281,7 +281,7 @@ License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 \end{tabular}
 
 $\star$: Not converging after 1 hour iteration. \hfill $^1$: pympva does
-not allow for truncated PCA.
+not allow for truncated PCA. $\star^2$: MemoryError
 \vspace*{-1.5ex}
 %\end{minipage}
 \caption{\small

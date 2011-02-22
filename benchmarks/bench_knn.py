@@ -19,7 +19,7 @@ print 'Loading data ...'
 X, y, T = load_data()
 print 'Done, %s samples with %s features loaded into ' \
       'memory' % X.shape
-n_neighbors = 8
+n_neighbors = 9
 
 
 def bench_shogun():

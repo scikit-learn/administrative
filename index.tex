@@ -257,12 +257,10 @@ algorithms to run.
 %
 %
 In the following, we discuss some aspects of these results, to illustrate
-the engineering trade offs related to performance. Note that,
-as of release 0.6, \emph{scikits.learn} was not yet modified to benefit
-from the lessons learned. %from these benchmarks.
+the engineering trade offs related to performance. 
 
 %{{{----------------------------------------------------------------------------
-\begin{table}[t]
+\begin{table}[b]
 \small
 \hspace*{.03\linewidth}%
 %\begin{minipage}{1.04\linewidth}
@@ -275,7 +273,7 @@ Lasso (LARS) & {\bf 1.45} & 168.   & -       &  64.9     & -    & - \\
 Elastic Net & {\bf 0.42} & 73.1 & -  &  6.53  & -  & - \\
 k-Nearest Neighbors & {\bf 1.82} & 4.26 & - &  {\bf 1.82} & $\star^2$ & 4.14 \\
 PCA (9 components) & {\bf 0.42} & 3.01  & 2.94  & $\star^1$ & 0.58  & - \\
-k-Means (9 clusters) & 2.64 & 0.66 & $\star$ & -  & 27.8 & {\bf 0.49} \\
+k-Means (9 clusters) & 1.27 & 0.66 & $\star$ & -  & 27.8 & {\bf 0.49} \\
 License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 \hline
 \end{tabular}
@@ -330,23 +328,22 @@ define an active set.
 \noindent{\bf kNN}:
 %
 The k-nearest neighbors is achieved by constructing a ball
-tree \citep{omohundro1989} of the samples. This strategy is less
-efficient than brute force search in large dimensions.
+tree \citep{omohundro1989} of the samples, but defaults to a more
+efficient brute force search in large dimensions.
 
-\smallskip
-\noindent{\bf PCA}:
+\smallskip \noindent{\bf PCA}:
 %
 For medium to large datasets, \emph{scikits.learn} provides an
 implementation of a truncated PCA based on random projections
-\citep{rokhlin2009}. On medium-scale problems, the NIPALS algorithm, used
-by MDP also performs very well.
+\citep{rokhlin2009}. On medium-scale problems, incomplete eigenvalue
+decomposition, as used by MDP, also performs very well.
 
-\smallskip
+\smallskip 
 \noindent{\bf k-Means}:
 %
-Other pure-Python packages outperform the k-Means implementation of
-\emph{scikits.learn} as they take advantage of the triangular inequality
-\citep{elkan2003}.
+The performance of \emph{scikits.learn}'s k-Means is limited by numpy's
+array operations that operate multiple passes over data, as it is
+implemented in pure Python.
 
 \section{Code design}
 

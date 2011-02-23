@@ -60,9 +60,9 @@ def bench_pymvpa():
 #       .. PyMVPA ..
 #
     from mvpa.clfs import svm as mvpa_svm
-    from mvpa.datasets import Dataset
+    from mvpa.datasets import dataset_wizard
     tstart = datetime.now()
-    data = Dataset(samples=X, labels=y)
+    data = dataset_wizard(X, y)
     clf = mvpa_svm.RbfCSVMC(C=1.)
     clf.train(data)
     clf.predict(X)
@@ -110,19 +110,25 @@ if __name__ == '__main__':
     print __doc__ + '\n'
 
     res_shogun = bench(bench_shogun)
-    print 'Shogun: mean %s, std %s' % (res_shogun.mean(), res_shogun.std())
+    print 'Shogun: mean %s, std %s' % (
+        np.mean(res_shogun), np.std(res_shogun))
 
     res_mdp = bench(bench_mdp)
-    print 'MDP: mean %s, std %s' % (res_mdp.mean(), res_mdp.std())
+    print 'MDP: mean %s, std %s' % (
+        np.mean(res_mdp), np.std(res_mdp))
 
     res_skl = bench(bench_skl)
-    print 'scikits.learn: mean %s, std %s' % (res_skl.mean(), res_skl.std())
+    print 'scikits.learn: mean %s, std %s' % (
+        np.mean(res_skl), np.std(res_skl))
 
     res_mlpy = bench(bench_mlpy)
-    print 'MLPy: mean %s, std %s' % (res_mlpy.mean(), res_mlpy.std())
+    print 'MLPy: mean %s, std %s' % (
+        np.mean(res_mlpy), np.std(res_mlpy))
 
     res_pymvpa = bench(bench_pymvpa)
-    print 'PyMVPA: mean %s, std %s' % (res_pymvpa.mean(), res_pymvpa.std())
+    print 'PyMVPA: mean %s, std %s' % (
+        np.mean(res_pymvpa), np.std(res_pymvpa))
 
     res_pybrain = bench(bench_pybrain)
-    print 'Pybrain: mean %s, std %s' % (res_pybrain.mean(), res_pybrain.std())
+    print 'Pybrain: mean %s, std %s' % (
+        np.mean(res_pybrain), np.std(res_pybrain))

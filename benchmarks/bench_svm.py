@@ -2,14 +2,6 @@
 
 import numpy as np
 from datetime import datetime
-from shogun.Classifier import LibSVM
-from shogun.Features import RealFeatures, Labels
-from shogun.Kernel import GaussianKernel
-from mvpa.clfs import svm as mvpa_svm
-from mvpa.datasets import Dataset
-from scikits.learn import svm as skl_svm
-from mlpy import LibSvm as mlpy_svm
-from mdp.nodes import LibSVMClassifier as mdp_svm
 
 #
 #       .. Load dataset ..
@@ -25,6 +17,9 @@ def bench_shogun():
 #
 #       .. Shogun ..
 #
+    from shogun.Classifier import LibSVM
+    from shogun.Features import RealFeatures, Labels
+    from shogun.Kernel import GaussianKernel
     start = datetime.now()
     feat = RealFeatures(X.T)
     feat_test = RealFeatures(T.T)
@@ -40,6 +35,7 @@ def bench_mlpy():
 #
 #       .. MLPy ..
 #
+    from mlpy import LibSvm as mlpy_svm
     start = datetime.now()
     mlpy_clf = mlpy_svm(kernel_type='rbf', C=1.)
     mlpy_clf.learn(X, y.astype(np.float64))
@@ -51,6 +47,7 @@ def bench_skl():
 #
 #       .. scikits.learn ..
 #
+    from scikits.learn import svm as skl_svm
     start = datetime.now()
     clf = skl_svm.SVC(kernel='rbf', C=1.)
     clf.fit(X, y)
@@ -62,6 +59,8 @@ def bench_pymvpa():
 #
 #       .. PyMVPA ..
 #
+    from mvpa.clfs import svm as mvpa_svm
+    from mvpa.datasets import Dataset
     tstart = datetime.now()
     data = Dataset(samples=X, labels=y)
     clf = mvpa_svm.RbfCSVMC(C=1.)
@@ -95,6 +94,7 @@ def bench_mdp():
 #
 #       .. MDP ..
 #
+    from mdp.nodes import LibSVMClassifier as mdp_svm
     start = datetime.now()
     clf = mdp_svm(kernel='RBF')
     clf.train(X, y)
@@ -103,11 +103,26 @@ def bench_mdp():
 
 
 if __name__ == '__main__':
-    print __doc__
-    # print 'Shogun: ', bench(bench_shogun), bench(bench_shogun)
-    # print 'scikits.learn: ', bench(bench_skl), bench(bench_skl)
-    # print 'MLPy: ', bench(bench_mlpy), bench(bench_mlpy)
-    print 'PyMVPA: ', bench(bench_pymvpa), bench(bench_pymvpa)
-    print 'MDP: ', bench(bench_mdp), bench(bench_mdp)
+    # don't bother me with warnings
+    import warnings; warnings.simplefilter('ignore')
+    np.seterr(all='ignore')
 
-#    print 'PyBrain: ', bench(bench_pybrain), bench(bench_pybrain)
+    print __doc__ + '\n'
+
+    res_shogun = bench(bench_shogun)
+    print 'Shogun: mean %s, std %s' % (res_shogun.mean(), res_shogun.std())
+
+    res_mdp = bench(bench_mdp)
+    print 'MDP: mean %s, std %s' % (res_mdp.mean(), res_mdp.std())
+
+    res_skl = bench(bench_skl)
+    print 'scikits.learn: mean %s, std %s' % (res_skl.mean(), res_skl.std())
+
+    res_mlpy = bench(bench_mlpy)
+    print 'MLPy: mean %s, std %s' % (res_mlpy.mean(), res_mlpy.std())
+
+    res_pymvpa = bench(bench_pymvpa)
+    print 'PyMVPA: mean %s, std %s' % (res_pymvpa.mean(), res_pymvpa.std())
+
+    res_pybrain = bench(bench_pybrain)
+    print 'Pybrain: mean %s, std %s' % (res_pybrain.mean(), res_pybrain.std())

@@ -84,9 +84,24 @@ def bench_pymvpa():
 
 
 if __name__ == '__main__':
-    print __doc__
-    print 'Shogun: ', bench(bench_shogun), bench(bench_shogun)
-    print 'MDP: ', bench(bench_mdp), bench(bench_mdp)
-    print 'scikits.learn: ', bench(bench_skl), bench(bench_skl)
-    print 'MLPy: ', bench(bench_mlpy), bench(bench_mlpy)
-    print 'PyMVPA: ', bench(bench_pymvpa), bench(bench_pymvpa)
+
+    # don't bother me with warnings
+    import warnings; warnings.simplefilter('ignore')
+    np.seterr(all='ignore')
+
+    print __doc__ + '\n'
+
+    res_shogun = bench(bench_shogun)
+    print 'Shogun: mean %s, std %s' % (res_shogun.mean(), res_shogun.std())
+
+    res_mdp = bench(bench_mdp)
+    print 'MDP: mean %s, std %s' % (res_mdp.mean(), res_mdp.std())
+
+    res_skl = bench(bench_skl)
+    print 'scikits.learn: mean %s, std %s' % (res_skl.mean(), res_skl.std())
+
+    res_mlpy = bench(bench_mlpy)
+    print 'MLPy: mean %s, std %s' % (res_mlpy.mean(), res_mlpy.std())
+
+    res_pymvpa = bench(bench_pymvpa)
+    print 'PyMVPA: mean %s, std %s' % (res_pymvpa.mean(), res_pymvpa.std())

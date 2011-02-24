@@ -117,8 +117,7 @@ industries, as well as in non computer-science fields, such as biology or physic
 various reasons: \emph{i)} it is distributed under the BSD license
 \emph{ii)} it incorporates compiled code for efficiency, unlike MDP
 \citep{zito2008} and pybrain \citep{schaul2010}, \emph{iii)} it depends
-only on numpy and scipy to facilitate distribution
-(\url{http://numpy.scipy.org/}), unlike pymvpa
+only on numpy and scipy to facilitate distribution, unlike pymvpa
 \citep{hanke2009} which relies heavily on R, \emph{iv)} it focuses on imperative
 programming and not data-flow frameworks, unlike pybrain which uses such a framework
 for building artificial neural networks.
@@ -150,7 +149,7 @@ Python Distribution'' thanks to its liberal license.
 %
 Rather than aiming for many features, our goal is to provide solid
 implementations. The quality of the code base is ensured with unitary
-tests {\tt nose tests}: as of release 0.6, test coverage is 78\%. We follow the
+tests: as of release 0.6, test coverage is 78\%. We follow the
 Python
 coding style guidelines, as well as the numpy style for documentation. We
 employ static analysis tools such as {\tt pyflakes} and {\tt pep8}.
@@ -178,8 +177,6 @@ scientific Python ecosystem.
 We base our development on collaborative tools such as git, github and
 public mailing lists. External contributions are welcome and
 encouraged via developer manual and API guidelines.
-Moreover, many contributions are experiment-driven, thus providing robust and
-easily usable algorithms.
 
 \smallskip \noindent{\bf Documentation}
 %
@@ -251,7 +248,7 @@ Estimators may also provide a {\tt score} method, evaluating the goodness
 of fit of an estimator. It may be a log-likelihood, or the opposite of a
 loss function, but must always increase with goodness of fit.
 %
-The only other important object is the {\tt cross-validation iterator}:
+The only other important object is the \emph{cross-validation iterator}:
 it is an iterable providing a pair of train and test indices to split input
 data. It may be a standard list, or a Python generator dynamically
 creating these indices. Examples comprise K-fold, leave one out, or
@@ -355,7 +352,7 @@ sparse data or setting weights for individual samples.
 %
 Iteratively refining the residuals instead of recomputing them gives
 performance gains of 2 times to 10 times over the reference R implementation
-\citep{LARS}. {\sl Pymvpa} uses this implementation via the Rpy R
+\citep{LARS}. {\sl Pymvpa} uses it via the Rpy R
 bindings and pays a heavy price to memory copies.
 
 

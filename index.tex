@@ -99,41 +99,36 @@ selection}
 
 \section{Introduction}
 
-The Python programming language is establishing itself as one of the
-languages of choice for scientific computing. It is an appealing choice 
-for algorithmic development and data processing in both academic and 
-industrial settings thanks to its high-level interactive
-nature and its maturing ecosystem of scientific libraries
-\citep{cise2007,cise2011}.
-In particular, as it is a general-purpose language, it enjoys success in
-applied problems as well as amongst computer scientists.
-%
-{\sl Scikits.learn} harnesses this rich environment to provide
-state-of-the-art machine learning tools to non-specialists, answering a
-growing need for statistical data analysis in the software and web
-industries, but also for basic research in non computer-science fields,
-such as biology or physics.
+The Python programming language is establishing itself as one of the most
+popular languages for scientific computing. Thanks to its high-level interactive
+nature and its maturing ecosystem of scientific libraries, it is an appealling
+choice for algorithmic development and exploratory data analysis
+\citep{cise2007,cise2011}. Yet, as a general-purpose language, it is
+increasingly employed not only in academic settings but also in
+the industry. 
 
-The goal of the project is to provide a reference implementation of some
+{\sl Scikits.learn} harnesses this rich environment to provide state-of-the-art
+implementations of some
 of the best known machine learning algorithms, while maintaining an
-easy-to-use interface tightly integrated in the Python language.
+easy-to-use interface tightly integrated in the Python language. This answers the
+growing need of non-specialits for statistical data analysis in the software and web
+industries, as well as in non computer-science fields, such as biology or physics.
 \emph{Scikits.learn} differs from other learning toolboxes in Python for
 various reasons: \emph{i)} it is distributed under the BSD license
-\emph{ii)} it incorporates compiled code for efficiency --unlike MDP
-\citep{zito2008} and pybrain \citep{schaul2010}-- \emph{iii)} it depends
-only on numpy and scipy --unlike pymvpa \citep{hanke2009}, we avoid depending
-on R for distribution reasons-- \emph{iv)} it focuses on imperative
-programming and not data-flow frameworks --pybrain uses such a framework
+\emph{ii)} it incorporates compiled code for efficiency, unlike MDP
+\citep{zito2008} and pybrain \citep{schaul2010} \emph{iii)} it depends
+only on numpy and scipy, unlike pymvpa \citep{hanke2009} \emph{iv)} it focuses on imperative
+programming and not data-flow frameworks, unlike pybrain which uses such a framework
 for building artificial neural networks.
 
-While the package is mostly coded in Python, it incorporates the C++
+While the package is mostly written in Python, it incorporates the C++
 libraries LibSVM \citep{chang2001} and LibLinear \citep{fan2008} that
 provide reference implementations of SVMs and generalized linear models
 with compatible licenses.
 %
 Binary packages are available on a rich set of platforms including
 Windows and any POSIX platforms. Furthermore, it is distributed as part
-of major open source distributions such as Ubuntu, Debian, Mandriva,
+of major free software distributions such as Ubuntu, Debian, Mandriva,
 NetBSD or Macports and in commercial distributions such as ``Enthought
 Python Distribution'' thanks to its liberal license.
 

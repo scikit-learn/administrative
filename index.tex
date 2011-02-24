@@ -149,7 +149,17 @@ Python Distribution'' thanks to its liberal license.
 
 \section {Project vision}
 
-\noindent{\bf BSD licensing}
+\noindent{\bf Code quality}
+%
+Rather than aiming for many features, our goal is to provide solid
+implementations. The quality of the code base is ensured with unitary
+tests: as of release 0.6, test coverage is 78\%. We follow the Python
+coding style guidelines, as well as the numpy style for documentation. We
+employ static analysis tools such as {\tt pyflakes} and {\tt pep8}.
+Finally, we strive to have consistent naming for the various functions
+and parameters.
+
+\smallskip \noindent{\bf BSD licensing}
 %
 Most of the Python ecosystem is licensed with non copyleft licenses such
 as the BSD license. While this licensing scheme is beneficial for adoption
@@ -171,16 +181,6 @@ We base our development on collaborative tools such as git, github and
 public mailing lists. External contributions are welcome and
 encouraged via developer manual and API guidelines.
 
-\smallskip \noindent{\bf Code quality}
-%
-Rather than aiming for many features, our goal is to provide solid
-implementations. The quality of the code base is ensured with unitary
-tests: as of release 0.6, test coverage is 78\%. We follow the Python
-coding style guidelines, as well as the numpy style for documentation. We
-employ static analysis tools such as {\tt pyflakes} and {\tt pep8}.
-Finally, we strive to have consistent naming for the various functions
-and parameters.
-
 \smallskip \noindent{\bf Documentation}
 %
 We believe that documentation is a key component of software.
@@ -198,7 +198,6 @@ regards to the algorithms employed.
 
 %XXX: Shorten the above
 
-\smallskip
 \noindent{\bf Numpy}:
 %
 the base data structure for representing
@@ -235,6 +234,50 @@ associated with Python/C extensions.
 %%
 %visualization and plotting. Matplotlib is used only in the examples.
 
+\section{Code design}
+
+\noindent{\bf Objects specified by interface, not by inheritance}
+%
+To facilitate the use of external objects with \emph{scikits.learn},
+inheritance is not enforced at any stage; instead, we rely on some simple
+conventions. The central object is an {\tt estimator}, that implements a
+{\tt fit} method, accepting as arguments an input data array and,
+optionally, a target array for supervised problems. Supervised estimators,
+such as SVCs, can implement a {\tt predict} method. Some estimators,
+that we call {\tt transformers}, \emph{e.g.} the PCA, implement a {\tt
+transform} method, returning modified input data.
+%
+Estimators may also provide a {\tt score} method, evaluating the goodness
+of fit of an estimator. It may be a log-likelihood, or the opposite of a
+loss function, but must always increase with goodness of fit.
+%
+The only other important object is the \emph{cross-validation iterator}:
+it is an iterable providing a pair of train and test indices to split input
+data. It may be a standard list, or a Python generator dynamically
+creating these indices. Examples comprise K-fold, leave one out, or
+stratified schemes. 
+
+
+\smallskip \noindent{\bf Model selection}
+%
+\emph{Scikits.learn} can evaluate the performance of an estimator or set
+its parameters by cross-validation, optionally distributing the
+computation to several cores. For this, it provides a {\tt GridSearchCV}
+object, where the ``CV'' stands for ``cross-validated'', that wraps a
+given estimator. During the call to {\tt fit}, it selects the parameters
+on a specified parameter grid, maximizing a score function that defaults
+to the {\tt score} method of the original estimator. The calls to {\tt
+predict}, {\tt score}, or {\tt transform} are then delegated to the tuned
+estimator. This object can thus be used transparently as any other
+estimator. Such cross validation can be made more efficient for certain
+estimators by exploiting their specific properties, such as warm restarts
+or regularization paths. This is done via special cross-validated
+objects, such as the {\tt LassoCV}. Finally, a {\tt Pipeline} object can
+combine several {\tt transformers} and a final estimator to create a
+combined estimator applying \emph{e.g.} dimension reduction before the
+fit. {\tt Pipeline} behave as standard estimators, and can be thus used
+with the {\tt GridSearchCV} to tune the parameters of all steps together.
+
 \section{High-level yet efficient: some trade offs}
 
 %Special care has been take on algorithmic efficiency, producing
@@ -260,7 +303,7 @@ In the following, we discuss some aspects of these results, to illustrate
 the engineering trade offs related to performance. 
 
 %{{{----------------------------------------------------------------------------
-\begin{table}[b]
+\begin{table}[t]
 \small
 \hspace*{.03\linewidth}%
 %\begin{minipage}{1.04\linewidth}
@@ -345,50 +388,6 @@ decomposition, as used by MDP, also performs very well.
 The performance of \emph{scikits.learn}'s k-Means is limited by numpy's
 array operations that operate multiple passes over data, as it is
 implemented in pure Python.
-
-\section{Code design}
-
-\noindent{\bf Objects specified by interface, not by inheritance}
-%
-To facilitate the use of external objects with \emph{scikits.learn},
-inheritance is not enforced at any stage; instead, we rely on some simple
-conventions. The central object is an {\tt estimator}, that implements a
-{\tt fit} method, accepting as arguments an input data array and,
-optionally, a target array for supervised problems. Supervised estimators,
-such as SVCs, can implement a {\tt predict} method. Some estimators,
-that we call {\tt transformers}, \emph{e.g.} the PCA, implement a {\tt
-transform} method, returning modified input data.
-%
-Estimators may also provide a {\tt score} method, evaluating the goodness
-of fit of an estimator. It may be a log-likelihood, or the opposite of a
-loss function, but must always increase with goodness of fit.
-%
-The only other important object is the \emph{cross-validation iterator}:
-it is an iterable providing a pair of train and test indices to split input
-data. It may be a standard list, or a Python generator dynamically
-creating these indices. Examples comprise K-fold, leave one out, or
-stratified schemes. 
-
-
-\smallskip \noindent{\bf Model selection}
-%
-\emph{Scikits.learn} can evaluate the performance of an estimator or set
-its parameters by cross-validation, optionally distributing the
-computation to several cores. For this, it provides a {\tt GridSearchCV}
-object, where the ``CV'' stands for ``cross-validated'', that wraps a
-given estimator. During the call to {\tt fit}, it selects the parameters
-on a specified parameter grid, maximizing a score function that defaults
-to the {\tt score} method of the original estimator. The calls to {\tt
-predict}, {\tt score}, or {\tt transform} are then delegated to the tuned
-estimator. This object can thus be used transparently as any other
-estimator. Such cross validation can be made more efficient for certain
-estimators by exploiting their specific properties, such as warm restarts
-or regularization paths. This is done via special cross-validated
-objects, such as the {\tt LassoCV}. Finally, a {\tt Pipeline} object can
-combine several {\tt transformers} and a final estimator to create a
-combined estimator applying \emph{e.g.} dimension reduction before the
-fit. {\tt Pipeline} behave as standard estimators, and can be thus used
-with the {\tt GridSearchCV} to tune the parameters of all steps together.
 
 \section{Conclusion}
 

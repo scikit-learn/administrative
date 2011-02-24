@@ -102,7 +102,7 @@ selection}
 The Python programming language is establishing itself as one of the
 languages of choice for scientific computing. It is an appealing choice 
 for algorithmic development and data processing in both academic and 
-industrial settings thanks high-level interactive
+industrial settings thanks to its high-level interactive
 nature and its maturing ecosystem of scientific libraries
 \citep{cise2007,cise2011}.
 In particular, as it is a general-purpose language, it enjoys success in
@@ -168,12 +168,12 @@ scientific Python ecosystem.
 \noindent{\bf Community-driven development}
 %
 We base our development on collaborative tools such as git, github and
-public mailing lists. External contributions are welcomed and
+public mailing lists. External contributions are welcome and
 encouraged via developer manual and API guidelines.
 
 \smallskip \noindent{\bf Code quality}
 %
-Rather than aim for many features, our goal is to provide solid
+Rather than aiming for many features, our goal is to provide solid
 implementations. The quality of the code base is ensured with unitary
 tests: as of release 0.6, test coverage is 78\%. We follow the Python
 coding style guidelines, as well as the numpy style for documentation. We
@@ -361,10 +361,10 @@ transform} method, returning modified input data.
 %
 Estimators may also provide a {\tt score} method, evaluating the goodness
 of fit of an estimator. It may be a log-likelihood, or the opposite of a
-loss function, but must always increase with fit quality.
+loss function, but must always increase with goodness of fit.
 %
 The only other important object is the \emph{cross-validation iterator}:
-it is an iterable providing pair of train and test indices to split input
+it is an iterable providing a pair of train and test indices to split input
 data. It may be a standard list, or a Python generator dynamically
 creating these indices. Examples comprise K-fold, leave one out, or
 stratified schemes. 
@@ -374,7 +374,7 @@ stratified schemes.
 %
 \emph{Scikits.learn} can evaluate the performance of an estimator or set
 its parameters by cross-validation, optionally distributing the
-computation on several cores. For this, it provides a {\tt GridSearchCV}
+computation to several cores. For this, it provides a {\tt GridSearchCV}
 object, where the ``CV'' stands for ``cross-validated'', that wraps a
 given estimator. During the call to {\tt fit}, it selects the parameters
 on a specified parameter grid, maximizing a score function that defaults
@@ -394,7 +394,7 @@ with the {\tt GridSearchCV} to tune the parameters of all steps together.
 
 \emph{Scikits.learn} exposes a wide variety of machine learning
 algorithms, supervised and unsupervised, with a consistent,
-task-oriented, interface, thus enabling easy comparison of methods for a
+task-oriented interface, thus enabling easy comparison of methods for a
 given application.
 %
 As it relies on the scientific Python ecosystem, it can easily be

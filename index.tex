@@ -32,7 +32,7 @@
         \name Vincent Michel  \email vm.michel@gmail.com \\
         \name Bertrand Thirion  \email bertrand.thirion@inria.fr \\
         \addr Parietal, INRIA Saclay / Neurospin, 
-	    B\^at 145, CEA Saclay, 91191 Gif sur Yvette -- {\sc France}
+      B\^at 145, CEA Saclay, 91191 Gif sur Yvette -- {\sc France}
         \AND
         \name Olivier Grisel \email olivier.grisel@ensta.fr \\
         \addr Nuxeo -- {\sc France} 
@@ -52,9 +52,9 @@
         \AND
         \name Jake Vanderplas \email vanderplas@astro.washington.edu\\
         \addr University of Washington -- {\sc USA}
-	\AND
+  \AND
         \name Alexandre Passos \email alexandre.tp@gmail.com \\
-        \addr Unicamp,  Campinas -- {\sc Brazil}
+        \addr RECOD Lab -- Unicamp -- {\sc Brazil}
         \AND
         \name David Cournapeau \email cournape@gmail.com \\
         \addr Kyoto -- {\sc Japan}
@@ -65,7 +65,7 @@
         \name Matthieu Perrot \email matthieu.perrot@cea.fr\\
         \name \'Edouard Duchesnay \email edouard.duchesnay@cea.fr \\
         \addr LNAO / Neurospin, 
-	    B\^at 145, CEA Saclay, 91191 Gif sur Yvette -- {\sc France}
+      B\^at 145, CEA Saclay, 91191 Gif sur Yvette -- {\sc France}
 }
 
 
@@ -212,11 +212,12 @@ provides basic arithmetic operations.
 \smallskip
 \noindent{\bf Scipy}:
 %
-efficient algorithms for linear algebra, sparse matrix structure, special
-functions and basic statistical functions. {\sl Scipy} has binding for
-many Fortran-based standard numerical packages. This is important for
-ease of install and portability, as providing binaries binding Fortran
-code can prove challenging on various platforms. 
+efficient algorithms for linear algebra, sparse matrix structure,
+special functions and basic statistical functions. {\sl Scipy} has
+binding for many BLAS, LAPACK, and other standard numerical
+packages. This is important for ease of install and portability, as
+providing binaries binding Fortran code can prove challenging on
+various platforms.
 
 \smallskip
 \noindent{\bf Cython}:
@@ -245,9 +246,9 @@ such as SVCs, can implement a {\tt predict} method. Some estimators,
 that we call {\tt transformers}, \emph{e.g.} the PCA, implement a {\tt
 transform} method, returning modified input data.
 %
-Estimators may also provide a {\tt score} method, evaluating the goodness
-of fit of an estimator. It may be a log-likelihood, or the opposite of a
-loss function, but must always increase with goodness of fit.
+Estimators may also provide a {\tt score} method, evaluating the
+goodness of fit of an estimator. It may be a log-likelihood, or a
+negated loss function, but must always increase with goodness of fit.
 %
 The only other important object is the \emph{cross-validation iterator}:
 it is an iterable providing a pair of train and test indices to split input
@@ -401,7 +402,7 @@ data analysis. Importantly, the algorithms, implemented in a high-level
 language, can be used as building blocks for approaches dedicated to
 specific use cases, \emph{e.g.} in medical imaging \citep{Michel2011}.
 %
-Future work include the addition of \emph{on line} learning, to scale on
+Future work include the addition of \emph{online} learning, to scale on
 large datasets.
 
 \bibliography{scikit}

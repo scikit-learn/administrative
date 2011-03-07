@@ -23,7 +23,7 @@
 
 \begin{document}
 
-\title{scikits.learn: machine learning in Python}
+\title{scikits.learn: Machine learning in Python}
 
 
 \author{\name Fabian Pedregosa \email fabian.pedregosa@inria.fr \\
@@ -44,7 +44,7 @@
         \addr Bauhaus-Universit\"at Weimar, Bauhausstr. 11, 99421 Weimar -- {\sc Germany}
         \AND
         \name Ron Weiss \email ronweiss@gmail.com \\
-        \addr MARL, NYU, New York -- {\sc USA}
+        \addr Music and Audio Research Lab, New York University, New York -- {\sc USA}
         \AND
         \name Vincent Dubourg \email vincent.dubourg@gmail.com\\
         \addr Clermont Universit\'e, IFMA, EA 3867, LaMI,
@@ -100,27 +100,27 @@ selection}
 
 \section{Introduction}
 
-The Python programming language is establishing itself as one of the most
-popular languages for scientific computing. Thanks to its high-level interactive
-nature and its maturing ecosystem of scientific libraries, it is an appealling
-choice for algorithmic development and exploratory data analysis
-\citep{cise2007,cise2011}. Yet, as a general-purpose language, it is
-increasingly employed not only in academic settings but also in
-the industry. 
+The Python programming language is establishing itself as one of the
+most popular languages for scientific computing. Thanks to its
+high-level interactive nature and its maturing ecosystem of scientific
+libraries, it is an appealling choice for algorithmic development and
+exploratory data analysis \citep{cise2007,cise2011}. Yet, as a
+general-purpose language, it is increasingly employed both in academic
+settings and in industry.
 
 {\sl Scikits.learn} harnesses this rich environment to provide state-of-the-art
-implementations of some
-of the best known machine learning algorithms, while maintaining an
-easy-to-use interface tightly integrated in the Python language. This answers the
-growing need of non-specialists for statistical data analysis in the software and web
-industries, as well as in non computer-science fields, such as biology or physics.
-\emph{Scikits.learn} differs from other learning toolboxes in Python for
+implementations of
+many well known machine learning algorithms, while maintaining an
+easy-to-use interface tightly integrated with the Python language. This answers the
+growing need for statistical data analysis by non-specialists in the software and web
+industries, as well as in fields outside of computer-science, such as biology or physics.
+\emph{Scikits.learn} differs from other machine learning toolboxes in Python for
 various reasons: \emph{i)} it is distributed under the BSD license
 \emph{ii)} it incorporates compiled code for efficiency, unlike MDP
 \citep{zito2008} and pybrain \citep{schaul2010}, \emph{iii)} it depends
-only on numpy and scipy to facilitate distribution, unlike pymvpa
-\citep{hanke2009} which relies heavily on R, \emph{iv)} it focuses on imperative
-programming and not data-flow frameworks, unlike pybrain which uses such a framework
+only on numpy and scipy to facilitate easy distribution, unlike pymvpa
+\citep{hanke2009} which relies heavily on R, and \emph{iv)} it focuses on imperative
+programming, unlike pybrain which uses a data-flow framework
 for building artificial neural networks.
 
 While the package is mostly written in Python, it incorporates the C++
@@ -129,10 +129,11 @@ provide reference implementations of SVMs and generalized linear models
 with compatible licenses.
 %
 Binary packages are available on a rich set of platforms including
-Windows and any POSIX platforms. Furthermore, it is distributed as part
+Windows and any POSIX platforms. Furthermore, thanks to its liberal
+license, it has been widely distributed as part
 of major free software distributions such as Ubuntu, Debian, Mandriva,
-NetBSD or Macports and in commercial distributions such as ``Enthought
-Python Distribution'' thanks to its liberal license.
+NetBSD and Macports and in commercial distributions such as the ``Enthought
+Python Distribution''.
 
 %%The library is structured in submodules, each of which covers a family
 %%of related algorithms. This way, the svm module support vector
@@ -148,28 +149,30 @@ Python Distribution'' thanks to its liberal license.
 
 \noindent{\bf Code quality}
 %
-Rather than aiming for many features, our goal is to provide solid
-implementations. The quality of the code base is ensured with unitary
+Rather than providing as many features as possible, the project's goal has been to provide solid
+implementations. The quality of the code base is ensured with unit
+%% RONWEISS: I've never head the term "unitary test" before :)
 tests: as of release 0.6, test coverage is 78\%. We follow the
 Python
 coding style guidelines, as well as the numpy style for documentation. We
 employ static analysis tools such as {\tt pyflakes} and {\tt pep8}.
-Finally, we strive to have consistent naming for the various functions
-and parameters.
+Finally, we strive to use consistent naming for the various functions
+and parameters used throughout the package.
 
 \smallskip \noindent{\bf BSD licensing}
 %
-Most of the Python ecosystem is licensed with non copyleft licenses such
+Most of the Python ecosystem is licensed with non-copyleft licenses such
 as the BSD license. While this licensing scheme is beneficial for adoption
-outside the academic world via the use of these tools in commercial
-projects, it does impose some restrictions: we cannot use some existing
+of these tools by commercial
+projects, it does impose some restrictions: we are unable to use some existing
 scientific code, such as the GSL (GNU Scientific Library).
 
 \smallskip \noindent{\bf Bare-bone design and API}
 %
-For a low barrier of entry, we avoid framework code and keep the number
-of different objects to a minimum. In particular, we use as a dataset
-object the numpy array \citep{Vanderwalt2011} that is common to the
+In order to lower the barrier of entry, we avoid extraneous framework code and keep the number
+of different objects to a minimum.
+The package is built
+around the numpy array \citep{Vanderwalt2011}, which is commonly used throughout the
 scientific Python ecosystem.
 
 \smallskip
@@ -182,11 +185,11 @@ encouraged via developer manual and API guidelines.
 \smallskip \noindent{\bf Documentation}
 %
 We believe that documentation is a key component of software.
-\emph{Scikits.learn} provides a $\sim$300 pages user guide including
-narrative documentation, class reference, tutorial, installation
-instructions, as well as more than 60 examples, some of them featuring
-real-world applications. We try to minimize the amount of
-machine-learning specific terms used, while maintaining precision with
+\emph{Scikits.learn} provides a $\sim$300 page user guide including
+narrative documentation, class references, a tutorial, installation
+instructions, as well as more than 60 examples, some of which feature
+real-world applications. We try to minimize the use of
+machine-learning jargon, while maintaining precision with
 regards to the algorithms employed.
 
 
@@ -198,8 +201,8 @@ regards to the algorithms employed.
 
 \noindent{\bf Numpy}:
 %
-the base data structure for representing
-information. The data for supervised or unsupervised learning is
+the base data structure used to represent data and model parameters.
+The data for supervised or unsupervised learning is
 presented as one, or a few, numpy arrays, thus integrating seamlessly
 with other scientific Python libraries. Numpy's view-based memory 
 model limits copies, even when binding with compiled code. It also 
@@ -212,19 +215,21 @@ provides basic arithmetic operations.
 \smallskip
 \noindent{\bf Scipy}:
 %
-efficient algorithms for linear algebra, sparse matrix structure,
+a package built on Numpy which contains
+%
+efficient algorithms for linear algebra, sparse matrix representation,
 special functions and basic statistical functions. {\sl Scipy} has
-binding for many Fortran-based standard numerical packages, such as 
-LAPACK. This is important for ease of install and portability, as
-providing binaries binding Fortran code can prove challenging on
+bindings for many Fortran-based standard numerical packages, such as 
+LAPACK. This is important for ease of installation and portability, as
+providing libraries around Fortran code can prove challenging on
 various platforms.
 
 \smallskip
 \noindent{\bf Cython}:
 %
-generation of C code seamlessly inserted in Python. Cython allows to
-reach the performance of compiled languages as C while retaining
-Python-like syntax and high-level operations. Also, Cython is used to
+a language for writing C extensions for Python. Cython makes it easy to
+reach the performance of compiled languages while retaining
+Python-like syntax and high-level operations. It is also used to
 easily bind compiled libraries, eliminating most of the boilerplate code
 associated with Python/C extensions.
 
@@ -237,45 +242,55 @@ associated with Python/C extensions.
 
 \noindent{\bf Objects specified by interface, not by inheritance}
 %
-To facilitate the use of external objects with \emph{scikits.learn},
-inheritance is not enforced at any stage; instead, we rely on some simple
-conventions. The central object is an {\tt estimator}, that implements a
+In order to facilitate the use of external objects with \emph{scikits.learn},
+inheritance is not enforced at any stage; instead, code
+conventions are used to provide a consistent interface. 
+The central object is an {\tt estimator}, that implements a
 {\tt fit} method, accepting as arguments an input data array and,
-optionally, a target array for supervised problems. Supervised estimators,
-such as SVCs, can implement a {\tt predict} method. Some estimators,
-that we call {\tt transformers}, \emph{e.g.} the PCA, implement a {\tt
+optionally, a target array of labels for supervised problems. Supervised estimators,
+such as SVM classifiers, can implement a {\tt predict} method. Some estimators,
+that we call {\tt transformers}, \emph{e.g.} PCA, implement a {\tt
 transform} method, returning modified input data.
 %
-Estimators may also provide a {\tt score} method, evaluating the
-goodness of fit of an estimator. It may be a log-likelihood, or a
-negated loss function, but must always increase with goodness of fit.
+Estimators may also provide a {\tt score} method, which evaluate its
+goodness of fit.  Depending on the estimator the score may correspond
+to a log-likelihood, or a
+negated loss function, with the guiding principle that it must always
+increase with the goodness of fit.
 %
 The only other important object is the \emph{cross-validation iterator}:
-it is an iterable providing a pair of train and test indices to split input
-data. It may be a standard list, or a Python generator dynamically
-creating these indices. Examples comprise K-fold, leave one out, or
-stratified schemes. 
+an iterable object which provides a pair of train and test indices to split input
+data accordingly. It may be a standard list, or a Python generator
+which dynamically
+creates these indices. Examples comprise K-fold, leave one out, or
+stratified cross-validation schemes. 
 
 
 \smallskip \noindent{\bf Model selection}
 %
-\emph{Scikits.learn} can evaluate the performance of an estimator or set
-its parameters by cross-validation, optionally distributing the
-computation to several cores. For this, it provides a {\tt GridSearchCV}
-object, where the ``CV'' stands for ``cross-validated'', that wraps a
-given estimator. During the call to {\tt fit}, it selects the parameters
-on a specified parameter grid, maximizing a score function that defaults
-to the {\tt score} method of the original estimator. The calls to {\tt
+\emph{Scikits.learn} can evaluate an estimator's performance or select
+parameters using cross-validation, optionally distributing the
+computation to several cores.  
+This is accomplished by wrapping an estimator in a {\tt GridSearchCV}
+object, where the ``CV'' stands for ``cross-validated''.
+During the call to {\tt fit}, it selects the parameters
+on a specified parameter grid, maximizing a score function
+(the {\tt score} method of the underlying estimator). The calls to {\tt
 predict}, {\tt score}, or {\tt transform} are then delegated to the tuned
-estimator. This object can thus be used transparently as any other
-estimator. Such cross validation can be made more efficient for certain
+estimator. This object can therefore be used transparently in the same
+way as any other
+estimator.
+Such cross validation can be made more efficient for certain
 estimators by exploiting their specific properties, such as warm restarts
-or regularization paths \citep{friedman2010} . This is done via special
+or regularization paths \citep{friedman2010}. This is supported through special
 cross-validated
-objects, such as the {\tt LassoCV}. Finally, a {\tt Pipeline} object can
+objects, such as the {\tt LassoCV}.
+
+Finally, a {\tt Pipeline} object can
 combine several {\tt transformers} and a final estimator to create a
-combined estimator applying \emph{e.g.} dimension reduction before the
-fit. {\tt Pipeline} behave as standard estimators, and can be thus used
+combined estimator to \emph{e.g.} apply dimensionality reduction before
+fitting. {\tt Pipeline} behave as a standard estimator, and can
+therefore be used
 with the {\tt GridSearchCV} to tune the parameters of all steps together.
 
 \section{High-level yet efficient: some trade offs}
@@ -284,23 +299,27 @@ with the {\tt GridSearchCV} to tune the parameters of all steps together.
 %algorithms that are ofter faster than the ones found in compiled
 %libraries.
 
-While \emph{scikits.learn} focuses on ease of the use, and it is
-mostly written in a high level language, care has been taken on
+While \emph{scikits.learn} focuses on ease of use, and is
+mostly written in a high level language, care has been taken to maximize
 computational efficiency. In table \ref{tab:comparisons}, we compare
 computation time for a few algorithms implemented in the major machine
 learning toolkits accessible in Python. We use the Madelon data
 set \citep{Guyon2004}, 4400 instances and 500 attributes,
 that can be used in supervised
-and unsupervised settings and is quite large, but small enough for most
+and unsupervised settings.  The data set is quite large, but small enough for most
 algorithms to run.
+%
+% RONWEISS: It would be great to figure out a way to include this
+% description of the dataset in the text.
+%
 % which was part of the NIPS 2003 feature selection challenge. It is an
 % artificial dataset
 %containing data points grouped in 32 clusters placed on the vertices of
 %a five dimensional hypercube and randomly labeled +1 or -1.
 %
 %
-In the following, we discuss some aspects of these results, to illustrate
-the engineering trade offs related to performance. 
+In the following, we discuss these results and illustrate
+the engineering trade-offs related to performance. 
 
 %{{{----------------------------------------------------------------------------
 \begin{table}[t]
@@ -322,7 +341,7 @@ License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 \end{tabular}
 
 -: Not implemented. \hfill
-$\star$: Not converging after 1 hour iteration.
+$\star$: Does not converge within 1 hour.
 
 \vspace*{-1.5ex}
 %\end{minipage}
@@ -339,22 +358,23 @@ benchmarks can be retrieved from {\tt http://github.com/scikit-learn}.
 
 \smallskip \noindent{\bf SVM}:
 %
-While all packages compared use libsvm in the background, good
+While all of the packages being compared call libsvm in the
+background, the 
 performance of \emph{scikits.learn} can be explained by two factors.
 First, our bindings have up to 40\% less overhead than the original
 libsvm Python bindings: they are implemented with Cython's numpy support
-to avoid memory copies. Second, we patch libsvm to work efficiency
-on dense data, providing less memory footprint, better usage of memory
+to avoid memory copies. Second, we patch libsvm to improve efficiency
+on dense data, use a smaller memory footprint, and better utilize memory
 alignment and pipelining capabilities of modern processors. This patched
 version also provides unique features, such as working without copies on
-sparse data or setting weights for individual samples.
+sparse data and setting weights for individual samples.
 
 
 \smallskip \noindent{\bf LARS}:
 %
 Iteratively refining the residuals instead of recomputing them gives
-performance gains of 2 times to 10 times over the reference R implementation
-\citep{LARS}. {\sl Pymvpa} uses it via the Rpy R
+performance gains of 2--10 times over the reference R implementation
+\citep{LARS}. {\sl Pymvpa} uses this implementation directly via the Rpy R
 bindings and pays a heavy price to memory copies.
 
 
@@ -365,13 +385,13 @@ We benchmarked coordinate descent implementations of Elastic Net.  In
 routines for fast array operations. It achieves the same order of
 performance as the highly optimized Fortran version \emph{glmnet}
 \citep{friedman2010} on medium-scale problems, but performance on very
-large problems will be limited as we do not use the KKT conditions to
+large problems is limited since we do not use the KKT conditions to
 define an active set.
 
 \smallskip
 \noindent{\bf kNN}:
 %
-The k-nearest neighbors is achieved by constructing a ball
+The k-nearest neighbors classifer implementation constructs a ball
 tree \citep{omohundro1989} of the samples, but defaults to a more
 efficient brute force search in large dimensions.
 
@@ -383,26 +403,26 @@ implementation of a truncated PCA based on random projections
 decomposition, as used by MDP, also performs very well.
 
 \smallskip 
-\noindent{\bf k-Means}:
+\noindent{\bf k-means}:
 %
-The performance of \emph{scikits.learn}'s k-Means is limited by numpy's
-array operations that operate multiple passes over data, as it is
-implemented in pure Python.
+\emph{scikits.learn}'s k-means algorithm is implemented in pure
+Python.  Its performance is limited by the fact that numpy's
+array operations take multiple passes over data.
 
 \section{Conclusion}
 
 \emph{Scikits.learn} exposes a wide variety of machine learning
-algorithms, supervised and unsupervised, with a consistent,
+algorithms, both supervised and unsupervised, using a consistent,
 task-oriented interface, thus enabling easy comparison of methods for a
 given application.
 %
-As it relies on the scientific Python ecosystem, it can easily be
-integrated in applications outside the traditional range of statistical
+Since it relies on the scientific Python ecosystem, it can easily be
+integrated into applications outside the traditional range of statistical
 data analysis. Importantly, the algorithms, implemented in a high-level
 language, can be used as building blocks for approaches dedicated to
 specific use cases, \emph{e.g.} in medical imaging \citep{Michel2011}.
 %
-Future work include the addition of \emph{online} learning, to scale on
+Future work includes the addition of \emph{online} learning, to scale to
 large datasets.
 
 \bibliography{scikit}

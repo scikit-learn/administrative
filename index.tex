@@ -105,8 +105,8 @@ most popular languages for scientific computing. Thanks to its
 high-level interactive nature and its maturing ecosystem of scientific
 libraries, it is an appealling choice for algorithmic development and
 exploratory data analysis \citep{cise2007,cise2011}. Yet, as a
-general-purpose language, it is increasingly employed both in academic
-settings and in industry.
+general-purpose language, it is increasingly employed not only in academic
+settings but also in industry.
 
 {\sl Scikits.learn} harnesses this rich environment to provide state-of-the-art
 implementations of
@@ -169,10 +169,10 @@ scientific code, such as the GSL (GNU Scientific Library).
 
 \smallskip \noindent{\bf Bare-bone design and API}
 %
-In order to lower the barrier of entry, we avoid extraneous framework code and keep the number
+To lower the barrier of entry, we avoid framework code and keep the number
 of different objects to a minimum.
 The package is built
-around the numpy array \citep{Vanderwalt2011}, which is commonly used throughout the
+around the numpy array \citep{Vanderwalt2011}, which is common to the
 scientific Python ecosystem.
 
 \smallskip
@@ -201,7 +201,7 @@ regards to the algorithms employed.
 
 \noindent{\bf Numpy}:
 %
-the base data structure used to represent data and model parameters.
+the base data structure used for data and model parameters.
 The data for supervised or unsupervised learning is
 presented as one, or a few, numpy arrays, thus integrating seamlessly
 with other scientific Python libraries. Numpy's view-based memory 
@@ -215,7 +215,7 @@ provides basic arithmetic operations.
 \smallskip
 \noindent{\bf Scipy}:
 %
-a package built on Numpy which contains
+%a package built on Numpy which contains
 %
 efficient algorithms for linear algebra, sparse matrix representation,
 special functions and basic statistical functions. {\sl Scipy} has
@@ -243,27 +243,27 @@ associated with Python/C extensions.
 \noindent{\bf Objects specified by interface, not by inheritance}
 %
 In order to facilitate the use of external objects with \emph{scikits.learn},
-inheritance is not enforced at any stage; instead, code
-conventions are used to provide a consistent interface. 
+inheritance is not enforced; instead, code
+conventions provide a consistent interface. 
 The central object is an {\tt estimator}, that implements a
 {\tt fit} method, accepting as arguments an input data array and,
-optionally, a target array of labels for supervised problems. Supervised estimators,
+optionally, an array of labels for supervised problems. Supervised estimators,
 such as SVM classifiers, can implement a {\tt predict} method. Some estimators,
 that we call {\tt transformers}, \emph{e.g.} PCA, implement a {\tt
 transform} method, returning modified input data.
 %
 Estimators may also provide a {\tt score} method, which evaluate its
-goodness of fit.  Depending on the estimator the score may correspond
-to a log-likelihood, or a
-negated loss function, with the guiding principle that it must always
-increase with the goodness of fit.
+goodness of fit. It must increase with the goodness of fit and
+may correspond to a log-likelihood, or a negated loss function.
 %
-The only other important object is the \emph{cross-validation iterator}:
-an iterable object which provides a pair of train and test indices to split input
-data accordingly. It may be a standard list, or a Python generator
+The other important object is the \emph{cross-validation iterator}, 
+which provides pairs of train and test indices to split input
+data accordingly. It may be a standard list, or a generator
 which dynamically
-creates these indices. Examples comprise K-fold, leave one out, or
-stratified cross-validation schemes. 
+creates these indices. 
+Examples comprise K-fold, 
+leave one out, or
+stratified cross-validation. 
 
 
 \smallskip \noindent{\bf Model selection}
@@ -283,12 +283,12 @@ estimator.
 Such cross validation can be made more efficient for certain
 estimators by exploiting their specific properties, such as warm restarts
 or regularization paths \citep{friedman2010}. This is supported through special
-cross-validated
+%cross-validated
 objects, such as the {\tt LassoCV}.
-
+%
 Finally, a {\tt Pipeline} object can
 combine several {\tt transformers} and a final estimator to create a
-combined estimator to \emph{e.g.} apply dimensionality reduction before
+combined estimator to \emph{e.g.} apply dimension reduction before
 fitting. {\tt Pipeline} behave as a standard estimator, and can
 therefore be used
 with the {\tt GridSearchCV} to tune the parameters of all steps together.
@@ -358,11 +358,11 @@ benchmarks can be retrieved from {\tt http://github.com/scikit-learn}.
 
 \smallskip \noindent{\bf SVM}:
 %
-While all of the packages being compared call libsvm in the
+While all of the packages compared call libsvm in the
 background, the 
 performance of \emph{scikits.learn} can be explained by two factors.
 First, our bindings have up to 40\% less overhead than the original
-libsvm Python bindings: they are implemented with Cython's numpy support
+libsvm Python bindings: they use Cython's numpy support
 to avoid memory copies. Second, we patch libsvm to improve efficiency
 on dense data, use a smaller memory footprint, and better utilize memory
 alignment and pipelining capabilities of modern processors. This patched
@@ -374,7 +374,7 @@ sparse data and setting weights for individual samples.
 %
 Iteratively refining the residuals instead of recomputing them gives
 performance gains of 2--10 times over the reference R implementation
-\citep{LARS}. {\sl Pymvpa} uses this implementation directly via the Rpy R
+\citep{LARS}. {\sl Pymvpa} uses this implementation via the Rpy R
 bindings and pays a heavy price to memory copies.
 
 
@@ -422,7 +422,7 @@ data analysis. Importantly, the algorithms, implemented in a high-level
 language, can be used as building blocks for approaches dedicated to
 specific use cases, \emph{e.g.} in medical imaging \citep{Michel2011}.
 %
-Future work includes the addition of \emph{online} learning, to scale to
+Future work includes the \emph{online} learning, to scale to
 large datasets.
 
 \bibliography{scikit}

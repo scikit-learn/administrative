@@ -1,5 +1,5 @@
-\documentclass[twoside,11pt]{article} 
-\usepackage{jmlr2e} 
+\documentclass[twoside,11pt]{article}
+\usepackage{jmlr2e}
 %\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,breaklinks=true]{hyperref}
 \usepackage{url}
 \jmlrheading{1}{2011}{XX}{XX/11}{XXX}{Pedregosa, Varoquaux, Gramfort et al.}
@@ -31,14 +31,14 @@
         \name Alexandre Gramfort \email alexandre.gramfort@inria.fr \\
         \name Vincent Michel  \email vm.michel@gmail.com \\
         \name Bertrand Thirion  \email bertrand.thirion@inria.fr \\
-        \addr Parietal, INRIA Saclay / Neurospin, 
+        \addr Parietal, INRIA Saclay / Neurospin,
       B\^at 145, CEA Saclay, 91191 Gif sur Yvette -- {\sc France}
         \AND
         \name Olivier Grisel \email olivier.grisel@ensta.fr \\
-        \addr Nuxeo -- {\sc France} 
+        \addr Nuxeo -- {\sc France}
         \AND
         \name Mathieu Blondel \email mblondel@ai.cs.kobe-u.ac.jp \\
-        \addr Kobe University, 1-1 Rokkodai, Nada, Kobe 657-8501 -- {\sc Japan} 
+        \addr Kobe University, 1-1 Rokkodai, Nada, Kobe 657-8501 -- {\sc Japan}
         \AND
         \name Peter Prettenhofer \email peter.prettenhofer@gmail.com \\
         \addr Bauhaus-Universit\"at Weimar, Bauhausstr. 11, 99421 Weimar -- {\sc Germany}
@@ -64,7 +64,7 @@
         \AND
         \name Matthieu Perrot \email matthieu.perrot@cea.fr\\
         \name \'Edouard Duchesnay \email edouard.duchesnay@cea.fr \\
-        \addr LNAO / Neurospin, 
+        \addr LNAO / Neurospin,
       B\^at 145, CEA Saclay, 91191 Gif sur Yvette -- {\sc France}
 }
 
@@ -73,14 +73,15 @@
 
 \maketitle
 
-\begin{abstract} 
+\begin{abstract}
 %
 \emph{Scikits.learn} is a Python module integrating a wide range of
 state-of-the-art machine learning algorithms for medium-scale supervised
 and unsupervised problems. This package focuses on bringing machine
 learning to non-specialists using a general-purpose high-level language.
-Emphasis is put on ease of use, documentation, and API consistency
-without sacrificing speed.
+Emphasis is put on ease of use, performance, documentation, and API
+consistency.
+
 %
 It has minimal dependencies and is distributed under the simplified BSD
 license, encouraging its use in both academic and commercial settings.
@@ -119,7 +120,7 @@ various reasons: \emph{i)} it is distributed under the BSD license
 \emph{ii)} it incorporates compiled code for efficiency, unlike MDP
 \citep{zito2008} and pybrain \citep{schaul2010}, \emph{iii)} it depends
 only on numpy and scipy to facilitate easy distribution, unlike pymvpa
-\citep{hanke2009} which relies heavily on R, and \emph{iv)} it focuses on imperative
+\citep{hanke2009} we avoid wrappers to R code, and \emph{iv)} it focuses on imperative
 programming, unlike pybrain which uses a data-flow framework
 for building artificial neural networks.
 
@@ -204,9 +205,9 @@ regards to the algorithms employed.
 the base data structure used for data and model parameters.
 The data for supervised or unsupervised learning is
 presented as one, or a few, numpy arrays, thus integrating seamlessly
-with other scientific Python libraries. Numpy's view-based memory 
-model limits copies, even when binding with compiled code. It also 
-provides basic arithmetic operations. 
+with other scientific Python libraries. Numpy's view-based memory
+model limits copies, even when binding with compiled code. It also
+provides basic arithmetic operations.
 %This choice strives for easy of use by using plain numpy
 %arrays instead of specialized data structures and limiting framework
 %code. Our objects work directly with NumPy arrays, providing a
@@ -219,7 +220,7 @@ provides basic arithmetic operations.
 %
 efficient algorithms for linear algebra, sparse matrix representation,
 special functions and basic statistical functions. {\sl Scipy} has
-bindings for many Fortran-based standard numerical packages, such as 
+bindings for many Fortran-based standard numerical packages, such as
 LAPACK. This is important for ease of installation and portability, as
 providing libraries around Fortran code can prove challenging on
 various platforms.
@@ -244,7 +245,7 @@ associated with Python/C extensions.
 %
 In order to facilitate the use of external objects with \emph{scikits.learn},
 inheritance is not enforced; instead, code
-conventions provide a consistent interface. 
+conventions provide a consistent interface.
 The central object is an {\tt estimator}, that implements a
 {\tt fit} method, accepting as arguments an input data array and,
 optionally, an array of labels for supervised problems. Supervised estimators,
@@ -256,21 +257,21 @@ Estimators may also provide a {\tt score} method, which evaluate its
 goodness of fit. It must increase with the goodness of fit and
 may correspond to a log-likelihood, or a negated loss function.
 %
-The other important object is the \emph{cross-validation iterator}, 
+The other important object is the \emph{cross-validation iterator},
 which provides pairs of train and test indices to split input
 data accordingly. It may be a standard list, or a generator
 which dynamically
-creates these indices. 
-Examples comprise K-fold, 
+creates these indices.
+Examples comprise K-fold,
 leave one out, or
-stratified cross-validation. 
+stratified cross-validation.
 
 
 \smallskip \noindent{\bf Model selection}
 %
 \emph{Scikits.learn} can evaluate an estimator's performance or select
 parameters using cross-validation, optionally distributing the
-computation to several cores.  
+computation to several cores.
 This is accomplished by wrapping an estimator in a {\tt GridSearchCV}
 object, where the ``CV'' stands for ``cross-validated''.
 During the call to {\tt fit}, it selects the parameters
@@ -319,7 +320,7 @@ algorithms to run.
 %
 %
 In the following, we discuss these results and illustrate
-the engineering trade-offs related to performance. 
+the engineering trade-offs related to performance.
 
 %{{{----------------------------------------------------------------------------
 \begin{table}[t]
@@ -327,7 +328,7 @@ the engineering trade-offs related to performance.
 \hspace*{.03\linewidth}%
 %\begin{minipage}{1.04\linewidth}
 \begin{tabular}{l c c c c c c}
-\hline\hline %inserts double horizontal lines 
+\hline\hline %inserts double horizontal lines
  & scikits.learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]
 \hline
 Support Vector Classification & 9.44 & 16.8 & 17.5 & 26.1 & 52.4 & {\bf 8.68} \\
@@ -359,7 +360,7 @@ benchmarks can be retrieved from {\tt http://github.com/scikit-learn}.
 \smallskip \noindent{\bf SVM}:
 %
 While all of the packages compared call libsvm in the
-background, the 
+background, the
 performance of \emph{scikits.learn} can be explained by two factors.
 First, our bindings have up to 40\% less overhead than the original
 libsvm Python bindings: they use Cython's numpy support
@@ -402,7 +403,7 @@ implementation of a truncated PCA based on random projections
 \citep{rokhlin2009}. On medium-scale problems, incomplete eigenvalue
 decomposition, as used by MDP, also performs very well.
 
-\smallskip 
+\smallskip
 \noindent{\bf k-means}:
 %
 \emph{scikits.learn}'s k-means algorithm is implemented in pure

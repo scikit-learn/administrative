@@ -6,11 +6,11 @@
 
 % Short headings should be running head and authors last names
 
-\usepackage{xcolor}
-\usepackage[normalem]{ulem}
 \usepackage{amsmath}
+\usepackage{xcolor}
+% For highlighting changes
+\usepackage{soul}
 
-\newcommand{\UPDATE}[1]{\textcolor{red}{\uline{#1}}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,7 +119,7 @@ various reasons: \emph{i)} it is distributed under the BSD license
 \emph{ii)} it incorporates compiled code for efficiency, unlike MDP
 \citep{zito2008} and pybrain \citep{schaul2010}, \emph{iii)} it depends
 only on numpy and scipy to facilitate easy distribution, 
-unlike pymvpa \citep{hanke2009} \UPDATE{we avoid wrappers to R code}, and \emph{iv)} it focuses on imperative
+unlike pymvpa \citep{hanke2009} \hl{we avoid wrappers to R code}, and \emph{iv)} it focuses on imperative
 programming, unlike pybrain which uses a data-flow framework
 for building artificial neural networks.
 
@@ -152,7 +152,7 @@ Python Distribution''.
 Rather than providing as many features as possible, the project's goal has been to provide solid
 implementations. The quality of the code base is ensured with unit
 %% RONWEISS: I've never head the term "unitary test" before :)
-tests: as of release \UPDATE{0.8, test coverage is 81\%} and the use of static
+tests: as of release \hl{0.8, test coverage is 81\%} and the use of static
 analysis tools such as {\tt pyflakes} and {\tt pep8}. Finally, we
 strive to use consistent naming for the various functions and
 parameters used throughout a strict adherence to the Python coding
@@ -348,8 +348,8 @@ $\star$: Does not converge within 1 hour.
 Time in seconds on the Madelon dataset for various machine learning libraries exposed in Python:
 MLPy \citep{albanese2008}, PyBrain \citep{schaul2010}, pymvpa
 \citep{hanke2009}, MDP \citep{zito2008} and Shogun
-\citep{sonnenburg2010}. Code for running the
-benchmarks can be retrieved from {\tt http://github.com/scikit-learn}.
+\citep{sonnenburg2010}. 
+\hl{More benchmarks as well as their code}, can be retrieved from {\tt http://github.com/scikit-learn}.
 \vspace*{-1.5em}\label{tab:comparisons}
 }
 \end{table}

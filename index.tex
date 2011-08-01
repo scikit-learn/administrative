@@ -16,13 +16,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\ShortHeadings{scikits.learn: machine learning in Python}{Pedregosa, Varoquaux, Gramfort et al.}
+\ShortHeadings{scikit-learn: machine learning in Python}{Pedregosa, Varoquaux, Gramfort et al.}
 \firstpageno{1}
 
 
 \begin{document}
 
-\title{scikits.learn: Machine learning in Python}
+\title{scikit-learn: Machine learning in Python}
 
 
 \author{\name Fabian Pedregosa \email fabian.pedregosa@inria.fr \\
@@ -74,7 +74,7 @@
 
 \begin{abstract}
 %
-\emph{Scikits.learn} is a Python module integrating a wide range of
+\emph{Scikit-learn} is a Python module integrating a wide range of
 state-of-the-art machine learning algorithms for medium-scale supervised
 and unsupervised problems. This package focuses on bringing machine
 learning to non-specialists using a general-purpose high-level language.
@@ -108,13 +108,13 @@ exploratory data analysis \citep{cise2007,cise2011}. Yet, as a
 general-purpose language, it is increasingly employed not only in academic
 settings but also in industry.
 
-{\sl Scikits.learn} harnesses this rich environment to provide state-of-the-art
+{\sl Scikit-learn} harnesses this rich environment to provide state-of-the-art
 implementations of
 many well known machine learning algorithms, while maintaining an
 easy-to-use interface tightly integrated with the Python language. This answers the
 growing need for statistical data analysis by non-specialists in the software and web
 industries, as well as in fields outside of computer-science, such as biology or physics.
-\emph{Scikits.learn} differs from other machine learning toolboxes in Python for
+\emph{Scikit-learn} differs from other machine learning toolboxes in Python for
 various reasons: \emph{i)} it is distributed under the BSD license
 \emph{ii)} it incorporates compiled code for efficiency, unlike MDP
 \citep{zito2008} and pybrain \citep{schaul2010}, \emph{iii)} it depends
@@ -184,7 +184,7 @@ encouraged via developer manual and API guidelines.
 \smallskip \noindent{\bf Documentation}
 %
 We believe that documentation is a key component of software.
-\emph{Scikits.learn} provides a $\sim$300 page user guide including
+\emph{Scikit-learn} provides a $\sim$300 page user guide including
 narrative documentation, class references, a tutorial, installation
 instructions, as well as more than 60 examples, some of which feature
 real-world applications. We try to minimize the use of
@@ -194,7 +194,7 @@ regards to the algorithms employed.
 
 \section{Underlying technologies}
 
-%\emph{Scikits.learn} builds upon a powerful stack of existing libraries:
+%\emph{Scikit-learn} builds upon a powerful stack of existing libraries:
 
 %XXX: Shorten the above
 
@@ -241,7 +241,7 @@ associated with Python/C extensions.
 
 \noindent{\bf Objects specified by interface, not by inheritance}
 %
-In order to facilitate the use of external objects with \emph{scikits.learn},
+In order to facilitate the use of external objects with \emph{scikit-learn},
 inheritance is not enforced; instead, code
 conventions provide a consistent interface.
 The central object is an {\tt estimator}, that implements a
@@ -267,7 +267,7 @@ stratified cross-validation.
 
 \smallskip \noindent{\bf Model selection}
 %
-\emph{Scikits.learn} can evaluate an estimator's performance or select
+\emph{Scikit-learn} can evaluate an estimator's performance or select
 parameters using cross-validation, optionally distributing the
 computation to several cores.
 This is accomplished by wrapping an estimator in a {\tt GridSearchCV}
@@ -298,7 +298,7 @@ with the {\tt GridSearchCV} to tune the parameters of all steps together.
 %algorithms that are ofter faster than the ones found in compiled
 %libraries.
 
-While \emph{scikits.learn} focuses on ease of use, and is
+While \emph{scikit-learn} focuses on ease of use, and is
 mostly written in a high level language, care has been taken to maximize
 computational efficiency. In table \ref{tab:comparisons}, we compare
 computation time for a few algorithms implemented in the major machine
@@ -327,7 +327,7 @@ the engineering trade-offs related to performance.
 %\begin{minipage}{1.04\linewidth}
 \begin{tabular}{l c c c c c c}
 \hline\hline %inserts double horizontal lines
- & scikits.learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]
+ & scikit-learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]
 \hline
 Support Vector Classification & {\bf 5.2} & 9.47 & 17.5 & 11.52 & 40.48 & 5.63 \\
 Lasso (LARS) & {\bf 1.17} & 105.3   & - &  37.35 & - & - \\
@@ -349,7 +349,7 @@ Time in seconds on the Madelon dataset for various machine learning libraries ex
 MLPy \citep{albanese2008}, PyBrain \citep{schaul2010}, pymvpa
 \citep{hanke2009}, MDP \citep{zito2008} and Shogun
 \citep{sonnenburg2010}. 
-\hl{More benchmarks as well as their code}, can be retrieved from {\tt http://github.com/scikit-learn}.
+\hl{More benchmarks, as well as their code}, can be retrieved from {\tt http://github.com/scikit-learn}.
 \vspace*{-1.5em}\label{tab:comparisons}
 }
 \end{table}
@@ -359,7 +359,7 @@ MLPy \citep{albanese2008}, PyBrain \citep{schaul2010}, pymvpa
 %
 While all of the packages compared call libsvm in the
 background, the
-performance of \emph{scikits.learn} can be explained by two factors.
+performance of \emph{scikit-learn} can be explained by two factors.
 First, our bindings have up to 40\% less overhead than the original
 libsvm Python bindings: they use Cython's numpy support
 to avoid memory copies. Second, we patch libsvm to improve efficiency
@@ -380,7 +380,7 @@ bindings and pays a heavy price to memory copies.
 \smallskip \noindent{\bf Elastic Net}:
 %
 We benchmarked coordinate descent implementations of Elastic Net.  In
-\emph{scikits.learn}, it is coded in Cython and uses low-level BLAS
+\emph{scikit-learn}, it is coded in Cython and uses low-level BLAS
 routines for fast array operations. It achieves the same order of
 performance as the highly optimized Fortran version \emph{glmnet}
 \citep{friedman2010} on medium-scale problems, but performance on very
@@ -396,7 +396,7 @@ efficient brute force search in large dimensions.
 
 \smallskip \noindent{\bf PCA}:
 %
-For medium to large datasets, \emph{scikits.learn} provides an
+For medium to large datasets, \emph{scikit-learn} provides an
 implementation of a truncated PCA based on random projections
 \citep{rokhlin2009}. On medium-scale problems, incomplete eigenvalue
 decomposition, as used by MDP, also performs very well.
@@ -404,13 +404,13 @@ decomposition, as used by MDP, also performs very well.
 \smallskip
 \noindent{\bf k-means}:
 %
-\emph{scikits.learn}'s k-means algorithm is implemented in pure
+\emph{scikit-learn}'s k-means algorithm is implemented in pure
 Python.  Its performance is limited by the fact that numpy's
 array operations take multiple passes over data.
 
 \section{Conclusion}
 
-\emph{Scikits.learn} exposes a wide variety of machine learning
+\emph{Scikit-learn} exposes a wide variety of machine learning
 algorithms, both supervised and unsupervised, using a consistent,
 task-oriented interface, thus enabling easy comparison of methods for a
 given application.

@@ -1,0 +1,30 @@
+JMLR review of scikits.learn
+
+I have followed scikits.learn since quite some time, and it was only a matter of time for it to get published in JMLR. It is a project that stands out among open-source machine learning libraries, for its wide impact, its solid code, easy-to-understand documentation and examples, as well as its helpful community. It limits itself to a core set of algorithms which are implemented and documented with care. I strongly recommend this article for publication and hope the library will keep growing, especially in terms of more advanced features.
+
+
+
+--- Paper ---
+The paper is well-written, polished and compact: every paragraph is relevant. 
+
+Strengths:
+- Python coupled with fast compiled code is indeed an appropriate choice of language for a machine learning library.
+- The comparison is solid and appropriate for a short description like this. Maybe there could be an expanded version on the webpage.
+- The design is clear and well-motivated, and the authors found the right balance of how much to explain in the paper and what to relegate to the documentation.
+- The paper is in part a bit strongly worded, but the library is indeed one of the best ones out there, so that is OK.
+- I particularly like the long author list, which I believe encourages contributions to scientific open-source libraries in general.
+
+Weaknesses:
+- Few scientific publications have used it (just one with overlapping authors).
+- The library is limited to a subset of features that machine learning practitioners are using, some of which are featured in competing libraries: the paper could, space allowing, mention what is missing, and which of these features are in development.
+
+--- Code ---
+Installation was straightforward, even on Windows. It is generally commented well, and the documentation is done with care. I especially like the many instructive examples, which are helped by the fact that example datasets are coming directly with the distribution.
+One hiccup I found: some of the examples appear to make full use of parallelization, by spawning a multitude of python processes. I’m not sure if this should be default behavior (as it chokes the machine). 
+The code is easily available for all major operating systems, and has only the minimal dependencies.
+
+--- Documentation ---
+Scikits.learn has a more extensive and well-written documentation, (including comments in the code), than most competing libraries. Again, the collection of examples is very helpful. The documentation for developers is clear and complete enough as well.
+
+--- Community ---
+The code base is well-maintained, code is contributed by more than just a handful of people, bugs are fixed quickly, responses on the mailing list are quick and competent.

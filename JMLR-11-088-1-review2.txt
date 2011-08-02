@@ -1,0 +1,96 @@
+First of all I'd like to thank the authors for developing this software package
+which represents a valuable resource for many researchers. I think the
+manuscript describes the software well, the code is high-quality and the
+documentation is comprehensive.
+
+That being said, I have a few comments that I would appreciate to see
+implemented in a final version of this manuscript.
+
+
+Comparison/Relation of scikits.learn with other projects
+--------------------------------------------------------
+
+Personally, I find this the most relevant aspect for a publication about a new
+software, but the current manuscript only discusses very few related aspects.
+I understand that the manuscript's scope is limited to the Python programing
+language, but I think that the reader would benefit from (at least) a short
+reference to the fact that there is a lot of machine learning software out
+there for almost any computing environment.
+
+But even within the Python-world the differences of scope and purpose of
+scikits.learn in comparison with other relevant software is touched in a single
+sentence only. And frankly, I don't think that the major difference between
+scikits.learn and MDP is the presence of compiled code, or that PyMVPA heavily
+relies on R (which it doesn't). I rather think that the main difference of
+these projects is their respective target audience, which determines the
+desired features set and design, as well as implementation differences. I'm
+sure the reader would appreciate some guidelines on when to prefer
+scikits.learn over the others, and maybe also when not.
+
+Moreover, I'd be glad to see some information on whether there is any
+consolidation going on in the "machine learning in Python" world. Every project
+has copy of LIBSVM and uses it with mixed success (as the authors pointed out),
+or rather with varying applicability to different datasets (dimensionality,
+#observations).
+
+I know that there is at least an initial attempt in PyMVPA to make scikit.learn
+functionality available inside this framework. The authors point out the
+advantages of the framework-free implementation of scikits.learn that should
+make it possible to easily use this code in other projects too. Are the authors
+actively working with others on such a consolidation? Are there any limitations
+in scikits.learn that would prevent or delay this? Where do the authors want to
+positions scikits.learn in this ecosystem?
+
+I understand that manuscript needs to comply to strict length-constraints.
+However, I'd find information of practical relevance to a reader evaluating the
+suitability of scikits.learn for a particular project much more useful than the
+description of "3. Underlying technologies" -- especially because the
+manuscript's scope is limited to Python and these technologies are fairly
+common to all software for this purpose in the field.
+
+
+Benchmarks
+----------
+
+I think that this section must mention the versions of all tested software to
+allow the reader to judge whether the presented results are still relevant for
+the respective current releases, or might have changed because of performance
+improvements implemented in the meantime. It looks like the benchmarks were
+computed using development versions, but at least some date and branch
+information should be given.  Moreover, I believe that a benchmark based on a
+single dataset with a particular dimensionality and sample size cannot be used
+to make comprehensive speed assessments. It is perfectly possible that the
+situation changes for smaller or larger datasets.
+
+Overall, I'm a bit concerned about the validity and reliability of these
+benchmarks. In particular:
+
+a) impact of differences in convergence tolerance settings -- have they been
+   controlled/equalized or left on "default"
+
+   According to the available benchmark source code all parameter settings
+   beyond essential hyperparameters (e.g. SVM's C) have been left on their
+   respective (varying?) defaults.
+
+b) model quality -- were the performances of all software actually similar?
+
+   Speed of result production is only relevant if the quality of the results is
+   not degraded. That should have lees impact on algorithms where the underlying
+   implementation is actually shared, but might have an impact elsewhere, i.e.
+   quicker but maybe inappropriate tie breaking algorithm...
+
+c) Reliability of the performance estimates?
+
+   The two result charts that are linked from the github page show substantial
+   variance -- even for algorithms that should not be affected by convergence
+   criteria, e.g. kNN. In contrast to the table in the manuscript, in these
+   results:
+
+   http://packages.python.org/milk/benchmarks.html
+
+   scikits.learn is slower than any other tested implementation of kNN. That
+   makes me wonder whether the benchmark reliability is negatively impacted by
+   random effects and maybe the number of performance estimate samples is too
+   low.
+
+

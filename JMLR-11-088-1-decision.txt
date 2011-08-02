@@ -1,0 +1,3 @@
+Your projects got very good reviews, however the second reviewer raised some valid points concerning your benchmarks. Therefore, I'm accepting your paper after a minor revision to pass your final version by the second reviewer one more time.
+
+Concerning the first point raised by the reviewer, you're invited to consider it, however, I think that his comments with regard to a unification of frameworks are somewhat beyond the scope of your submission, as these are larger, more political issues. Still, if you feel you can add a valuable comment on that matter, feel free to do so.

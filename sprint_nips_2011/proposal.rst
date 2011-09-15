@@ -1,11 +1,15 @@
 
 ========================================
-Scikit-learn Grenada 2011 sprint funding
+Scikit-learn Granada 2011 sprint funding
 ========================================
 
 This documents serves to organize and motivate funding for the
-`scikit-learn` international sprint that will be held in Grenada, Sept
-18-21 2011.
+`scikit-learn` international sprint that will be held in Granada, Dec
+19-21 2011.
+
+.. contents::
+
+____
 
 .. sectnum::
 
@@ -85,10 +89,32 @@ communication and lower the barrier of entry to the project.
 
 .. [#] Past sprints https://github.com/scikit-learn/scikit-learn/wiki/Past-sprints
 
-The Grenada sprint
-====================
+Granada sprint organization
+============================
 
-Why Grenada
+**Why Granada**: in December 2011, one of the major machine learning 
+conferences, `NIPS <http://nips.cc/>`_, is hosted for the first time in
+Europe, in Granada, which is the home town of own of our core developers,
+Fabian Pedregosa. As NIPS drains many machine learning academics, it is a
+great opportunity for the `scikit-learn` to gain new contributors. In
+addition, the location in Granada *i)* reduces travel costs for a majority
+of current developers, *ii)* makes local organization easy as we have
+support from the university.
 
-Budget
+**Local organization**: The sprint will be held after the NIPS
+conference, from Monday 19th to Thursday 21th December. The
+`Gnu/Linux Granada Group` is helping to host the event at the faculty
+of science of the Granada university and providing Internet access.
 
+**Budget**: given the local support and investments from various academic
+institution, the budget requirements for the sprint are fairly low.
+However, some contributors work on the project without support from their
+day job. In addition, some core very active contributors live far from
+Europe and need a significant travel budget. 
+
+Currently, the following trips need financing:
+
+- From Seattle
+- From Kyoto
+- From Bucharest
+- From Toronto

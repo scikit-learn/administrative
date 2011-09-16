@@ -1,8 +1,7 @@
 \documentclass[twoside,11pt]{article}
 \usepackage{jmlr2e}
-%\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,breaklinks=true]{hyperref}
 \usepackage{url}
-\jmlrheading{1}{2011}{XX}{XX/11}{XXX}{Pedregosa, Varoquaux, Gramfort et al.}
+\jmlrheading{1}{2011}{XX}{3/11; Revised 8/11}{XXX}{Pedregosa, Varoquaux, Gramfort et al.}
 
 % Short headings should be running head and authors last names
 
@@ -93,11 +92,6 @@ Source code, binaries, and documentation can be downloaded from
 selection}
 
 
-%%  It offers a wide range of
-%% methods such as Support Vector Machines, linear models (L1, L2
-%% penalized), logistic regression, gaussian mixture models and more.
-
-
 \section{Introduction}
 
 The Python programming language is establishing itself as one of the
@@ -136,15 +130,6 @@ of major free software distributions such as Ubuntu, Debian, Mandriva,
 NetBSD and Macports and in commercial distributions such as the ``Enthought
 Python Distribution''.
 
-%%The library is structured in submodules, each of which covers a family
-%%of related algorithms. This way, the svm module support vector
-%%machine-related algorithms of classification (SVC), regression (SVR)
-%%and unsupervised learning (OneClassSVM).
-%%
-%%% Mention 'flat is better than nested'
-
-%%% Mention the quality of our SVM bindings
-
 
 \section {Project vision}
 
@@ -152,7 +137,6 @@ Python Distribution''.
 %
 Rather than providing as many features as possible, the project's goal has been to provide solid
 implementations. The quality of the code base is ensured with unit
-%% RONWEISS: I've never head the term "unitary test" before :)
 tests: as of release \hl{0.8, test coverage is 81\%} and the use of static
 analysis tools such as {\tt pyflakes} and {\tt pep8}. Finally, we
 strive to use consistent naming for the various functions and
@@ -195,10 +179,6 @@ regards to the algorithms employed.
 
 \section{Underlying technologies}
 
-%\emph{Scikit-learn} builds upon a powerful stack of existing libraries:
-
-%XXX: Shorten the above
-
 \noindent{\bf Numpy}:
 %
 the base data structure used for data and model parameters.
@@ -207,15 +187,9 @@ presented as one, or a few, numpy arrays, thus integrating seamlessly
 with other scientific Python libraries. Numpy's view-based memory
 model limits copies, even when binding with compiled code. It also
 provides basic arithmetic operations.
-%This choice strives for easy of use by using plain numpy
-%arrays instead of specialized data structures and limiting framework
-%code. Our objects work directly with NumPy arrays, providing a
-%flexible way to communicate with other packages.
 
 \smallskip
 \noindent{\bf Scipy}:
-%
-%a package built on Numpy which contains
 %
 efficient algorithms for linear algebra, sparse matrix representation,
 special functions and basic statistical functions. {\sl Scipy} has
@@ -232,11 +206,6 @@ reach the performance of compiled languages while retaining
 Python-like syntax and high-level operations. It is also used to
 easily bind compiled libraries, eliminating most of the boilerplate code
 associated with Python/C extensions.
-
-%\smallskip
-%\noindent{\bf Matplotlib}:
-%%
-%visualization and plotting. Matplotlib is used only in the examples.
 
 \section{Code design}
 
@@ -295,10 +264,6 @@ with the {\tt GridSearchCV} to tune the parameters of all steps together.
 
 \section{High-level yet efficient: some trade offs}
 
-%Special care has been take on algorithmic efficiency, producing
-%algorithms that are ofter faster than the ones found in compiled
-%libraries.
-
 While \emph{scikit-learn} focuses on ease of use, and is
 mostly written in a high level language, care has been taken to maximize
 computational efficiency. In table \ref{tab:comparisons}, we compare
@@ -308,16 +273,6 @@ set \citep{Guyon2004}, 4400 instances and 500 attributes,
 that can be used in supervised
 and unsupervised settings.  The data set is quite large, but small enough for most
 algorithms to run.
-%
-% RONWEISS: It would be great to figure out a way to include this
-% description of the dataset in the text.
-%
-% which was part of the NIPS 2003 feature selection challenge. It is an
-% artificial dataset
-%containing data points grouped in 32 clusters placed on the vertices of
-%a five dimensional hypercube and randomly labeled +1 or -1.
-%
-%
 In the following, we discuss these results and illustrate
 the engineering trade-offs related to performance.
 
@@ -325,7 +280,6 @@ the engineering trade-offs related to performance.
 \begin{table}[t]
 \small
 \hspace*{.03\linewidth}%
-%\begin{minipage}{1.04\linewidth}
 \begin{tabular}{l c c c c c c}
 \hline\hline %inserts double horizontal lines
  & scikit-learn & mlpy & pybrain & pymvpa &  mdp & shogun \\ [0.5ex]

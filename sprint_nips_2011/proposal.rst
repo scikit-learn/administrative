@@ -113,7 +113,8 @@ Europe and need a significant travel budget.
 
 Currently, the following trips need financing:
 
-- From Seattle
-- From Kyoto
-- From Bucharest
-- From Toronto
+- From Seattle (1)
+- From Kyoto (1)
+- From Bucharest (1)
+- From Toronto (1)
+- From Paris (1)

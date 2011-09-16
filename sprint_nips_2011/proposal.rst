@@ -1,4 +1,3 @@
-
 ========================================
 Scikit-learn Granada 2011 sprint funding
 ========================================
@@ -64,7 +63,7 @@ different contributors total [#]_ and 20 contributors have made more than
 10 commits during the 0.9 development period. Each new feature is
 developed collaboratively using pull request and code review [#]_ . The
 level if collaborative work in the project is, in our experience,
-exceptional: feature additions are improve through a iterative effort
+exceptional: feature additions are improved through a iterative effort
 involving many contributors. The project is management on an
 open-governance model: features are contributed without any explicit
 soliciting.

@@ -111,10 +111,23 @@ However, some contributors work on the project without support from their
 day job. In addition, some core very active contributors live far from
 Europe and need a significant travel budget. 
 
-Currently, the following trips need financing:
+Currently, the following trips need financing (in order of priority):
 
-- From Seattle (1)
-- From Kyoto (1)
-- From Bucharest (1)
-- From Toronto (1)
-- From Paris (1)
+========== ===========================
+From       Estimated cost
+========== ===========================
+Kyto       $1600
+Seattle    $1300
+Bucharest  $200
+Amsterdam  $200
+Toronto    $800
+Belgium    $200
+Paris      $150
+Boston     $800
+========== ===========================
+
+Thus, to finance all the trips, a **total of $5000** is needed.
+
+In addition, it should be noted that INRIA is already financing 4 trips,
+Logilab, 1 and MIT 1.
+

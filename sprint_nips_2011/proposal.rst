@@ -86,10 +86,16 @@ located in Paris with remote contributors working over Internet. The
 sprints open the door to integrating new contributors as they improve
 communication and lower the barrier of entry to the project.
 
-.. [#] Past sprints https://github.com/scikit-learn/scikit-learn/wiki/Past-sprints
+.. [#] Past sprints: https://github.com/scikit-learn/scikit-learn/wiki/Past-sprints
 
 Granada sprint organization
 ============================
+
+Goals and technical topics of the sprint are discuss on the Sprint
+planing wiki page [#]_
+
+.. [#] Sprint planning wiki:
+       https://github.com/scikit-learn/scikit-learn/wiki/Upcoming-events
 
 **Why Granada**: in December 2011, one of the major machine learning 
 conferences, `NIPS <http://nips.cc/>`_, is hosted for the first time in

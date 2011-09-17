@@ -122,7 +122,7 @@ Currently, the following trips need financing (in order of priority):
 ========== ===========================
 From       Estimated cost
 ========== ===========================
-Kyoto      $1600
+Kobe       $1600
 Seattle    $1300
 Bucharest  $200
 Amsterdam  $200

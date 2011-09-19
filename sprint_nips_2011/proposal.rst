@@ -137,3 +137,8 @@ Thus, to finance all the trips, a **total of $5000** is needed.
 In addition, it should be noted that INRIA is already financing 4 trips,
 Logilab, 1 and MIT 1.
 
+
+Contact information
+===================
+
+If you are interested in helping funding this sprint, please contact `Gael Varoquaux <http://github.com/GaelVaroquaux>`_.

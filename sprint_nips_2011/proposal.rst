@@ -89,7 +89,7 @@ communication and lower the barrier of entry to the project.
 .. [#] Past sprints: https://github.com/scikit-learn/scikit-learn/wiki/Past-sprints
 
 Granada sprint organization
-============================
+===========================
 
 Goals and technical topics of the sprint are discuss on the Sprint
 planing wiki page [#]_
@@ -141,4 +141,10 @@ Logilab, 1 and MIT 1.
 Contact information
 ===================
 
-If you are interested in helping funding this sprint, please contact `Gael Varoquaux <http://github.com/GaelVaroquaux>`_.
+If you are interested in helping funding this sprint, please contact
+`Gael Varoquaux <http://github.com/GaelVaroquaux>`_.
+
+Funding organizations will be credited on the following page of the
+official project site:
+
+  <http://scikit-learn.sourceforge.net/about.html#funding>

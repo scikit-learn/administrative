@@ -2,7 +2,7 @@
 Scikit-learn Granada 2011 sprint funding
 ========================================
 
-This documents serves to organize and motivate funding for the
+This document serves to organize and motivate funding for the
 `scikit-learn` international sprint that will be held in Granada, Dec
 19-21 2011.
 

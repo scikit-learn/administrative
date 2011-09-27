@@ -204,6 +204,32 @@
   \def\AND{\@endauthor\rm\hss \vskip \interauthorskip \@startauthor}
   \@startauthor \@author \@endauthor}
 
+%  \vskip \aftermaketitskip
+%  \noindent \@starteditor \@editor \@endeditor
+%  \vskip \aftermaketitskip
+}}
+
+%% overall definition of maketitle, @maketitle does the real work
+\def\alttitle{\par
+ \begingroup
+   \def\thefootnote{\fnsymbol{footnote}}
+   \def\@makefnmark{\hbox to 0pt{$^{\@thefnmark}$\hss}}
+   \@alttitle \@thanks
+ \endgroup
+\setcounter{footnote}{0}
+ \let\alttitle\relax \let\@alttitle\relax
+ \gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax}
+
+\def\@alttitle{\vbox{\hsize\textwidth
+ \linewidth\hsize \vskip \beforetitskip
+ {\begin{center} \Large\bf \@title \par \end{center}} \vskip \aftertitskip
+ {\def\and{\unskip\enspace{\rm and}\enspace}%
+  \def\addr{\small\it}%
+  \def\email{\hfill\small\sc}%
+  \def\name{\normalsize\bf}%
+  \def\AND{\@endauthor\rm\hss \vskip \interauthorskip \@startauthor}
+  \@startauthor \@author \@endauthor}
+
   \vskip \aftermaketitskip
   \noindent \@starteditor \@editor \@endeditor
   \vskip \aftermaketitskip
@@ -227,7 +253,8 @@
 
 \def\jmlrheading#1#2#3#4#5#6{\def\ps@jmlrtps{\let\@mkboth\@gobbletwo%
 \def\@oddhead{\scriptsize Journal of Machine Learning Research #1 (#2) #3 \hfill Submitted #4; Published #5}%
-\def\@oddfoot{\scriptsize \copyright #2 #6. \hfill}%
+%\def\@oddfoot{\scriptsize \copyright #2 #6. \hfill}%
+\def\@oddfoot{\scriptsize \copyright #2 \parbox[t]{5.65in}{#6}}%
 \def\@evenhead{}\def\@evenfoot{}}%
 \thispagestyle{jmlrtps}}
 

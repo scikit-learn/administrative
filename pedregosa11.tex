@@ -1,7 +1,9 @@
 \documentclass[twoside,11pt]{article}
 \usepackage{jmlr2e}
 \usepackage{url}
-\jmlrheading{1}{2011}{XX}{3/11; Revised 8/11}{XXX}{Pedregosa, Varoquaux, Gramfort et al.}
+\jmlrheading{1}{2011}{XX}{3/11; Revised 8/11}{XXX}{Pedregosa, Varoquaux,
+Gramfort, Michel, Thirion, Grisel, Blondel, Prettenhofer, Weiss, Dubourg,
+Vanderplas, Passos, Cournapeau, Brucher, Perrot, Duchesnay}
 
 % Short headings should be running head and authors last names
 
@@ -143,7 +145,7 @@ strive to use consistent naming for the various functions and
 parameters used throughout a strict adherence to the Python coding
 guidelines and numpy style documentation.
 
-\smallskip \noindent{\bf BSD licensing}
+\paragraph{BSD licensing}
 %
 Most of the Python ecosystem is licensed with non-copyleft licenses such
 as the BSD license. While this licensing scheme is beneficial for adoption
@@ -151,22 +153,21 @@ of these tools by commercial
 projects, it does impose some restrictions: we are unable to use some existing
 scientific code, such as the GSL (GNU Scientific Library).
 
-\smallskip \noindent{\bf Bare-bone design and API}
+\paragraph{Bare-bone design and API}
 %
 To lower the barrier of entry, we avoid framework code and keep the number
 of different objects to a minimum.
 The package is built
-around the numpy array \citep{Vanderwalt2011}, which is common to the
+around the numpy array \citep{Vanderwalt2011}, common to the
 scientific Python ecosystem.
 
-\smallskip
-\noindent{\bf Community-driven development}
+\paragraph{Community-driven development}
 %
 We base our development on collaborative tools such as git, github and
 public mailing lists. External contributions are welcome and
 encouraged via developer manual and API guidelines.
 
-\smallskip \noindent{\bf Documentation}
+\paragraph{Documentation}
 %
 We believe that documentation is a key component of software.
 \emph{Scikit-learn} provides a $\sim$300 page user guide including
@@ -179,7 +180,7 @@ regards to the algorithms employed.
 
 \section{Underlying technologies}
 
-\noindent{\bf Numpy}:
+\paragraph{Numpy}
 %
 the base data structure used for data and model parameters.
 The data for supervised or unsupervised learning is
@@ -188,8 +189,7 @@ with other scientific Python libraries. Numpy's view-based memory
 model limits copies, even when binding with compiled code. It also
 provides basic arithmetic operations.
 
-\smallskip
-\noindent{\bf Scipy}:
+\paragraph{Scipy}
 %
 efficient algorithms for linear algebra, sparse matrix representation,
 special functions and basic statistical functions. {\sl Scipy} has
@@ -198,8 +198,7 @@ LAPACK. This is important for ease of installation and portability, as
 providing libraries around Fortran code can prove challenging on
 various platforms.
 
-\smallskip
-\noindent{\bf Cython}:
+\paragraph{Cython}
 %
 a language for writing C extensions for Python. Cython makes it easy to
 reach the performance of compiled languages while retaining
@@ -235,7 +234,7 @@ leave one out, or
 stratified cross-validation.
 
 
-\smallskip \noindent{\bf Model selection}
+\paragraph{Model selection}
 %
 \emph{Scikit-learn} can evaluate an estimator's performance or select
 parameters using cross-validation, optionally distributing the
@@ -310,7 +309,7 @@ More benchmarks, as well as their code, can be retrieved from {\tt http://github
 \end{table}
 %----------------------------------------------------------------------------}}}
 
-\smallskip \noindent{\bf SVM}:
+\paragraph{SVM}
 %
 While all of the packages compared call libsvm in the
 background, the
@@ -324,7 +323,7 @@ version also provides unique features, such as working without copies on
 sparse data and setting weights for individual samples.
 
 
-\smallskip \noindent{\bf LARS}:
+\paragraph{LARS}
 %
 Iteratively refining the residuals instead of recomputing them gives
 performance gains of 2--10 times over the reference R implementation
@@ -332,7 +331,7 @@ performance gains of 2--10 times over the reference R implementation
 bindings and pays a heavy price to memory copies.
 
 
-\smallskip \noindent{\bf Elastic Net}:
+\paragraph{Elastic Net}
 %
 We benchmarked coordinate descent implementations of Elastic Net.  In
 \emph{scikit-learn}, it is coded in Cython and uses low-level BLAS
@@ -342,22 +341,20 @@ performance as the highly optimized Fortran version \emph{glmnet}
 large problems is limited since we do not use the KKT conditions to
 define an active set.
 
-\smallskip
-\noindent{\bf kNN}:
+\paragraph{kNN}
 %
 The k-nearest neighbors classifer implementation constructs a ball
 tree \citep{omohundro1989} of the samples, but defaults to a more
 efficient brute force search in large dimensions.
 
-\smallskip \noindent{\bf PCA}:
+\paragraph{PCA}
 %
 For medium to large datasets, \emph{scikit-learn} provides an
 implementation of a truncated PCA based on random projections
 \citep{rokhlin2009}. On medium-scale problems, incomplete eigenvalue
 decomposition, as used by MDP, also performs very well.
 
-\smallskip
-\noindent{\bf k-means}:
+\paragraph{k-means}
 %
 \emph{scikit-learn}'s k-means algorithm is implemented in pure
 Python.  Its performance is limited by the fact that numpy's

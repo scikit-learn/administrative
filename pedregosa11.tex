@@ -76,7 +76,7 @@ Vanderplas, Passos, Cournapeau, Brucher, Perrot, Duchesnay}
 
 \begin{abstract}
 %
-\emph{Scikit-learn} is a Python module integrating a wide range of
+\noindent\emph{Scikit-learn} is a Python module integrating a wide range of
 state-of-the-art machine learning algorithms for medium-scale supervised
 and unsupervised problems. This package focuses on bringing machine
 learning to non-specialists using a general-purpose high-level language.
@@ -88,7 +88,6 @@ It has minimal dependencies and is distributed under the simplified BSD
 license, encouraging its use in both academic and commercial settings.
 Source code, binaries, and documentation can be downloaded from
 \url{http://scikit-learn.sourceforge.net}.
-
 \end{abstract}
 
 \keywords{Python, supervised learning, unsupervised learning, model
@@ -111,9 +110,9 @@ many well known machine learning algorithms, while maintaining an
 easy-to-use interface tightly integrated with the Python language. This answers the
 growing need for statistical data analysis by non-specialists in the software and web
 industries, as well as in fields outside of computer-science, such as biology or physics.
-\emph{Scikit-learn} differs from other machine learning toolboxes in Python for
+\noindent\emph{Scikit-learn} differs from other machine learning toolboxes in Python for
 various reasons: \emph{i)} it is distributed under the BSD license
-\emph{ii)} it incorporates compiled code for efficiency, unlike MDP
+\noindent\emph{ii)} it incorporates compiled code for efficiency, unlike MDP
 \citep{zito2008} and pybrain \citep{schaul2010}, \emph{iii)} it depends
 only on numpy and scipy to facilitate easy distribution, 
 unlike pymvpa \citep{hanke2009} that has optional dependencies such
@@ -136,7 +135,7 @@ Python Distribution''.
 
 \section{Project Vision}
 
-\emph{Code quality}
+\noindent\emph{Code quality.}
 %
 Rather than providing as many features as possible, the project's goal has been to provide solid
 implementations. Code quality is ensured with unit
@@ -146,7 +145,7 @@ strive to use consistent naming for the various functions and
 parameters used throughout a strict adherence to the Python coding
 guidelines and numpy style documentation.
 
-\emph{BSD licensing}
+\noindent\emph{BSD licensing.}
 %
 Most of the Python ecosystem is licensed with non-copyleft licenses such
 as the BSD license. While this licensing scheme is beneficial for adoption
@@ -154,7 +153,7 @@ of these tools by commercial
 projects, it does impose some restrictions: we are unable to use some existing
 scientific code, such as the GSL (GNU Scientific Library).
 
-\emph{Bare-bone design and API}
+\noindent\emph{Bare-bone design and API.}
 %
 To lower the barrier of entry, we avoid framework code and keep the number
 of different objects to a minimum.
@@ -162,16 +161,16 @@ The package is built
 around the numpy array \citep{Vanderwalt2011}, common to the
 scientific Python ecosystem.
 
-\emph{Community-driven development}
+\noindent\emph{Community-driven development.}
 %
 We base our development on collaborative tools such as git, github and
 public mailing lists. External contributions are welcome and
 encouraged via developer manual and API guidelines.
 
-\emph{Documentation}
+\noindent\emph{Documentation.}
 %
 We believe that documentation is a key component of software.
-\emph{Scikit-learn} provides a $\sim$300 page user guide including
+\noindent\emph{Scikit-learn} provides a $\sim$300 page user guide including
 narrative documentation, class references, a tutorial, installation
 instructions, as well as more than 60 examples, some of which feature
 real-world applications. We try to minimize the use of
@@ -181,7 +180,7 @@ regards to the algorithms employed.
 
 \section{Underlying Technologies}
 
-\emph{Numpy}
+\noindent\emph{Numpy:}
 %
 the base data structure used for data and model parameters.
 Input data is
@@ -190,7 +189,7 @@ with other scientific Python libraries. Numpy's view-based memory
 model limits copies, even when binding with compiled code. It also
 provides basic arithmetic operations.
 
-\emph{Scipy}
+\noindent\emph{Scipy:}
 %
 efficient algorithms for linear algebra, sparse matrix representation,
 special functions and basic statistical functions. {\sl Scipy} has
@@ -199,7 +198,7 @@ LAPACK. This is important for ease of installation and portability, as
 providing libraries around Fortran code can prove challenging on
 various platforms.
 
-\emph{Cython}
+\noindent\emph{Cython:}
 %
 a language for writing C extensions for Python. Cython makes it easy to
 reach the performance of compiled languages while retaining
@@ -209,7 +208,7 @@ associated with Python/C extensions.
 
 \section{Code Design}
 
-\noindent{\bf Objects specified by interface, not by inheritance}
+\noindent\emph{Objects specified by interface, not by inheritance.}
 %
 In order to facilitate the use of external objects with \emph{scikit-learn},
 inheritance is not enforced; instead, code
@@ -235,9 +234,9 @@ leave one out, or
 stratified cross-validation.
 
 
-\emph{Model selection}
+\noindent\emph{Model selection.}
 %
-\emph{Scikit-learn} can evaluate an estimator's performance or select
+\noindent\emph{Scikit-learn} can evaluate an estimator's performance or select
 parameters using cross-validation, optionally distributing the
 computation to several cores.
 This is accomplished by wrapping an estimator in a {\tt GridSearchCV}
@@ -310,7 +309,7 @@ More benchmarks, as well as their code, can be retrieved from {\tt http://github
 \end{table}
 %----------------------------------------------------------------------------}}}
 
-\emph{SVM}
+\noindent\emph{SVM.}
 %
 While all of the packages compared call libsvm in the
 background, the
@@ -324,7 +323,7 @@ version also provides unique features, such as working without copies on
 sparse data and setting weights for individual samples.
 
 
-\emph{LARS}
+\noindent\emph{LARS.}
 %
 Iteratively refining the residuals instead of recomputing them gives
 performance gains of 2--10 times over the reference R implementation
@@ -332,38 +331,38 @@ performance gains of 2--10 times over the reference R implementation
 bindings and pays a heavy price to memory copies.
 
 
-\emph{Elastic Net}
+\noindent\emph{Elastic Net.}
 %
 We benchmarked coordinate descent implementations of Elastic Net.  In
-\emph{scikit-learn}, it is coded in Cython and uses low-level BLAS
+\noindent\emph{scikit-learn}, it is coded in Cython and uses low-level BLAS
 routines for fast array operations. It achieves the same order of
 performance as the highly optimized Fortran version \emph{glmnet}
 \citep{friedman2010} on medium-scale problems, but performance on very
 large problems is limited since we do not use the KKT conditions to
 define an active set.
 
-\emph{kNN}
+\noindent\emph{kNN.}
 %
 The k-nearest neighbors classifer implementation constructs a ball
 tree \citep{omohundro1989} of the samples, but uses a more
 efficient brute force search in large dimensions.
 
-\emph{PCA}
+\noindent\emph{PCA.}
 %
 For medium to large datasets, \emph{scikit-learn} provides an
 implementation of a truncated PCA based on random projections
 \citep{rokhlin2009}. On medium-scale problems, incomplete eigenvalue
 decomposition, as used by MDP, also performs very well.
 
-\emph{k-means}
+\noindent\emph{k-means.}
 %
-\emph{scikit-learn}'s k-means algorithm is implemented in pure
+\noindent\emph{scikit-learn}'s k-means algorithm is implemented in pure
 Python.  Its performance is limited by the fact that numpy's
 array operations take multiple passes over data.
 
 \section{Conclusion}
 
-\emph{Scikit-learn} exposes a wide variety of machine learning
+\noindent\emph{Scikit-learn} exposes a wide variety of machine learning
 algorithms, both supervised and unsupervised, using a consistent,
 task-oriented interface, thus enabling easy comparison of methods for a
 given application.

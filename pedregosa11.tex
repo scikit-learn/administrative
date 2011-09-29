@@ -136,7 +136,7 @@ Python Distribution''.
 
 \section{Project Vision}
 
-\paragraph{Code quality}
+\emph{Code quality}
 %
 Rather than providing as many features as possible, the project's goal has been to provide solid
 implementations. Code quality is ensured with unit
@@ -146,7 +146,7 @@ strive to use consistent naming for the various functions and
 parameters used throughout a strict adherence to the Python coding
 guidelines and numpy style documentation.
 
-\paragraph{BSD licensing}
+\emph{BSD licensing}
 %
 Most of the Python ecosystem is licensed with non-copyleft licenses such
 as the BSD license. While this licensing scheme is beneficial for adoption
@@ -154,7 +154,7 @@ of these tools by commercial
 projects, it does impose some restrictions: we are unable to use some existing
 scientific code, such as the GSL (GNU Scientific Library).
 
-\paragraph{Bare-bone design and API}
+\emph{Bare-bone design and API}
 %
 To lower the barrier of entry, we avoid framework code and keep the number
 of different objects to a minimum.
@@ -162,13 +162,13 @@ The package is built
 around the numpy array \citep{Vanderwalt2011}, common to the
 scientific Python ecosystem.
 
-\paragraph{Community-driven development}
+\emph{Community-driven development}
 %
 We base our development on collaborative tools such as git, github and
 public mailing lists. External contributions are welcome and
 encouraged via developer manual and API guidelines.
 
-\paragraph{Documentation}
+\emph{Documentation}
 %
 We believe that documentation is a key component of software.
 \emph{Scikit-learn} provides a $\sim$300 page user guide including
@@ -181,7 +181,7 @@ regards to the algorithms employed.
 
 \section{Underlying Technologies}
 
-\paragraph{Numpy}
+\emph{Numpy}
 %
 the base data structure used for data and model parameters.
 Input data is
@@ -190,7 +190,7 @@ with other scientific Python libraries. Numpy's view-based memory
 model limits copies, even when binding with compiled code. It also
 provides basic arithmetic operations.
 
-\paragraph{Scipy}
+\emph{Scipy}
 %
 efficient algorithms for linear algebra, sparse matrix representation,
 special functions and basic statistical functions. {\sl Scipy} has
@@ -199,7 +199,7 @@ LAPACK. This is important for ease of installation and portability, as
 providing libraries around Fortran code can prove challenging on
 various platforms.
 
-\paragraph{Cython}
+\emph{Cython}
 %
 a language for writing C extensions for Python. Cython makes it easy to
 reach the performance of compiled languages while retaining
@@ -235,7 +235,7 @@ leave one out, or
 stratified cross-validation.
 
 
-\paragraph{Model selection}
+\emph{Model selection}
 %
 \emph{Scikit-learn} can evaluate an estimator's performance or select
 parameters using cross-validation, optionally distributing the
@@ -310,7 +310,7 @@ More benchmarks, as well as their code, can be retrieved from {\tt http://github
 \end{table}
 %----------------------------------------------------------------------------}}}
 
-\paragraph{SVM}
+\emph{SVM}
 %
 While all of the packages compared call libsvm in the
 background, the
@@ -324,7 +324,7 @@ version also provides unique features, such as working without copies on
 sparse data and setting weights for individual samples.
 
 
-\paragraph{LARS}
+\emph{LARS}
 %
 Iteratively refining the residuals instead of recomputing them gives
 performance gains of 2--10 times over the reference R implementation
@@ -332,7 +332,7 @@ performance gains of 2--10 times over the reference R implementation
 bindings and pays a heavy price to memory copies.
 
 
-\paragraph{Elastic Net}
+\emph{Elastic Net}
 %
 We benchmarked coordinate descent implementations of Elastic Net.  In
 \emph{scikit-learn}, it is coded in Cython and uses low-level BLAS
@@ -342,20 +342,20 @@ performance as the highly optimized Fortran version \emph{glmnet}
 large problems is limited since we do not use the KKT conditions to
 define an active set.
 
-\paragraph{kNN}
+\emph{kNN}
 %
 The k-nearest neighbors classifer implementation constructs a ball
 tree \citep{omohundro1989} of the samples, but uses a more
 efficient brute force search in large dimensions.
 
-\paragraph{PCA}
+\emph{PCA}
 %
 For medium to large datasets, \emph{scikit-learn} provides an
 implementation of a truncated PCA based on random projections
 \citep{rokhlin2009}. On medium-scale problems, incomplete eigenvalue
 decomposition, as used by MDP, also performs very well.
 
-\paragraph{k-means}
+\emph{k-means}
 %
 \emph{scikit-learn}'s k-means algorithm is implemented in pure
 Python.  Its performance is limited by the fact that numpy's

@@ -1,29 +1,16 @@
 \documentclass[twoside,11pt]{article}
+\usepackage{amsmath}
 \usepackage{jmlr2e}
 \usepackage{url}
-\jmlrheading{1}{2011}{XX}{3/11; Revised 8/11}{XXX}{Pedregosa, Varoquaux,
-Gramfort, Michel, Thirion, Grisel, Blondel, Prettenhofer, Weiss, Dubourg,
-Vanderplas, Passos, Cournapeau, Brucher, Perrot, Duchesnay}
-
-% Short headings should be running head and authors last names
-
-\usepackage{amsmath}
-\usepackage{xcolor}
-% For highlighting changes
-\usepackage{soul}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\jmlrheading{12}{2011}{2825-2830}{3/11; Revised 8/11}{10/11}{Fabian Pedregosa, Ga\"el Varoquaux, Alexandre Gramfort, Vincent Michel, Bertrand Thirion, Olivier Grisel, Mathieu Blondel, Peter Prettenhofer, Ron Weiss, Vincent Dubourg, Jake Vanderplas, Alexandre Passos, David Cournapeau, Matthieu Brucher, Matthieu Perrot and \'Edouard Duchesnay}
 
 \ShortHeadings{Scikit-learn: Machine Learning in Python}{Pedregosa, Varoquaux, Gramfort et al.}
-\firstpageno{1}
+\firstpageno{2825}
 
 
 \begin{document}
 
-\title{Scikit-learn: Machine learning in Python}
+\title{Scikit-learn: Machine Learning in Python}
 
 
 \author{\name Fabian Pedregosa \email fabian.pedregosa@inria.fr \\
@@ -32,55 +19,54 @@ Vanderplas, Passos, Cournapeau, Brucher, Perrot, Duchesnay}
         \name Vincent Michel  \email vincent.michel@logilab.fr \\
         \name Bertrand Thirion  \email bertrand.thirion@inria.fr \\
         \addr Parietal, INRIA Saclay  \\Neurospin,
-      B\^at 145, CEA Saclay, \\91191 Gif sur Yvette -- {\sc France}
+      B\^at 145, CEA Saclay \\91191 Gif sur Yvette -- France
         \AND
         \name Olivier Grisel \email olivier.grisel@ensta.fr \\
-        \addr Nuxeo, \\20 rue Soleillet, \\75 020 Paris -- {\sc France} 
+        \addr Nuxeo \\20 rue Soleillet \\75 020 Paris -- France 
         \AND
         \name Mathieu Blondel \email mblondel@ai.cs.kobe-u.ac.jp \\
-        \addr Kobe University, \\1-1 Rokkodai, Nada, \\Kobe 657-8501 -- {\sc Japan}
+        \addr Kobe University \\1-1 Rokkodai, Nada \\Kobe 657-8501 -- Japan
         \AND
         \name Peter Prettenhofer \email peter.prettenhofer@gmail.com \\
-        \addr Bauhaus-Universit\"at Weimar, \\Bauhausstr. 11, \\99421 Weimar -- {\sc Germany}
+        \addr Bauhaus-Universit\"at Weimar \\Bauhausstr. 11 \\99421 Weimar -- Germany
         \AND
         \name Ron Weiss \email ronweiss@gmail.com \\
-        \addr Google Inc, \\76 Ninth Avenue, \\New York, NY 10011 -- {\sc USA}
+        \addr Google Inc \\76 Ninth Avenue \\New York, NY 10011 -- USA
         \AND
         \name Vincent Dubourg \email vincent.dubourg@gmail.com\\
-        \addr Clermont Universit\'e, IFMA, EA 3867, LaMI,\\
-        BP 10448, 63000 Clermont-Ferrand -- {\sc France}
+        \addr Clermont Universit\'e, IFMA, EA 3867, LaMI\\
+        BP 10448, 63000 Clermont-Ferrand -- France
         \AND
         \name Jake Vanderplas \email vanderplas@astro.washington.edu\\
-        \addr Astronomy Department, \\University of Washington, Box 351580, \\
-	Seattle, WA 98195 -- {\sc USA}
+        \addr Astronomy Department \\University of Washington, Box 351580 \\
+	Seattle, WA 98195 -- USA
 	\AND
         \name Alexandre Passos \email alexandre.tp@gmail.com \\
-        \addr IESL Lab, \\UMass Amherst, \\Amherst MA 01002 -- {\sc USA}
+        \addr IESL Lab \\UMass Amherst \\Amherst MA 01002 -- USA
         \AND
         \name David Cournapeau \email cournape@gmail.com \\
-        \addr Enthought, \\21 J.J. Thompson Avenue, \\Cambridge, CB3 0FA --
-	{\sc UK}
+        \addr Enthought \\21 J.J. Thompson Avenue \\Cambridge, CB3 0FA --
+	UK
 }
 
 
-\editor{Richard Maclin}
+\editor{Mikio Braun}
 
 \maketitle
 
 \author{%
         \name Matthieu Brucher \email matthieu.brucher@gmail.com \\
-        \addr Total SA, CSTJF, \\avenue Larribau, \\64000 Pau -- {\sc France}
+        \addr Total SA, CSTJF \\avenue Larribau \\64000 Pau -- France
         \AND
         \name Matthieu Perrot \email matthieu.perrot@cea.fr\\
         \name \'Edouard Duchesnay \email edouard.duchesnay@cea.fr \\
         \addr LNAO \\Neurospin,
-      B\^at 145, CEA Saclay, \\91191 Gif sur Yvette -- {\sc France}
+      B\^at 145, CEA Saclay \\91191 Gif sur Yvette -- France
 }
 
 \alttitle
 
-\begin{abstract}
-%
+\begin{abstract}%
 \noindent\emph{Scikit-learn} is a Python module integrating a wide range of
 state-of-the-art machine learning algorithms for medium-scale supervised
 and unsupervised problems. This package focuses on bringing machine
@@ -103,7 +89,7 @@ Source code, binaries, and documentation can be downloaded from
 The Python programming language is establishing itself as one of the
 most popular languages for scientific computing. Thanks to its
 high-level interactive nature and its maturing ecosystem of scientific
-libraries, it is an appealling choice for algorithmic development and
+libraries, it is an appealing choice for algorithmic development and
 exploratory data analysis \citep{cise2007,cise2011}. Yet, as a
 general-purpose language, it is increasingly used not only in academic
 settings but also in industry.
@@ -142,7 +128,7 @@ Python Distribution''.
 %
 Rather than providing as many features as possible, the project's goal has been to provide solid
 implementations. Code quality is ensured with unit
-tests --as of release 0.8, test coverage is 81\%-- and the use of static
+tests---as of release 0.8, test coverage is 81\%---and the use of static
 analysis tools such as {\tt pyflakes} and {\tt pep8}. Finally, we
 strive to use consistent naming for the various functions and
 parameters used throughout a strict adherence to the Python coding
@@ -220,7 +206,7 @@ The central object is an {\tt estimator}, that implements a
 {\tt fit} method, accepting as arguments an input data array and,
 optionally, an array of labels for supervised problems. Supervised estimators,
 such as SVM classifiers, can implement a {\tt predict} method. Some estimators,
-that we call {\tt transformers}, \emph{e.g.} PCA, implement a {\tt
+that we call {\tt transformers}, for example, PCA, implement a {\tt
 transform} method, returning modified input data.
 %
 Estimators may also provide a {\tt score} method, which evaluate its
@@ -258,7 +244,7 @@ objects, such as the {\tt LassoCV}.
 %
 Finally, a {\tt Pipeline} object can
 combine several {\tt transformers} and an estimator to create a
-combined estimator to \emph{e.g.} apply dimension reduction before
+combined estimator to, for example, apply dimension reduction before
 fitting. It behaves as a standard estimator, and 
 {\tt GridSearchCV} therefore tune the parameters of all steps.
 
@@ -279,7 +265,7 @@ algorithms to run.
 
 %{{{----------------------------------------------------------------------------
 \begin{table}[t]
-\small
+{\small
 \hspace*{.03\linewidth}%
 \begin{tabular}{l c c c c c c}
 \hline\hline %inserts double horizontal lines
@@ -297,11 +283,12 @@ License &  BSD & GPL & BSD  &  BSD  & BSD  & GPL \\
 
 -: Not implemented. \hfill
 $\star$: Does not converge within 1 hour.
+}
 
 \vspace*{-1.5ex}
 %\end{minipage}
-\caption{\small
-Time in seconds on the Madelon dataset for various machine learning libraries exposed in Python:
+\caption{
+Time in seconds on the Madelon data set for various machine learning libraries exposed in Python:
 MLPy \citep{albanese2008}, PyBrain \citep{schaul2010}, pymvpa
 \citep{hanke2009}, MDP \citep{zito2008} and Shogun
 \citep{sonnenburg2010}. 
@@ -319,7 +306,7 @@ performance of \emph{scikit-learn} can be explained by two factors.
 First, our bindings have up to 40\% less overhead than the original
 libsvm Python bindings: they use Cython's numpy support
 to avoid memory copies. Second, we patch libsvm to improve efficiency
-on dense data, use a smaller memory footprint, and better utilize memory
+on dense data, use a smaller memory footprint, and better use memory
 alignment and pipelining capabilities of modern processors. This patched
 version also provides unique features, such as working without copies on
 sparse data and setting weights for individual samples.
@@ -345,13 +332,13 @@ define an active set.
 
 \noindent\emph{kNN.}
 %
-The k-nearest neighbors classifer implementation constructs a ball
+The k-nearest neighbors classifier implementation constructs a ball
 tree \citep{omohundro1989} of the samples, but uses a more
 efficient brute force search in large dimensions.
 
 \noindent\emph{PCA.}
 %
-For medium to large datasets, \emph{scikit-learn} provides an
+For medium to large data sets, \emph{scikit-learn} provides an
 implementation of a truncated PCA based on random projections
 \citep{rokhlin2009}. On medium-scale problems, incomplete eigenvalue
 decomposition, as used by MDP, also performs very well.
@@ -364,7 +351,7 @@ array operations take multiple passes over data.
 
 \section{Conclusion}
 
-\noindent\emph{Scikit-learn} exposes a wide variety of machine learning
+\emph{Scikit-learn} exposes a wide variety of machine learning
 algorithms, both supervised and unsupervised, using a consistent,
 task-oriented interface, thus enabling easy comparison of methods for a
 given application.
@@ -373,10 +360,10 @@ Since it relies on the scientific Python ecosystem, it can easily be
 integrated into applications outside the traditional range of statistical
 data analysis. Importantly, the algorithms, implemented in a high-level
 language, can be used as building blocks for approaches dedicated to
-specific use cases, \emph{e.g.} in medical imaging \citep{Michel2011}.
+specific use cases, for example, in medical imaging \citep{Michel2011}.
 %
 Future work includes the \emph{online} learning, to scale to
-large datasets.
+large data sets.
 
 \bibliography{scikit}
 

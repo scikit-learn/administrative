@@ -130,25 +130,26 @@ Rather than providing as many features as possible, the project's goal has been 
 implementations. Code quality is ensured with unit
 tests---as of release 0.8, test coverage is 81\%---and the use of static
 analysis tools such as {\tt pyflakes} and {\tt pep8}. Finally, we
-strive to use consistent naming for the various functions and
+strive to use consistent naming for the functions and
 parameters used throughout a strict adherence to the Python coding
 guidelines and numpy style documentation.
 
 \noindent\emph{BSD licensing.}
 %
-Most of the Python ecosystem is licensed with non-copyleft licenses such
-as the BSD license. While this licensing scheme is beneficial for adoption
+Most of the Python ecosystem is licensed with non-copyleft licenses. While 
+such policy is beneficial for adoption
 of these tools by commercial
 projects, it does impose some restrictions: we are unable to use some existing
-scientific code, such as the GSL (GNU Scientific Library).
+scientific code, such as the GSL.
 
 \noindent\emph{Bare-bone design and API.}
 %
 To lower the barrier of entry, we avoid framework code and keep the number
-of different objects to a minimum.
-The package is built
-around the numpy array \citep{Vanderwalt2011}, common to the
-scientific Python ecosystem.
+of different objects to a minimum, relying on numpy arrays for data
+containers.
+%The package is built
+%around the numpy array , common to the
+%scientific Python ecosystem.
 
 \noindent\emph{Community-driven development.}
 %
@@ -173,9 +174,10 @@ regards to the algorithms employed.
 %
 the base data structure used for data and model parameters.
 Input data is
-presented as one, or a few, numpy arrays, thus integrating seamlessly
+presented as numpy arrays, thus integrating seamlessly
 with other scientific Python libraries. Numpy's view-based memory
-model limits copies, even when binding with compiled code. It also
+model limits copies, even when binding with compiled code 
+\citep{Vanderwalt2011}. It also
 provides basic arithmetic operations.
 
 \noindent\emph{Scipy:}
@@ -199,7 +201,7 @@ of Python/C extensions.
 
 \noindent\emph{Objects specified by interface, not by inheritance.}
 %
-In order to facilitate the use of external objects with \emph{scikit-learn},
+To facilitate the use of external objects with \emph{scikit-learn},
 inheritance is not enforced; instead, code
 conventions provide a consistent interface.
 The central object is an {\tt estimator}, that implements a
@@ -209,16 +211,15 @@ such as SVM classifiers, can implement a {\tt predict} method. Some estimators,
 that we call {\tt transformers}, for example, PCA, implement a {\tt
 transform} method, returning modified input data.
 %
-Estimators may also provide a {\tt score} method, which evaluate its
-goodness of fit. It must increase with the goodness of fit and
-may correspond to a log-likelihood, or a negated loss function.
+Estimators may also provide a {\tt score} method, which is an increasing 
+evaluation of goodness of fit: a log-likelihood, or a negated loss function.
 %
 The other important object is the \emph{cross-validation iterator},
 which provides pairs of train and test indices to split input
-data accordingly. It may be a standard list, or a generator
-which dynamically
-creates these indices.
-Examples comprise K-fold,
+data, %It may be a standard list, or a generator
+%which dynamically
+%creates these indices.
+for example K-fold,
 leave one out, or
 stratified cross-validation.
 
@@ -292,7 +293,7 @@ Time in seconds on the Madelon data set for various machine learning libraries e
 MLPy \citep{albanese2008}, PyBrain \citep{schaul2010}, pymvpa
 \citep{hanke2009}, MDP \citep{zito2008} and Shogun
 \citep{sonnenburg2010}. 
-More benchmarks, as well as their code, can be retrieved from {\tt http://github.com/scikit-learn}.
+For more benchmarks see {\tt http://github.com/scikit-learn}.
 \vspace*{-1.5em}\label{tab:comparisons}
 }
 \end{table}
@@ -303,13 +304,13 @@ More benchmarks, as well as their code, can be retrieved from {\tt http://github
 While all of the packages compared call libsvm in the
 background, the
 performance of \emph{scikit-learn} can be explained by two factors.
-First, our bindings have up to 40\% less overhead than the original
-libsvm Python bindings: they use Cython's numpy support
-to avoid memory copies. Second, we patch libsvm to improve efficiency
+First, our bindings avoid memory copies and have up to 40\% less overhead than 
+the original libsvm Python bindings. 
+Second, we patch libsvm to improve efficiency
 on dense data, use a smaller memory footprint, and better use memory
 alignment and pipelining capabilities of modern processors. This patched
-version also provides unique features, such as working without copies on
-sparse data and setting weights for individual samples.
+version also provides unique features, such as 
+setting weights for individual samples.
 
 
 \noindent\emph{LARS.}
@@ -322,9 +323,8 @@ bindings and pays a heavy price to memory copies.
 
 \noindent\emph{Elastic Net.}
 %
-We benchmarked coordinate descent implementations of Elastic Net.  In
-\noindent\emph{scikit-learn}, it is coded in Cython and uses low-level BLAS
-routines for fast array operations. It achieves the same order of
+We benchmarked the \emph{scikit-learn} coordinate descent implementations of 
+Elastic Net. It achieves the same order of
 performance as the highly optimized Fortran version \emph{glmnet}
 \citep{friedman2010} on medium-scale problems, but performance on very
 large problems is limited since we do not use the KKT conditions to
@@ -340,8 +340,8 @@ efficient brute force search in large dimensions.
 %
 For medium to large data sets, \emph{scikit-learn} provides an
 implementation of a truncated PCA based on random projections
-\citep{rokhlin2009}. On medium-scale problems, incomplete eigenvalue
-decomposition, as used by MDP, also performs very well.
+\citep{rokhlin2009}. %On medium-scale problems, incomplete eigenvalue
+%decomposition, as used by MDP, also performs very well.
 
 \noindent\emph{k-means.}
 %
@@ -359,10 +359,10 @@ given application.
 Since it relies on the scientific Python ecosystem, it can easily be
 integrated into applications outside the traditional range of statistical
 data analysis. Importantly, the algorithms, implemented in a high-level
-language, can be used as building blocks for approaches dedicated to
-specific use cases, for example, in medical imaging \citep{Michel2011}.
+language, can be used as building blocks for approaches 
+specific to a use case, for example, in medical imaging \citep{Michel2011}.
 %
-Future work includes the \emph{online} learning, to scale to
+Future work includes \emph{online} learning, to scale to
 large data sets.
 
 \bibliography{scikit}

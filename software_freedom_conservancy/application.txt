@@ -163,7 +163,7 @@ David Warde-Farley <wardefar@iro.umontreal.ca>, University of Montreal, 2011 - N
 Edouard Duchesnay <edouard.duchesnay@gmail.com>, CEA, 2009 - 2010
 Fabian Pedregosa <fabian@fseoane.net>, INRIA, 2009 - Now
 Gael Varoquaux <gael.varoquaux@normalesup.org>, INRIA, 2009 - Now
-Gilles Louppe <g.louppe@gmail.com>
+Gilles Louppe <g.louppe@gmail.com>, University of Liège, 2011 - Now
 Jake Vanderplas <vanderplas@astro.washington.edu>, University of Washington
 James Bergstra <james.bergstra@gmail.com>, MIT, 2010 - Now
 Jaques Grobler <jaquesgrobler@gmail.com>, INRIA, 2012 - Now

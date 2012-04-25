@@ -164,7 +164,7 @@ Edouard Duchesnay <edouard.duchesnay@gmail.com>, CEA, 2009 - 2010
 Fabian Pedregosa <fabian@fseoane.net>, INRIA, 2009 - Now
 Gael Varoquaux <gael.varoquaux@normalesup.org>, INRIA, 2009 - Now
 Gilles Louppe <g.louppe@gmail.com>
-Jake Vanderplas <vanderplas@astro.washington.edu>, University of Washington
+Jake Vanderplas <vanderplas@astro.washington.edu>, University of Washington, 2010 - Now
 James Bergstra <james.bergstra@gmail.com>, MIT, 2010 - Now
 Jaques Grobler <jaquesgrobler@gmail.com>, INRIA, 2012 - Now
 Jean Kossaifi <jean.kossaifi@gmail.com>, Student, 2011

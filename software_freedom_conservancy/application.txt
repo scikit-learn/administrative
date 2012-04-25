@@ -68,7 +68,7 @@ In 2010 Fabian Pedregosa, Gael Varoquaux, Alexandre Gramfort and Vincent
 Michel of INRIA took leadership of the project and made the first public
 release, February the 1st 2010. Since then, several releases have appeard
 following a ~3 month cycle, and a striving international community has been
-leading the development. In two years, more than 70 developpers have
+leading the development. In two years, more than 70 developers have
 contributed to scikit-learn, each release having more than 20 contributors.
 
 In 2011 and 2012, several Google Summer of Code projects were funded.
@@ -98,7 +98,7 @@ list.
     affiliations and relationships, or potential affiliations that you
     plan to create should be included.
 
-- INRIA is funding a full time developper on scikit-learn.
+- INRIA is funding a full time developer on scikit-learn.
 - Google has funded 1 GSoC project in 2011, and is funding 3 GSoC projects in
   2012
 

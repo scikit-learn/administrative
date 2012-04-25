@@ -2,19 +2,18 @@
     benefits do you expect to take advantage of immediately and within a
     few years?
 
-The project wants to join the Conservancy to have a legal and financial
-institution. Specifically, the lack of clearly established financial
-references has made sponsoring of the project difficult. In the long,
-being part of the Conservancy also guarantees more independence from
-funding sources, that will therefore not try to fill the gap of governing
-institution.
+The project wants to join the Conservancy for legal and financial backing.
+Specifically, the lack of clearly established financial references has made
+sponsoring of the project difficult. In the long run, being a member of the
+Conservancy also guarantees more independence from funding sources, so that
+those will not try to establish themselves as a "governing" organisation.
 
 *** Please give a detailed description of the project.
   
 Scikit-learn is a Python module integrating a wide range of state-of-the-art
 machine learning algorithms for medium-scale supervised and unsupervised
 problems. This package focuses on bringing machine learning to non-specialists
-using a general-purpose high-level language.
+using a general-purpose, high-level programming language.
 
 *** What FLOSS License(s) does your project use?  Please include the
     primary license, and list other licenses for code that is included.
@@ -22,9 +21,9 @@ using a general-purpose high-level language.
     files in the directory src/external/ are under the Apache-2.0
     license")
 
-The project is under BSD-licence. In addition, external data sources from
-statlib were integrated in sklearn/datasets/data. These files are public
-domain.
+The project is distributed under the terms of the Revised (3-clause) BSD
+license. In addition, external data sources from statlib were integrated in
+sklearn/datasets/data. These files are in the public domain.
 
 *** Please give us your roadmap and plans for future development of the
     project, including both code and community plans.
@@ -51,7 +50,7 @@ https://github.com/scikit-learn/scikit-learn
     behalf of the project?  How and for what did you spend those funds?
     Are there funds remaining?  If so, who is holding them now?
 
-Funds were held by INRIA on the behalf of the project. They were used for
+Funds were held by INRIA on behalf of the project. They were used for
 organizing a code sprint (travel expenses) in Granada, after a Machine
 Learning conference (NIPS).
 
@@ -60,17 +59,17 @@ Learning conference (NIPS).
     mechanisms currently?
 
 We have no ongoing fundraising, but occasionally we consider raising
-funds for travel on the order of magnitude of a thousand euros.
+funds for travel on the order of a thousand euros.
 
 *** Does your project owe funds to anyone?
 
-No
+No.
 
 *** Has your project ever had legal trouble, been involved in legal
     proceedings or received a letter accusing your project of patent,
     copyright, trademark or other types of infringement?
 
-No
+No.
 
 *** Please give a brief history of the project, focusing on how the
     community developed and the general health of the community.  Be sure
@@ -98,13 +97,13 @@ in 2011, 3 in 2012).
     in the project?  How do you resolve disputes, particularly about
     non-code issues?
 
-The project is community driven: all patches are reviewed through the Github
+The project is community-driven: all patches are reviewed through the Github
 Pull Request interface, and all major decision are discussed on the mailing
 list. There is a wide list of contributors with commit rights. When
 disputes arise, there is a strong attempt to resolve them by consensus.
 If no consensus can be reached, the view of the most senior contender
 is chosen. So far, this situation has not really occurred, as consensus
-has always been reached via compromises.
+has always been reached via compromises or voting on the mailing list.
 
 *** If your project runs on Linux-based systems, please list all the
     distributions that include your project, and what "repository area"
@@ -127,7 +126,7 @@ has always been reached via compromises.
 
 - INRIA is funding a full time developer on scikit-learn.
 - Google has funded 1 GSoC project in 2011, and is funding 3 GSoC projects in
-  2012
+  2012.
 
 *** Approximately how many users does your project have, and what items
     lead you to believe your userbase is of a particular size (e.g., post

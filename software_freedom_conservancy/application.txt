@@ -34,7 +34,7 @@ https://github.com/scikit-learn/scikit-learn
     Are there funds remaining?  If so, who is holding them now?
 
 Funds were held by INRIA on the behalf of the project. They were used for
-organising a code sprint (travel expenses) in Grenade, after a Machine
+organising a code sprint (travel expenses) in Granada, after a Machine
 Learning conference (NIPS).
 
 Google summer of code ?

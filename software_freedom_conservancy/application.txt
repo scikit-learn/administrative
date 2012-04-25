@@ -22,8 +22,9 @@ using a general-purpose, high-level programming language.
     license")
 
 The project is distributed under the terms of the Revised (3-clause) BSD
-license. In addition, external data sources from statlib were integrated in
-sklearn/datasets/data. These files are in the public domain.
+license. In addition, external data sources from statlib and the UCI
+machine learning repository were integrated in sklearn/datasets/data.
+These files are in the public domain.
 
 *** Please give us your roadmap and plans for future development of the
     project, including both code and community plans.

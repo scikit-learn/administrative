@@ -5,7 +5,7 @@
 The project wants to join the Conservancy to have a legal and financial
 institution. Specifically, the lack of clearly established financial
 references has made sponsoring of the project difficult. In the long,
-being part of the Conservancy also garantees more independence from
+being part of the Conservancy also guarantees more independence from
 funding sources, that will therefore not try to fill the gap of governing
 institution.
 
@@ -158,7 +158,7 @@ Brian Holt <bdholt1@gmail.com>
 Clay Woolam <clay@woolam.org>
 Conrad Lee <conradlee@gmail.com>
 Dan Yamins <dyamins@gmail.com>
-David Cournapeau <cournape@gmail.com>, 2007 - 2008, Enthought
+David Cournapeau <cournape@gmail.com>, Enthought, 2007 - 2008
 David Warde-Farley <wardefar@iro.umontreal.ca>, University of Montreal, 2011 - Now
 Edouard Duchesnay <edouard.duchesnay@gmail.com>, CEA, 2009 - 2010
 Fabian Pedregosa <fabian@fseoane.net>, INRIA, 2009 - Now
@@ -178,15 +178,12 @@ Nicolas Pinto <pinto@alum.mit.edu>
 Olivier Grisel <olivier.grisel@ensta.org>, Nuxeo, 2010 - Now
 Paolo Losi <paolo.losi@gmail.com>
 Peter Prettenhofer <peter.prettenhofer@gmail.com>
-Peter Prettenhofer <peter.prettenhofer@gmail.com>
 Pietro Berkes <pietro.berkes@googlemail.com>
 Robert Layton <robertlayton@gmail.com>
-Robert Layton <robertlayton@gmail.com>
-Ron Weiss <ronweiss@gmail.com>
 Ron Weiss <ronweiss@gmail.com>, Google
 Satrajit Ghosh <satra@mit.edu>, MIT, 2011 - Now
 Shiqiao Du <lucidfrontier.45@gmail.com>
-Thouis (Ray) Jones <thouis@gmail.com>
+Thouis (Ray) Jones <thouis@gmail.com>, Institut Curie, 2011 - Now
 Vincent Dubourg <vincent.dubourg@gmail.com>
 Vincent Michel <vm.michel@gmail.com>, Logilab, 2009 - Now
 Virgile Fritsch <virgile.fritsch@inria.fr>, INRIA, 2010 - Now

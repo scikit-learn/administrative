@@ -15,7 +15,7 @@ using a general-purpose high-level language
     files in the directory src/external/ are under the Apache-2.0
     license")
 
-The project is under MIT Licence.
+The project is under BDS-licence.
 
 *** Please give us your roadmap and plans for future development of the
     project, including both code and community plans.

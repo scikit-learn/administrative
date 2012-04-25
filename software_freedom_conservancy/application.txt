@@ -1,0 +1,76 @@
+*** Why does your project want to join Conservancy?  Specifically, what
+    benefits do you expect to take advantage of immediately and within a
+    few years?
+
+*** Please give a detailed description of the project.
+
+*** What FLOSS License(s) does your project use?  Please include the
+    primary license, and list other licenses for code that is included.
+    (e.g., "The project as a whole is GPLv3-or-later, but about a dozen
+    files in the directory src/external/ are under the Apache-2.0
+    license")
+
+*** Please give us your roadmap and plans for future development of the
+    project, including both code and community plans.
+
+*** Please give us the main link to the projects primary website.
+
+*** Please give us a URL to a code repository we can clone and/or
+    checkout.
+
+*** Have you ever had funds held by the project, or by any individual on
+    behalf of the project?  How and for what did you spend those funds?
+    Are there funds remaining?  If so, who is holding them now?
+
+*** Do you have any ongoing fundraising programs for your project?  How do
+    they operate, and how much funding is brought in through these
+    mechanisms currently?
+
+*** Does your project owe funds to anyone?
+
+*** Has your project ever had legal trouble, been involved in legal
+    proceedings or received a letter accusing your project of patent,
+    copyright, trademark or other types of infringement?
+
+*** Please give a brief history of the project, focusing on how the
+    community developed and the general health of the community.  Be sure
+    to include information on any forks or other disputes that have
+    occurred in the community.
+
+*** Please explain how your project is governed.  Who makes the decisions
+    in the project?  How do you resolve disputes, particularly about
+    non-code issues?
+
+*** If your project runs on Linux-based systems, please list all the
+    distributions that include your project, and what "repository area"
+    the package appears in.  If you aren't packaged for any major
+    distributions, please tell us why you believe your project hasn't been
+    packaged yet.
+
+*** Does your project have any existing for-profit or non-profit
+    affiliations, funding relationships, or other agreements between the
+    project and/or key leaders of your project and other organizations?
+    Has the project had such affiliations in the past?  Please list of all
+    of them in detail and explain their nature. Even tangential
+    affiliations and relationships, or potential affiliations that you
+    plan to create should be included.
+
+*** Approximately how many users does your project have, and what items
+    lead you to believe your userbase is of a particular size (e.g., post
+    counts to your user mailing list)?
+
+*** Please list the names, email addresses, and affiliations (e.g.,
+    employer) of key developers and major contributors.  Include both
+    current and past contributors and developers.  Please include date
+    ranges of when those developers/contributors were active.
+
+    Please make this list as extensive and complete as possible.  You need
+    not include every last person who sent one patch, but please include
+    at least those who regularly sent patches or were/are regular
+    contributors.  If you project has contributors who have been inactive
+    for more than five years, you need only to list such inactive
+    contributors if they made substantial contributions.
+
+*** Please include any other pertinent information not given above that
+    you feel we should review with your application.
+

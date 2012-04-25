@@ -112,9 +112,10 @@ has always been reached via compromises.
     distributions, please tell us why you believe your project hasn't been
     packaged yet.
 
-- Debian XXX
-- Ubuntu, main XXX
-- Mandriva (check) XXX
+- Debian, main
+- Ubuntu, main
+- Mandriva, contrib
+- ArchLinux
 
 *** Does your project have any existing for-profit or non-profit
     affiliations, funding relationships, or other agreements between the
@@ -132,10 +133,13 @@ has always been reached via compromises.
     lead you to believe your userbase is of a particular size (e.g., post
     counts to your user mailing list)?
 
-The user count is hard to establish. We have 513 followers on github,
-popularity contests on ubuntu and debian give a fraction of
-installs respectively XXX and XXX.
-There are between 250 and 500 emails per months on the mailing list.
+The user count is hard to establish. We believe that a lower bound is of
+a few thousand users of active users. We have 513 followers on github.
+Popularity contests on Ubuntu shows that one out of 3000 Ubuntu installs
+have scikit-learn. There are between 250 and 500 emails per months on the
+mailing list. Scikit-learn is included in Enthought Python Distribution
+that has tens of thousands of users in research labs, industry and
+academia.
 
 *** Please list the names, email addresses, and affiliations (e.g.,
     employer) of key developers and major contributors.  Include both

@@ -1,8 +1,9 @@
-===============================================
-Temporary sprint planing for the scikit-learn
-===============================================
+=========================================================================
+Administrative and project-management related documents for scikit-learn
+=========================================================================
 
-This is a temporary repo that will be reset in a few days to merge with a
-non-currently public repo. Feel free to fork and edit the files, but do
-send me pull requests: your changes will be kept during the merge, but
-the history will be lost.
+* jmlr_2011_paper: JMLR 2011 paper on the scikit-learn
+
+* sprint_nips_2011: sprint planing for the NIPS 2011 Granada sprint
+
+

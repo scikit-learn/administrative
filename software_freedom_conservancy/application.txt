@@ -15,7 +15,7 @@ using a general-purpose high-level language
     files in the directory src/external/ are under the Apache-2.0
     license")
 
-The project is under BDS-licence.
+The project is under BSD-licence.
 
 *** Please give us your roadmap and plans for future development of the
     project, including both code and community plans.
@@ -152,8 +152,8 @@ Thouis (Ray) Jones
 Travis Oliphant
 Robert Layton <robertlayton@gmail.com>
 Ron Weiss <ronweiss@gmail.com>
-Vincent Michel <vincent.michel@inria.fr>, 2010 - Now
-Virgile Fritsch <virgile.fritsch@inria.fr>, 2010 - Now
+Vincent Michel <vincent.michel@inria.fr>, Logilab, 2010 - Now
+Virgile Fritsch <virgile.fritsch@inria.fr>, INRIA, 2010 - Now
 Yaroslav Halchenko
 Vincent Dubourg <vincent.dubourg@gmail.com>
 Vlad Niculae

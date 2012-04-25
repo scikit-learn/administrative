@@ -173,7 +173,7 @@ James Bergstra <james.bergstra@gmail.com>, MIT, 2010 - Now
 Jaques Grobler <jaquesgrobler@gmail.com>, INRIA, 2012 - Now
 Jean Kossaifi <jean.kossaifi@gmail.com>, Student, 2011
 Kenneth C. Arnold <kcarnold@alum.mit.edu>, 
-Lars Buitinck <L.J.Buitinck@uva.nl>
+Lars Buitinck <L.J.Buitinck@uva.nl>, University of Amsterdam, 2011 - Now
 Mathieu Blondel <mathieu@mblondel.org>, University of Kyoto, 2010 - Now
 Matthieu Brucher <matthieu.brucher@gmail.com>, 2008 - 2010
 Matthieu Perrot <matthieu.perrot@cea.fr>

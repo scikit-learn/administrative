@@ -98,7 +98,7 @@ in 2011, 3 in 2012).
     in the project?  How do you resolve disputes, particularly about
     non-code issues?
 
-The project is community-driven: all patches are reviewed through the Github
+The project is community-driven: all patches are reviewed through the GitHub
 Pull Request interface, and all major decisions are discussed on the mailing
 list. There is a wide list of contributors with commit rights. When
 disputes arise, there is a strong attempt to resolve them by consensus.
@@ -136,7 +136,7 @@ has always been reached via compromises or voting on the mailing list.
 The user count is hard to establish. We believe that a lower bound is of
 a few thousands of active users. We have 513 followers on github.
 Popularity contests on Ubuntu shows that one out of 3000 Ubuntu installs
-have scikit-learn. There are between 250 and 500 emails per months on the
+have scikit-learn. There are between 250 and 500 emails per month on the
 mailing list. Scikit-learn is included in Enthought Python Distribution
 that has tens of thousands of users in research labs, industry and
 academia.

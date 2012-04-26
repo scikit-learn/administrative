@@ -192,7 +192,7 @@ Vincent Dubourg <vincent.dubourg@gmail.com>
 Vincent Michel <vm.michel@gmail.com>, Logilab, 2009 - Now
 Virgile Fritsch <virgile.fritsch@inria.fr>, INRIA, 2010 - Now
 Vlad Niculae <vlad@vene.ro>, Student, 2011 - Now
-Xinfan Meng <mxf3306@gmail.com>
+Xinfan Meng <mxf3306@gmail.com>, Peking University, 2011 - Now
 Yaroslav Halchenko <debian@onerussian.com>
 
 *** Please include any other pertinent information not given above that

@@ -11,9 +11,11 @@ those will not try to establish themselves as a "governing" organisation.
 *** Please give a detailed description of the project.
   
 Scikit-learn is a Python module integrating a wide range of state-of-the-art
-machine learning algorithms for medium-scale supervised and unsupervised
-problems. This package focuses on bringing machine learning to non-specialists
-using a general-purpose, high-level programming language.
+machine learning algorithms for medium-scale problems (very simply put, 
+machine learning is a subfield of artificial intelligence concerned with the 
+creation of programs that can "learn" from data). This package focuses on bringing 
+machine learning to non-specialists using a general-purpose, high-level programming
+language.
 
 *** What FLOSS License(s) does your project use?  Please include the
     primary license, and list other licenses for code that is included.

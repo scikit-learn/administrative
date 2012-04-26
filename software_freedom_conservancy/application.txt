@@ -191,7 +191,7 @@ Thouis (Ray) Jones <thouis@gmail.com>, Institut Curie, 2011 - Now
 Vincent Dubourg <vincent.dubourg@gmail.com>
 Vincent Michel <vm.michel@gmail.com>, Logilab, 2009 - Now
 Virgile Fritsch <virgile.fritsch@inria.fr>, INRIA, 2010 - Now
-Vlad Niculae <vlad@vene.ro>, Student, 2011 - Now
+Vlad Niculae <vlad@vene.ro>, University of Bucharest, 2011 - Now
 Xinfan Meng <mxf3306@gmail.com>
 Yaroslav Halchenko <debian@onerussian.com>
 

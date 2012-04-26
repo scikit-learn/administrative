@@ -53,7 +53,7 @@ https://github.com/scikit-learn/scikit-learn
 
 Funds were held by INRIA on behalf of the project. They were used for
 organizing a code sprint (travel expenses) in Granada, after a Machine
-Learning conference (NIPS).
+Learning conference (NIPS) in Dec. 2011.
 
 *** Do you have any ongoing fundraising programs for your project?  How do
     they operate, and how much funding is brought in through these
@@ -79,11 +79,11 @@ No.
 
 This project was started in 2007 as a Google Summer of Code project by David
 Cournapeau. Later that year, Matthieu Brucher started work on this project as
-part of his thesis.
+part of his PhD thesis.
 
 In 2009 Fabian Pedregosa, Gael Varoquaux, Alexandre Gramfort and Vincent
 Michel of INRIA took leadership of the project and made the first public
-release, February the 1st 2010. Importantly, INRIA payed a full-time
+release on February 1st 2010. Importantly, INRIA payed a full-time
 junior engineer for 2 years on the project (2009-2011). Since then,
 releases were made following a ~3 month cycle, and a striving
 international community has been leading the development. In two years,
@@ -99,7 +99,7 @@ in 2011, 3 in 2012).
     non-code issues?
 
 The project is community-driven: all patches are reviewed through the Github
-Pull Request interface, and all major decision are discussed on the mailing
+Pull Request interface, and all major decisions are discussed on the mailing
 list. There is a wide list of contributors with commit rights. When
 disputes arise, there is a strong attempt to resolve them by consensus.
 If no consensus can be reached, the view of the most senior contender
@@ -134,7 +134,7 @@ has always been reached via compromises or voting on the mailing list.
     counts to your user mailing list)?
 
 The user count is hard to establish. We believe that a lower bound is of
-a few thousand users of active users. We have 513 followers on github.
+a few thousands of active users. We have 513 followers on github.
 Popularity contests on Ubuntu shows that one out of 3000 Ubuntu installs
 have scikit-learn. There are between 250 and 500 emails per months on the
 mailing list. Scikit-learn is included in Enthought Python Distribution
@@ -198,8 +198,8 @@ Yaroslav Halchenko <debian@onerussian.com>
 *** Please include any other pertinent information not given above that
     you feel we should review with your application.
 
-A paper about scikit-learn appeared in the peer-reviewed Journal of Machine
-Learning Research:
+A paper about scikit-learn was published in the peer-reviewed Journal of
+Machine Learning Research:
 
 F. Pedregosa et al. (2011). Scikit-learn: machine learning in Python. JMLR
     12:2825-2830. http://jmlr.csail.mit.edu/papers/v12/pedregosa11a.html

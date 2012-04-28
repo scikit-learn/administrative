@@ -179,7 +179,7 @@ Lars Buitinck <L.J.Buitinck@uva.nl>, University of Amsterdam, 2011 - Now
 Mathieu Blondel <mathieu@mblondel.org>, Kobe University, 2010 - Now
 Matthieu Brucher <matthieu.brucher@gmail.com>, 2008 - 2010
 Matthieu Perrot <matthieu.perrot@cea.fr>
-Nelle Varoquaux <nelle.varoquaux@gmail.com>, Mines Paritech, 2011 - Now
+Nelle Varoquaux <nelle.varoquaux@gmail.com>, Mines ParisTech, 2011 - Now
 Nicolas Pinto <pinto@alum.mit.edu>
 Olivier Grisel <olivier.grisel@ensta.org>, Nuxeo, 2010 - Now
 Paolo Losi <paolo.losi@gmail.com>

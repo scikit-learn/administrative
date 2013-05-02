@@ -2,9 +2,26 @@
 Scikit-learn Paris 2013 sprint funding
 ========================================
 
-This document serves to organize and motivate funding for the
-`scikit-learn` international sprint that will be held in Paris, Jul
-22-28 2013.
+This document serves to organize and motivate funding for the `scikit-learn`
+international sprint that will be held in Paris, Jul 22-28 2013. In short,
+Scikit-learn is an easy-to-use and general purpose machine learning toolbox
+written in Python. It provides state-of-the-art implementations of many well
+known machine learning algorithms, while maintaining an easy-to-use interface
+tightly integrated with the Python language. The development of this toolbox
+only started at the beginning of 2010, but in only a few years, the project
+has grown to a mature world wide opensource project. More than 50 developers
+have done non trivial contributions, 28 have contributed in the last 4 months
+and more than 44000 lines of code have been written.
+
+International sprints are a crucial part in helping scikit-learn be a state of
+the art, well maintained dynamic project. 
+The last international sprint (Granada, Spain, 2011) has had a striking
+effects on the quality of the code [1]_, and us integrate new developpers
+(Andy Mueller, now release manager,  Jake Vanderplas, Gilles Louppe...)
+The next international sprint will take place in Paris, from the 22nd to the
+28th of July [2]_: your sponsorship helps keeping the sprint affordable for
+young and talented contributors. If you are interested in funding, please
+contact us at any time.
 
 .. contents::
 

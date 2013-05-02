@@ -56,7 +56,7 @@ academic research and general-purpose programming by being accessible to
 non-specialists. This goal motivates the following choices:
 
 - A strong focus on documentation and examples:
-  http://scikit-learn.sf.net
+  http://scikit-learn.org
 
 - Ease of installation by keep the dependencies low (only numpy and
   scipy) and limiting the use of compiled code

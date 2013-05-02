@@ -114,8 +114,6 @@ planing wiki page [#]_
 .. [#] Sprint planning wiki:
        https://github.com/scikit-learn/scikit-learn/wiki/Upcoming-events
 
-**Why Paris**: TODO
-
 **Local organization**: TODO
 
 **Budget**: given the local support and investments from various academic

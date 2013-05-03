@@ -114,7 +114,12 @@ planing wiki page [#]_
 .. [#] Sprint planning wiki:
        https://github.com/scikit-learn/scikit-learn/wiki/Upcoming-events
 
-**Local organization**: TODO
+**Local organization**: the organization is done by four active members of the
+french python community: Nelle Varoquaux (president of the AFPy), Olivier
+Grisel (vice secretary of the AFPy), Gaël Varoquaux (chair of Scipy'08,
+Scipy'09, EuroScipy'10, EuroScipy'11) and Alexandre Gramfort (host of Software
+Carpentry 2011 and of the Scikit-learn sprint). It also has the support of
+several research teams: Parietal (INRIA) and Telecom Paris.
 
 **Budget**: given the local support and investments from various academic
 institutions, the budget requirements for the sprint is fairly low.

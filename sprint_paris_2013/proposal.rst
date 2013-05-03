@@ -90,8 +90,8 @@ soliciting.
 .. [#] Pull requests: https://github.com/scikit-learn/scikit-learn/pulls
 
 **Contributors**: Contributors come from around the world. Historically, a
-kernel of developers where located in France, but the project quickly out
-grew these. A majority of developers are located in mostly Europe,
+kernel of developers where located in France, but the project quickly 
+outgrew these. A majority of developers are located in mostly Europe,
 followed by North America, but we also receive strong contributions from
 Asian and South America. Most of the developers are graduate students or
 young academics, although some work in startups. In summer 2011, the
@@ -117,7 +117,7 @@ planing wiki page [#]_
 **Local organization**: TODO
 
 **Budget**: given the local support and investments from various academic
-institution, the budget requirements for the sprint are fairly low.
+institutions, the budget requirements for the sprint is fairly low.
 However, some contributors work on the project without support from their
 day job. In addition, some core very active contributors live far from
 Europe and need a significant travel budget. 

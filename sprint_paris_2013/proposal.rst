@@ -132,7 +132,7 @@ Liège      €200
 Sydney     €1800
 Utrecht    €200
 Bucharest  €300
-Belgium    €250
+Vienna     €250
 Bonn       €250
 Surrey     €300
 ========== ===========================

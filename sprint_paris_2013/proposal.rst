@@ -69,7 +69,8 @@ profiling-based optimization. The `scikit-learn` is consistently amongst
 the best performing machine learning toolkits on mid-sized datasets [#]_
 
 
-.. [#] Performance benchmarks: http://scikit-learn.github.com/ml-benchmarks/
+.. [#] Automated Performance benchmarks: http://scikit-learn.github.io/scikit-learn-speed/ 
+.. [#] Comparative Performance benchmarks http://scikit-learn.github.com/ml-benchmarks/
 
 Community-driven development
 -----------------------------

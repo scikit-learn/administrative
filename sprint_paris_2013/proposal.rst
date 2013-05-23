@@ -146,8 +146,8 @@ Surrey     €300
 Thus, to finance all the trips, a **total of €4800** is needed. In addition,
 accomodation will cost around **1500€**.
 
-Contact information
-===================
+Funding contact information
+=============================
 
 If you are interested in helping funding this sprint, please contact
 `Nelle Varoquaux <http://github.com/NelleV>`_ at nelle dot varoquaux at afpy
@@ -156,4 +156,4 @@ dot org.
 Funding organizations will be credited on the following page of the
 official project site:
 
-  <http://scikit-learn.sourceforge.net/about.html#funding>
+  http://scikit-learn.sourceforge.net/about.html#funding

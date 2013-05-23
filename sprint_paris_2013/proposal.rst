@@ -149,8 +149,8 @@ accomodation will cost around **1500€**.
 Funding contact information
 =============================
 
-If you are interested in helping to fund this sprint, we would grately appreciate
-any support regarding the flights or accomodation of our contributors, or with
+If you are interested in helping to fund this sprint, we would greately appreciate
+any support regarding the flights or accommodation of our contributors, or with
 the venue of our sprint. Any amounts above £200 (the lowest travel cost) are very
 welcome.
 

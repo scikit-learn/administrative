@@ -149,11 +149,16 @@ accomodation will cost around **1500€**.
 Funding contact information
 =============================
 
-If you are interested in helping funding this sprint, please contact
+If you are interested in helping funding this sprint, we would grately appreciate
+any support regarding the flights or accomodation of our contributors, or with
+the venue of our sprint. Any amounts above £200 (the lowest travel cost) is very
+welcome.
+
+We will display all the sponsors' logos on the following page of the
+`official project site <http://scikit-learn.sourceforge.net/about.html#funding>`_,
+along with links to their respective sites.
+
+If you would like to contribute by sponsoring, please contact
 `Nelle Varoquaux <http://github.com/NelleV>`_ at nelle dot varoquaux at afpy
 dot org.
 
-Funding organizations will be credited on the following page of the
-official project site:
-
-  http://scikit-learn.sourceforge.net/about.html#funding

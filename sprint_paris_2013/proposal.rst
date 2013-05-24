@@ -151,7 +151,7 @@ Funding contact information
 
 If you are interested in helping to fund this sprint, we would greatly appreciate
 any support regarding the flights or accommodation of our contributors, or with
-the venue of our sprint. Any amounts above £200 (the lowest travel cost) are very
+the venue of our sprint. Any amounts above €200 (the lowest travel cost) are very
 welcome.
 
 We will display all the sponsors' logos on the following page of the

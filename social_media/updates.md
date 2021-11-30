@@ -15,4 +15,8 @@ Examples:
 - [x] Scipy Tutorial 2017: [Part #2](https://www.youtube.com/watch?v=WLYzSas511I&ab_channel=Enthought)
 - [x] Scipy Tutorial 2018: [Part #1](https://www.youtube.com/watch?v=4PXAztQtoTg&t=1s&ab_channel=Enthought) 
 - [x] Scipy Tutorial 2018: [Part #2](https://www.youtube.com/watch?v=gK43gtGh49o&ab_channel=Enthought)
+- [ ] [Talk section] EuroSciPy 2017: What's new in scikit-learn 0.20-0.21 [video](https://www.youtube.com/watch?v=JoI4F7TID5w&ab_channel=EuroSciPy)
+- [ ] [Talk section] SciPy 2018: [scikit learn and Tabular Data Closing the Gap](https://www.youtube.com/watch?v=lXGcPbmxx8Q&ab_channel=Enthought)
+- [ ] [Talk section] EuroScipy 2014 [Accelerating Random Forests in Scikit Learn](https://www.youtube.com/watch?v=TqF0rKzvjm4&ab_channel=Enthought)
+- [ ] [Talk section] SciPy 2019 [Fast Gradient Boosting Decision Trees with PyGBM and Numba](https://www.youtube.com/watch?v=cLpIh8Aiy2w&ab_channel=Enthought)
     

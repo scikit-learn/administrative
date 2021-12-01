@@ -19,4 +19,5 @@ Examples:
 - [ ] [Talk section] SciPy 2018: [scikit learn and Tabular Data Closing the Gap](https://www.youtube.com/watch?v=lXGcPbmxx8Q&ab_channel=Enthought)
 - [ ] [Talk section] EuroScipy 2014 [Accelerating Random Forests in Scikit Learn](https://www.youtube.com/watch?v=TqF0rKzvjm4&ab_channel=Enthought)
 - [ ] [Talk section] SciPy 2019 [Fast Gradient Boosting Decision Trees with PyGBM and Numba](https://www.youtube.com/watch?v=cLpIh8Aiy2w&ab_channel=Enthought)
-    
+- [ ] [Tutorial] PyData Jeddah [Custom scikit-learn estimators](https://www.youtube.com/watch?v=sEaiOkxTFjw)
+- [ ] [Talk section] PyData Berlin [Current affairs, updates, and the roadmap of scikit-learn and scikit-learn-contrib](https://www.youtube.com/watch?v=0tXIkjClGOs)

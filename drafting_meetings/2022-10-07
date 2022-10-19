@@ -1,0 +1,56 @@
+# scikit-learn bi-weekly drafting meeting
+## Session Date 10/7
+
+### Focus Items
+- [name=micky774] Is there interest in a scipy-like unified CLI tool?
+    - Start with a development environment file
+        - conda `.yaml`
+        - pip `dev_requirements.txt`
+        - Force only one (conda)?
+    - Base it off scipy's `dev.py`
+    - First stage would be:
+        - linting
+        - doc building
+    - Second stage:
+        - building
+        - on-the-fly building + ...
+        - testing
+    - Consider poetry/hatch
+        - With hatch, you can define as many environments w/ separate dependancies as you want.
+        - Packaging tool
+        - Mainly for environment reproduction (e.g. reproduce CI). Perhaps orthogonal to CLI
+    - **Action Item**: Open issue regarding CLI
+- [name=lorentzenchr] [Formalizing acceptance criteria and structure for metrics](https://github.com/scikit-learn/scikit-learn/issues/21718)
+    - [name=micky774] Inclusion criteria for metrics (the backlog is getting larger, yet we have no explicit policy)
+    - [name=Julien] About calibration, here are some related issues/PRs:
+        - https://github.com/scikit-learn/scikit-learn/pull/11096
+        - https://github.com/scikit-learn/scikit-learn/issues/10003
+- [name=micky774] Shall we publicly advertise this meeting on the mailing list and calendar?
+    - Make it public
+- [name=micky774] Update `Waiting for reviewer` tag to `Needs second review`
+    - Would automate w/ GitHub actions
+- [name=jjerphan] [Governance Update](https://github.com/scikit-learn/enhancement_proposals/pull/74)
+    - [name=Thomas] Too large of scope -- consists of multiple teams, and perhaps each team warrants its own SLEP.
+    - [name=Julien] Wording around recurring contributor: https://github.com/scikit-learn/scikit-learn/pull/24444/files#diff-1bc88ee27d61654009a440dafc16e35fc3ccb64d78db4a07316afd7348793befR74-R88
+
+### Items
+- [name=glemaitre] [Make the shape of arrays consistent](https://github.com/scikit-learn/scikit-learn/issues/20634)
+    - Do we want to rely on `X.ndim` communicating information?
+    - [Andy's comment](https://github.com/scikit-learn/scikit-learn/pull/20603#issuecomment-982045684) for options
+- Is there interest in the proposed [Columnwise NB](https://github.com/scikit-learn/scikit-learn/pull/22574) estimator?
+- [name=adrinjalali] [Safe persistence](https://github.com/skops-dev/skops/issues/30)
+    - https://github.com/scikit-learn/scikit-learn/issues/22759
+- [name=lorentzenchr] [Optional fit/predict without input validation](https://github.com/scikit-learn/scikit-learn/issues/21804)
+- [name=jnothman] [Factory-style construction of composite estimators](https://github.com/scikit-learn/scikit-learn/issues/16301)
+- [name=glemaitre] [Stateless estimator requiring call `fit`?](https://github.com/scikit-learn/scikit-learn/issues/12616)
+- [name=ogrisel] [Path for pluggable low-level computational routines](https://github.com/scikit-learn/scikit-learn/issues/22438)
+    - Next steps
+    - Can we use this for customizing "solvers" for estimators like `PCA`?
+    - Does this encompass adoption of the array api spec ([#22352])
+    - [Alternative](https://gist.github.com/thomasjpfan/c571e63c3c4f4a41ef4bef4ef453d7f1)
+
+### Decisions and Actionables
+- [name=micky774] Open issue for unified CLI tool and discuss further there
+- [name=micky774] Create issue for introducing `Waiting for second reviewer` label and create automation supporting it
+- [name=Julien] Summary of discussion for SLEP19, call for a vote, resolve Recurrint Contributor Team + Experts Team Ambiguity/Overlap
+- Review [Columnwise NB](https://github.com/scikit-learn/scikit-learn/pull/22574) if/when possible.

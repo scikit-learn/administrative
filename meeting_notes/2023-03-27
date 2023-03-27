@@ -1,0 +1,89 @@
+# Scikit-learn Monthly Developer meeting
+### March 27 @ TBA
+
+### Topics
+* [name=Tim] Hold monthly meeting on a fixed pattern
+    * right now it is hard to know when the meeting will be
+        * e.g. nothing in the calendar for April yet,
+        * Tim is already scheduling things in May and June where I can't take into account the scikit-learn meeting
+    * easier to have time at a fixed slot because most other meetings/obligations have a pattern
+    * Proposal: every Nth Monday of the month
+        * maybe switch between European morning and European evening each month (one is Asia friendly, one is US east coast friendly)
+    * (Adrin) that's already the case, we could see if Joel and Andy could give us their availability, but rather keep it flexible.
+    * [name=Olivier] The rule so far was last Monday of each month but there
+      were exceptions in the past (typically in December moved to early January and no other meeting end of January). The time changes from time to time depending on time zone constraints of Pacific time zones people who express interest in attending the next meeting.
+    * **Notes** Communication is the bottleneck:
+        * Solution considered: make calendar entries for longer, even if we end up changing them.
+        * In terms of time: 2 possibilities
+            1. Alternate times in the short term
+            2. Book multiple times long time in advance, and remove one
+        * conclusion: book meetings several months in advance and each month alternates between the two time slots
+
+* [name=Loïc] Switch to Scientific Python Plausible instance for website analytics:
+  - https://github.com/scikit-learn/scikit-learn/pull/25547
+  - do we want to keep both for some time?
+  - if yes rough idea of the timeline
+  - **Notes**: have a few months of overlaps to be able to gauge the different sampling biases / translate numbers from one track to another
+
+* [name=Julien] Project vision and priorities
+    * are people interested in coming up with a clear message from scikit-learn?
+    * are people interested in updating/removing the [2018 statement of purpose](https://scikit-learn.org/stable/roadmap.html#statement-of-purpose-scikit-learn-in-2018)?
+    * **Notes**:
+        * Vision statement over roadmaps
+        * Vision statement must be shared as a group
+        * People have different personnal preferences and priorities, which are not incompatible
+        * Thomas proposition: "Keep making it easier for non-ML experts to use ML correctly."
+             * Not necessary the latest algorithms but strong implementations
+        * Vision statement should be at the beginning of the contributor's guide
+        * Update the FAQ on the scope:
+            * to no longer mention no GPU
+            * cross-link the vision to the "scope" sections of the FAQ to the vision and vice-versa
+        * Tim mentions that the vision statement must be very short
+        * Continue discussion by email on vision-statement
+        * More fine-grained "roadmap"?
+            * not on the main website?
+            * maybe official github meta-issue?
+        * A project board can only work if people are updating it
+        * **Conclusion**: first vision statement, then see if we want to do more
+
+* Sprint early june
+    * [June 19 to 23rd](https://www.google.com/calendar/event?eid=ZWd1bGo4MHJnaHU4ZGlhbW9qOGFzN21rMWMgc29jaWFsLnNjaWtpdGxlYXJuQG0&ctz=UTC)
+    * Venue: TBD, options are:
+        * [Inria Centre de Paris](https://goo.gl/maps/1nShE7RhwCknCLVKA)
+        * [Inria Centre de Saclay](https://goo.gl/maps/7Cd4DfCqMPFHu7ki9) (south of Paris)
+        * or others, like (Paris Santé Campus)?
+    * Audience: regular contributors
+
+### Updates
+
+* [name=Adrin] Launched the internship ad, will soon start interviewing. Got >25 applications since Friday.
+  - [name=Julien] :+1:
+
+### Need decision
+
+* [name=Adrin] [RFC Version 2: SLEP006](https://github.com/scikit-learn/scikit-learn/issues/25776)
+    * Consensus on breaking backward compat on this specific issue, as the errors will be explicit
+    * Challenge = breaking external libraries, in particular the meta-estimators
+        * eg the new version of imbalanced learn could only work on the version of scikit-learn released simultaneously
+        * The biggest problem is alternatives implementations of Pipelines
+    * Can we help people: users and third-party developers
+        * Dedicated page on how to upgrade your code (e.g. third party library)
+        * Dedicate resources (our developer time) to help downstream library
+    * [name=Christian] user code becomes more complicated
+        * Can we make the code for the simple cases simpler. Specific exemple: make nested cross-validation with sample weights
+    * Discussion on whether routing should be explicit or not (eg: if the user passes in sample weight but does not define a routing, should we route everywhere or nowhere?)
+        * Deciding what the default should be to keep the "simple case" simple
+    * **We have a hard time to come to a conclusion such that we organize a meeting specifically to discuss sample props.**
+
+
+### Need attention (reviews)
+
+* [name=Julien] [GOV introduce rights for groups as discussed in SLEP019](https://github.com/scikit-learn/scikit-learn/pull/25753) from Adrin
+* [name=Julien] [ENH Adds missing value support for trees](https://github.com/scikit-learn/scikit-learn/pull/23595) from Thomas
+* [name=Julien] [ENH `BallTree` and `KDTree` support for `float32`](https://github.com/scikit-learn/scikit-learn/pull/25914) from Omar
+* [name=Guillaume] [SLEP021: Unified API around feature importances](https://github.com/scikit-learn/enhancement_proposals/pull/86)
+
+### Action items
+
+### Next meeting date and chair person
+- April 24

@@ -8,6 +8,8 @@ followed by a round of voting. We then discussed topics in order for roughly 5mi
 After covering all topics with double digit votes we continued in a more free-style order
 with topics individual people were interested in. We did not cover all topics.
 
+These notes are to be taken with a grain of salt, as they only represent the people who were are the sprint, a small sample of the scikit-learn community.
+
 ---
 
 > Find the original pad at: https://hackmd.io/@betatim/skl-2yr-2023

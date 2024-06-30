@@ -11,8 +11,8 @@ Communication
 Community meetings
 ------------------
 
-* ``meeting_notes`` includes the notes from our bi-weekly and monthly
-  meetings.
+* ``monthly_meetings`` includes the notes from our monthly meetings
+* ``biweekly_meetings`` includes the notes from our bi-weekly meetings.
 * ``drafting_meetings`` includes the notes from the drafting mettings.
 * ``triage_meetings`` includes the notes from the triage meetings.
 

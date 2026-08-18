@@ -12,7 +12,8 @@ Community meetings
 ------------------
 
 * ``monthly_meetings`` includes the notes from our monthly meetings
-* ``biweekly_meetings`` includes the notes from our bi-weekly meetings.
+* ``biweekly_meetings`` includes the notes from our bi-weekly meetings
+  (e.g., the plugins and array API meeting).
 * ``drafting_meetings`` includes the notes from the drafting mettings.
 * ``triage_meetings`` includes the notes from the triage meetings.
 
